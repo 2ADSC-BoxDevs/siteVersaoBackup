@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="assets/logo/logo-footer.png" type="image/x-icon">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="js/autenticacao.js"></script>
+    <title>Specula | Home</title>
+</head>
+
+<body class="body-home" id="body" onclick="ConfirmarLogin()">
+    <!-- Header -->
+    <header class="header-nav">
+        <nav class="nav">
+            <!-- Hamburguer Menu Mobile -->
+            <div class="open-menu-icon" id="open_menu_icon" onclick="open_itens_menu()">
+                <svg fill="#FFF" viewBox="0 0 512 512" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M64 384h384v-42.666H64V384zm0-106.666h384v-42.667H64v42.667zM64 128v42.665h384V128H64z" />
+                </svg>
+            </div>
+            <!-- Fechar Menu Mobile -->
+            <div class="close-menu-icon" id="close_menu_icon" onclick="close_itens_menu()">
+                <svg fill="#FFF" viewBox="0 0 512 512" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M64 384h384v-42.666H64V384zm0-106.666h384v-42.667H64v42.667zM64 128v42.665h384V128H64z" />
+                </svg>
+            </div>
+            <!-- Fim Hamburguer Menu Mobile -->
+            <!-- Logo Menu -->
+            <div class="nav-logo">
+                <a href="index.html"><img src="assets/logo/logo.svg" alt="Logo"></a>
+            </div>
+            <!-- Fim Logo Menu -->
+            <!-- Itens Menu -->
+            <ul id="itens_menu">
+                <li class="now" ><a href="index.html">Home</a></li>
+                <li><a href="sobrenos.html">Sobre nós</a></li>
+                <li><a href="servico.html">Serviço</a></li>
+                <li><a href="time.html">Time</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            <!-- Fim Itens Menu -->
+           
+            ㅤㅤ
+            <!-- Botão Login -->
+            <div class="nav-btn" href="#">
+                <a class="btn btn-nav"  href="login.html">Login</a>
+            </div>
+            <!-- Fim Botão Login -->
+        </nav>
+    </header>
+    <!-- Fim Header -->
+    <main class="content">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="content-hero">
+                <!-- Texto Hero -->
+                <article class="container-hero">
+                    <h1>Automatize seu sistema de monitoração.</h1>
+                    <p>Use dados para ter um panorama completo do seu negócio. Rastreie e gerencie todos os ativos de hardware e software de TI de forma centralizada e automatizada.
+                        Colete informações sobre dispositivos de hardware, licenças positivas e negativas, e seus custos envolvidos, para obter uma única versão da verdade para o patrimônio de ativos de TI da sua empresa.</p>
+                        <div class="nav-btn" href="#">
+                        <a href="sobrenos.html"><button class="btn btn-hero">Saiba Mais</button></a>
+                        <a class="btn btn-hero"  href="telaCadastroEmpresa.html">Cadastro</a>
+                    </div>
+                </article>
+                <!-- Fim Texto Hero -->
+                <!-- Imagem Hero -->
+                <figure class="hero-img">
+                    <img src="assets/svg/foto-home.svg">
+                </figure>
+                <!-- Fim Imagem Hero -->
+            </div>
+        </section>
+        <!-- Fim Hero -->
+        <!-- Sobre nós -->
+        <section class="container container-sobre">
+            <div class="content-sobre">
+                <figure class="sobre-nos-img">
+                    <img src="assets/svg/sobre_nos.svg" alt="Sobre Nós">
+                </figure>
+                <article class="sobre-text">
+                    <h1 class="title">Sobre<span class="title-underline"> nós</span></h1>
+                    <p class="text">Acreditamos que o monitoramento desempenha um papel vital na redução do consumo de
+                        recursos da humanidade.
+                        O monitoramento de dados ajuda nossos clientes a economizar recursos, desde a otimização de suas
+                        infraestruturas de TI, OT e IoT até a redução do consumo de energia ou das emissões. Para nosso
+                        futuro e nosso meio ambiente.</p>
+                </article>
+            </div>
+        </section>
+        <!-- Fim Sobre nós -->
+        <!-- Nossa Solução -->
+        <section class="container container-solucao">
+            <div class="content-solucao">
+                <!-- Texto Solução -->
+                <article class="content-solucao-text">
+                    <h1 class="title">Nossa Solu<span class="title-underline">ção</span></h1>
+                    <p class="text"> Monitoramento de hardware começa com um teste PING simples: O PRTG monitora hardware e verifica se todos os servidores e computadores de trabalho estão acessíveis. Se o teste de PING falhar, o dispositivo ou está desligado ou o há algum problema com um cabo danificado ou não conectado, ou então há uma conexão de Internet com defeito.
+                        O PRTG fornece um alerta assim que um teste de PING falhar, e permite corrigir problemas de rede e hardware no local. </p>
+                </article>
+                <section class="content-solucao-icones">
+                    <article class="icone">
+                        <figure>
+                            <img src="assets/svg/CPU.png">
+                        </figure>
+                        <article>
+                            <h2>Monitor de CPU e RAM</h2>
+                            <p>Um monitoramento de CPU e da capacidade de memória de acesso aleatório (RAM) é necessário para que você possa ser alertado a tempo, antes que uma das cargas do seu servidor torne-se elevada demais. Isso permitirá que você possa redistribuir a carga antes que servidores se engarrafem ou caiam.</p>
+                        </article>
+                    </article>
+                    <article class="icone">
+                        <figure>
+                            <img src="assets/svg/DiscoRigido.png">
+                        </figure>
+                        <article>
+                            <h2>Monitoramento de Disco Rígido</h2>
+                            <p>Monitoramento de disco rígido também é importante: O PRTG fornece um alerta, se a quantidade de espaço livre em disco se torna muito baixo, registra alterações nos dados, e pode até mesmo determinar se um determinado arquivo está disponível. Perdas de dados são evitadas. E discos rígidos podem ser rapidamente substituídos ou complementados.</p>
+                        </article>
+                    </article>
+                    <article class="icone">
+                        <figure>
+                            <img src="assets/svg/Roteador.png" alt="Sensor de Temperatura">
+                        </figure>
+                        <article>
+                            <h2>Monitoramento de Roteador e Switch</h2>
+                            <p>Monitoramos o hardware da rede (roteadores, switches), bem como tudo que interessa para os administradores, tais como o tráfego de rede, software e websites. Com isso você fica sabendo quais dispositivos, programas ou usuários produzem o maior volume de tráfego na sua rede, ou se ocorrem falhas de rede.</p>
+                        </article>
+                    </article>
+                </section>
+            </div>
+        </section>
+        <!-- Fim Nossa Solução -->
+    <!-- Rodapé -->
+    <footer class="footer">
+        <a  href="index.html"><img src="assets/logo/logo-footer.png" class="imgSpecula" alt="Logo"></a>
+        <div class="container-footer">
+            <!-- Texto Rodapé -->
+            <article class="footer-about">
+            
+            <!-- Fim Rodapé -->
+            <!-- Itens Rodapé -->
+            <div class="nav-footer">
+                <ul>
+                    <li class="footer-title"><a href="sobrenos.html">Sobre nós</a></li>
+                    <li><a href="sobrenos.html">História</a></li>
+                </ul>
+                <ul>
+                    <li class="footer-title"><a href="servico.html">Serviço</a></li>
+                    <li><a href="servico.html">Solução</a></li>
+                </ul>
+                <ul>
+                    <li class="footer-title"><a href="time.html">Time</li></a>
+                    <li><a href="time.html">Equipe</a></li>
+                </ul>
+                <ul>
+                    <li class="footer-title"><a href="faq.html">FAQ</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <!-- Fim Itens Rodapé -->
+        </div>
+        <!-- Texto Copyright -->
+        <div class="copyright">
+            <span>© 2022 Specula</span>
+        </div>
+        <!-- Fim Texto Copyright -->
+    </footer>
+    <!-- Fim Rodapé -->
+</body>
+
+</html>
+<script>
+// Efeitos
+
+window.sr = ScrollReveal({reset: true});
+
+// nav 
+sr.reveal('.nav', {duration: 2000});
+sr.reveal('.nav-logo', {duration: 2000});
+sr.reveal('.itens_menu', {duration: 2000});
+sr.reveal('.btn-nav', {duration: 2000});
+
+// hero
+sr.reveal('.container-hero', {duration: 4000});
+sr.reveal('.btn-hero', {duration: 4000});
+sr.reveal('.hero-img', {duration: 4000});
+
+// sobre nos
+sr.reveal('.sobre-nos-img', {duration: 8000});
+sr.reveal('.sobre-text', {duration: 8000});
+sr.reveal('.title', {duration: 4000});
+sr.reveal('.container-sobre', {duration: 4000});
+
+// solução
+sr.reveal('.content-solucao-text', {duration: 3000});
+sr.reveal('.icone', {duration: 5000});
+sr.reveal('.container-solucao', {duration: 3000});
+
+
+    var resize = my();
+    function my() {
+        if (window.innerWidth < 960) {
+            open_menu_icon.style.display = 'none';
+            close_menu_icon.style.display = 'none';
+            body.style.overflow = 'unset';
+        }
+    }
+    function open_itens_menu() {
+        if (window.innerWidth < 960) {
+            close_menu_icon.style.display = 'block';
+            open_menu_icon.style.display = 'none';
+            itens_menu.style.display = 'flex';
+            body.style.overflow = 'hidden';
+        }
+    }
+    function close_itens_menu() {
+        if (window.innerWidth < 960) {
+            open_menu_icon.style.display = 'block';
+            close_menu_icon.style.display = 'none';
+            itens_menu.style.display = 'none';
+            body.style.overflow = 'unset';
+        }
+    }
+    function traducao() {
+        var botao = document.getElementsByTagName('iframe')[0].contentDocument.querySelector('#react-root');
+        botao.onclick = function traducaoCampos() {
+            setTimeout(function traducaoCampos() {
+                var campoNome = document.getElementsByTagName('iframe')[0].contentDocument.querySelector('label[for="summary"] > span');
+                var campoDescricao = document.getElementsByTagName('iframe')[0].contentDocument.querySelector('label[for="description"] > span');
+                var campoEmail = document.getElementsByTagName('iframe')[0].contentDocument.querySelector('label[for="email"] > span');
+                var enviar = document.getElementsByTagName('iframe')[0].contentDocument.querySelector('#submit-button');
+                campoNome.innerHTML = 'Assunto:';
+                campoDescricao.innerHTML = 'O que está acontecendo?';
+                campoEmail.innerHTML = 'Email:';
+                enviar.innerHTML = 'Enviar';
+            }, 1);
+        }
+    }
+
+</script>
+<script onload="setTimeout('traducao()',1);" data-jsd-embedded data-key="dc3a67a8-04d2-4668-9bdb-572ea07d0535"
+    data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>

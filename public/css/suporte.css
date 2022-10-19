@@ -1,0 +1,155 @@
+:root{
+    --titleSize: clamp(1em,1.25vw,1.35em);
+}
+/* -----
+Cards 
+-------*/
+/* Conteúdo Cards */
+.container-cards{
+    display: flex;
+    flex-flow: row wrap;
+    gap: clamp(3em,5vw,8em);
+    justify-content: center;
+}
+/* Cards */
+.card{
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 2em 4em;
+    cursor: pointer;
+    height: 240px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 300ms ease;
+}
+
+/* efeitos */
+
+.container-child-contato,.container-cards, .card{
+    visibility: hidden;
+}
+
+/* Imagem */
+.card img{
+    width: 5em;
+}
+/* Nome */
+.card h2{
+    font-weight: 800;
+    letter-spacing: 0.25px;
+    color: var(--cream);
+}
+/* Efeito */
+.card:hover{
+    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.103) ;
+   
+}
+
+/* .card:hover h2{
+    color: #87b7ff;
+} */
+
+/* ----
+FAQ
+----- */
+/* Menu Lateral */
+.lateral-menu{
+    height: 100%;
+    width: 15em;
+}
+.lateral-menu > ul > li{
+    list-style: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--cream);
+    padding: 1em 1em;
+    cursor: pointer;
+}
+/* Link Ativo */
+.active{
+    padding: 1em 1em;
+    border-radius: 5px;
+    background: var(--primary);
+    color: var(--white) !important;
+}
+.active-link{
+    color: var(--primary) !important;
+    font-weight: 600;
+}
+/*------------------
+Alinhamento da Página
+-------------------- */
+.content{
+    align-items: center;
+}
+.container-website{    
+    max-width: 1250px;
+}
+.content-faq{
+    display: flex;
+    flex-direction: row;
+    padding: 0 2em;
+    gap: 5em;
+}
+/* --------
+Caminho URL
+---------- */
+.path-faq{padding: 1em 2em;}
+.path-faq li{list-style: none;}
+.path-faq li a {
+    text-decoration: none;
+    padding: 0 .25rem;
+    color: var(--cream);
+}
+/* Titulo FAQ */
+.title h1{
+    font-size: var(--titleSize);
+    font-weight: 800;
+}
+/* Autor */
+.faq-author{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+/* Imagem */
+.faq-author img{
+    width: 0.5em;
+}
+/* Nome */
+.faq-author span{
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gray);
+}
+/* ----------
+Solução FAQ 
+-----------*/
+.faq-solution p,.faq-solution li,.faq-solution p,.faq-solution a{
+    color: var(--cream);
+    font-size: var(--textSize);
+    white-space: pre-line;
+}
+.faq-solution li{line-height: 1.5em;}
+.faq-solution p{line-height: 3em;}
+.faq-solution a{
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+/* -----------
+Reponsividade
+------------ */
+@media screen and (max-width: 980px){
+    /* Menu Lateral */
+    .lateral-menu{width: 100%;}
+    /* Conteúdo FAQ */
+    .content-faq{
+        flex-direction: column;
+        gap: 2em;
+    }
+}

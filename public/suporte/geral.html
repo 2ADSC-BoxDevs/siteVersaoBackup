@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/child.css">
+    <link rel="stylesheet" href="../css/suporte.css">
+    <link rel="shortcut icon" href="../assets/logo/logo-footer.png" type="image/x-icon">
+    <title>Specula | Geral</title>    
+</head>
+<body class="bg-contato" onload="geral()">
+<!-- Header -->
+<header class="header-nav">
+    <nav class="nav">
+            <!-- Hamburguer Menu Mobile -->
+            <div class="open-menu-icon" id="open_menu_icon" onclick="open_itens_menu()">
+                <svg fill="#FFF" viewBox="0 0 512 512" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M64 384h384v-42.666H64V384zm0-106.666h384v-42.667H64v42.667zM64 128v42.665h384V128H64z" />
+                </svg>
+            </div>
+            <!-- Fechar Menu Mobile -->
+            <div class="close-menu-icon" id="close_menu_icon" onclick="close_itens_menu()">
+                <svg fill="#FFF" viewBox="0 0 512 512" width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M64 384h384v-42.666H64V384zm0-106.666h384v-42.667H64v42.667zM64 128v42.665h384V128H64z" />
+                </svg>
+            </div>
+            <!-- Fim Hamburguer Menu Mobile -->
+            <!-- Logo Menu -->
+            <div class="nav-logo">
+                    <a href="../index.html"><img src="../assets/logo/logo.svg" alt="Logo"></a>
+            </div>
+            <!-- Fim Logo Menu -->
+        <!-- Itens Menu -->
+        <ul id="itens_menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../sobrenos.html">Sobre nós</a></li>
+            <li><a href="../servico.html">Serviço</a></li>
+            <li><a href="../time.html">Time</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+        </ul>
+        <!-- Fim Itens Menu -->
+        <!-- Botão Login -->
+        <div class="nav-btn">
+            <a class="btn btn-nav" href="../login.html">Login</a>
+        </div>
+        <!-- Fim Botão Login -->
+    </nav>
+</header>
+<!-- Fim Header -->
+<main class="content">
+    <div class="container-child container-website">
+        <!-- Caminho -->
+          <div class="path-faq">
+            <li><a href="../faq.html">FAQ</a> >
+            <a class="active-link" href="geral.html">Geral</a> >
+            <a class="active-link" href="geral.html">Como relatar um problema?</a></li>
+          </div>
+          <div class="content-faq">
+          <!-- Menu Lateral -->
+          <aside class="lateral-menu">
+            <ul>
+              <li class="nav-link active">Como relatar um problema?</li>
+              <li class="nav-link">Como se cadastrar?</li>
+            </ul>
+          </aside>
+          <!-- Conrteúdo FAQ -->
+          <section class="container-faq">          
+            <!-- Titulo FAQ -->
+            <article class="title">
+              <h1 id="current_title">Como relatar um problema?</h1>
+            </article>
+            <!-- Conteúdo FAQ -->
+            <article class="faq-solution">
+              <p>Existem duas formas de relatar um problema:</p> 
+              <li>Acesse a página FAQ através do menu ou do rodapé do site.</li>
+              <li>A partir disso, clicará na opção "Fale Conosco".</li>
+              <li>Então abrirá uma nova guia totalmente intuitiva onde o usuário poderá comunicar um incidente, enviar uma solicitação ou fazer uma pergunta.</li>
+              <p>Não pode consertar?</p>
+              <p>Envie uma mensagem <a href="https://freshdragonfruit.atlassian.net/servicedesk/customer/portal/1/group/1/create/2">aqui</a>.</p>
+            </article>
+          </section>
+        </div>
+    </div>    
+</main>
+<!-- Rodapé -->
+<footer class="footer">
+    <div class="container-footer">
+        <!-- Texto Rodapé -->
+        <article class="footer-about">
+            <a href="index.html"><img src="../assets/logo/logo-footer.png" alt="Logo"></a>
+        <!-- Fim Rodapé -->
+        <!-- Itens Rodapé -->
+        <div class="nav-footer">
+            <ul>
+                <li class="footer-title"><a href="sobrenos.html">Sobre nós</a></li>
+                <li><a href="sobrenos.html">História</a></li>
+            </ul>
+            <ul>
+                <li class="footer-title"><a href="servico.html">Serviço</a></li>
+                <li><a href="servico.html">Solução</a></li>
+            </ul>
+            <ul>
+                <li class="footer-title"><a href="time.html">Time</li></a>
+                <li><a href="time.html">Equipe</a></li>
+            </ul>
+            <ul>
+                <li class="footer-title"><a href="faq.html">FAQ</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </div>
+        <!-- Fim Itens Rodapé -->
+    </div>
+    <!-- Texto Copyright -->
+    <div class="copyright">
+        <span>© 2022 Specula</span>
+    </div>
+    <!-- Fim Texto Copyright -->
+</footer>
+<!-- Fim Rodapé -->
+</body>
+</html>
+<script>
+
+// Efeitos
+
+window.sr = ScrollReveal({reset: true});
+
+// nav 
+sr.reveal('.nav', {duration: 2000});
+sr.reveal('.nav-logo', {duration: 2000});
+sr.reveal('.itens_menu', {duration: 2000});
+sr.reveal('.btn-nav', {duration: 2000});
+
+
+
+/*----
+FAQ
+----*/
+function geral(){   
+    var url_titulo = document.getElementsByClassName('active-link')[1];
+    var menu_link_1 = document.getElementsByClassName('nav-link')[0];
+    var menu_link_2 = document.getElementsByClassName('nav-link')[1];
+    var solucao = document.getElementsByClassName('faq-solution')[0];
+    menu_link_1.onclick = function geral_1(){
+        // Altera texto caminho
+        var titulo = 'Como relatar um problema?'
+        url_titulo.innerHTML = `${titulo}`;
+        // Altera caminho ativo
+        menu_link_1.classList.add('active');
+        menu_link_2.classList.remove('active');        
+        // Altera solução do FAQ
+        current_title.innerHTML = `${titulo}`;
+        solucao.innerHTML = `
+        <p>Existem duas formas de relatar um problema:</p> 
+        <li>Acesse a página FAQ através do menu ou do rodapé do site.</li>
+        <li>A partir disso, clicará na opção "Fale Conosco".</li>
+        <li>Então abrirá uma nova guia totalmente intuitiva onde o usuário poderá comunicar um incidente, enviar uma solicitação ou fazer uma pergunta.</li>
+        <p>Não pode consertar?</p>
+        <p>Envie uma mensagem <a href="https://freshdragonfruit.atlassian.net/servicedesk/customer/portal/1/group/1/create/2">aqui</a>.</p>`;    
+    }
+    menu_link_2.onclick = function geral_2(){
+        // Altera texto caminho
+        var titulo = 'Como se cadastrar?';
+        url_titulo.innerHTML = `${titulo}`;
+        // Altera caminho ativo
+        menu_link_1.classList.remove('active');
+        menu_link_2.classList.add('active');
+        // Altera solução do FAQ
+        current_title.innerHTML = `${titulo}`;
+        solucao.innerHTML = `
+        <p>Para se cadastrar siga os passos: </p> 
+        <li>Clicar no botão "Login" localizado no canto direito superior e então clicar na opção "Registre-se".</li>
+        <li>Após isto, o usuário preencherá os campos com seus dados de acordo com a validação.</li>
+        <li>Ao ser redirecionado  para a página de login , preenche os campos com os dados cadastrados e clique no botão "Entrar".</li>
+        <p>Não pode consertar?</p>
+        <p>Envie uma mensagem <a href="https://freshdragonfruit.atlassian.net/servicedesk/customer/portal/1/group/1/create/2">aqui</a>.</p>`;
+    }
+}
+// Responsividade Menu
+function open_itens_menu(){
+    close_menu_icon.style.display = 'block';
+    open_menu_icon.style.display = 'none';
+    itens_menu.style.display = 'flex';
+    // body.style.overflow = 'hidden';
+}
+function close_itens_menu(){
+    open_menu_icon.style.display = 'block';
+    close_menu_icon.style.display = 'none';
+    itens_menu.style.display = 'none';
+    body.style.overflow = 'unset';
+}
+function traducao(){
+    var botao = document.getElementsByTagName('iframe')[0].contentDocument.querySelector('#react-root');
+    botao.onclick = function traducaoCampos() {
+    setTimeout( function traducaoCampos() { 
+        var campoNome = document.getElementsByTagName('iframe')[0].contentDocument.querySelector('label[for="summary"] > span');
+        var campoDescricao = document.getElementsByTagName('iframe')[0].contentDocument.querySelector('label[for="description"] > span');
+        var campoEmail = document.getElementsByTagName('iframe')[0].contentDocument.querySelector('label[for="email"] > span');
+        var enviar = document.getElementsByTagName('iframe')[0].contentDocument.querySelector('#submit-button');
+        campoNome.innerHTML = 'Assunto:';           
+        campoDescricao.innerHTML = 'O que está acontecendo?';           
+        campoEmail.innerHTML = 'Email:';   
+        enviar.innerHTML = 'Enviar';     
+        }, 1);
+    }    
+}
+</script>
+<script onload="setTimeout('traducao()',1);" data-jsd-embedded data-key="dc3a67a8-04d2-4668-9bdb-572ea07d0535" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>

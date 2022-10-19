@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastrar maquina</title>
+    <!-- Link fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Link CSS -->
+
+    <link rel="stylesheet" href="css/cadastroMaquina.css" />
+    <!-- Link icones -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="assets/logo/logo-footer.png"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body>
+    <div class="mainlogin">
+      <div class="son_card">
+        <div class="text_left">
+          <img
+            class="uil-user-circle"
+            src="assets/imgs/icon-maquina.png"
+            alt=""
+          />
+          <h1>CADASTRO DE MÁQUINA</h1>
+        </div>
+
+        <div class="block_text">
+          <div class="textfield">
+            <label for="maquina">ID da máquina:</label>
+            <input id="id_maquina" type="text" placeholder="Insira o id" />
+            <i class="uil uil-cog"></i>
+          </div>
+
+          <div class="textfield">
+            <label for="usuario">Setor:</label>
+            <input id="setor_maquina" type="password" placeholder="Insira o setor:" />
+            <i class="uil uil-store-alt"></i>
+          </div>
+
+          <button class="btnlogin" onclick="cadastrarMaquina()">Proximo</button>
+        </div>
+
+        <img src="assets/imgs/imgCadasMaqui.png" class="img_right" />
+      </div>
+    </div>
+
+    <!-- <div class="footer">
+      <div class="img_footer">
+          <img src="img/Group 97.png">
+      </div>
+
+      <div class="social">
+          <h1>Social</h1>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Linkedin</a></li>
+      </div>
+
+
+      <div class="ajuda">
+          <h1>Ajuda</h1>
+          <li><a href="#">Suporte</a></li>
+          <li><a href="#">Contato</a></li>
+
+      </div>
+
+
+
+      <div class="voltar">
+         <a href="#navbar"> <img src="img/carbon_back-to-top.png"></a>
+
+      </div>
+
+  </div> -->
+  </body>
+</html>
+
+<script>
+
+// function listUser(){
+
+//   fetch("/usuarios/listar",{
+//     method: "GET",
+//     headers: {
+//         "Content-Type": "application/json",
+//       },
+
+//   }).then(function (resposta) {
+
+//      resposta.json()
+//      .then((json) => {
+
+//       console.log("ACERTO JSON ", json)
+//       console.log("ACERTO JSON STRING ",JSON.stringify(json))
+
+//       for(i = 0; i < json.length; i++){
+
+//         user_maquina.innerHTML += `<option value="${json[i].nome_usuario_maquina}"> ${json[i].nome_usuario_maquina} </option>`
+
+//            }
+
+//      })
+
+//   }).catch(function (erro) {
+
+//      console.log("O erro -> " + erro);
+
+//   })
+
+
+// }
+
+function cadastrarMaquina(){
+ 
+  var id = id_maquina.value
+  var empresa = sessionStorage.getItem("FK_EMPRESA")
+  var user = user_maquina.value
+  var setor = setor_maquina.value
+
+  console.log(`Valores a serem inseridos  ${id}, ${user}, ${setor}, ${empresa}`)
+
+
+}
+
+
+
+</script>

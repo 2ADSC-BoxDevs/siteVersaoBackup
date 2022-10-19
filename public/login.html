@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <title>Login</title>
+    <!-- Link fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="css/login.css" />
+    <!-- Link icones -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="assets/logo/logo-footer.png"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body onload="autenticar()">
+    <!--Fim Header -->
+    <a href="index.html">
+    <img class="btn-voltar" src="./assets/icons/setaVoltar.png"></a>
+    <div class="mainlogin">
+      <div class="son_card">
+        <div class="block_text">
+          <h1>LOGIN</h1>
+
+          <div class="textfield">
+            <label for="usuario">Email</label>
+            <input
+              id="email_usuario"
+              type="text"
+              onkeyup="validacao_email_register()"
+              placeholder="Entre com seu email"
+            />
+            <i class="uil uil-user"></i>
+            <label id="msg_email_validation_register"></label>
+          </div>
+
+          <div class="textfield">
+            <label for="senha">Senha</label>
+            <input
+              id="ipt_senha"
+              type="password"
+              placeholder="Entre com sua senha"
+            />
+            <i
+              class="fa fa-eye-slash icon-display-password"
+              id="form_show_password"
+              onclick="display_show_password()"
+            ></i>
+            <i
+              class="fa fa-eye icon-display-password"
+              id="form_hidden_password"
+              onclick="display_hidden_password()"
+            ></i>
+            <i class="uil uil-padlock"></i>
+          </div>
+
+          <button class="btnlogin" onclick="entrar()">Login</button>
+
+          <form>
+            <span> Não é membro?</span>
+            <a
+              href="telaCadastroEmpresa.html"
+              target="_blank"
+              class="signup-text"
+              ><span class="cadastre_references">Cadastre-se agora</span></a
+            >
+          </form>
+        </div>
+
+        <img src="assets/imgs/imglogin.png" class="img_right" />
+      </div>
+    </div>
+
+    <!--   <div class="footer">
+      <div class="img_footer">
+          <img src="img/Group 97.png">
+
+      </div>
+
+        
+      <span class="text_footer">© 2022 Specula</span>
+
+      <div class="voltar">
+          <a href="#navbar"> <img src="img/carbon_back-to-top.png"></a>
+
+      </div>
+
+  </div> -->
+  </body>
+</html>
+
+<script>
+  window.sr = ScrollReveal({ reset: true });
+
+  sr.reveal(".text_left ", { duration: 2000 });
+
+  sr.reveal(".mainlogin", { duration: 2000 });
+
+  sr.reveal(".navbar", { duration: 1000 });
+
+  var emailReg = /^([À-úA-z0-9._-]+@[a-z0-9._-]+\.[A-z0-9_-]+)$/;
+
+  function validacao_email_register() {
+    var email = email_usuario.value;
+    // Verifica email
+    if (email.match(emailReg)) {
+      msg_email_validation_register.innerHTML = "";
+      email_usuario.style.border = "1px solid green ";
+      email_usuario.style.color = " green";
+    } else {
+      msg_email_validation_register.innerHTML =
+        '<b style="color: red;"> Verifique o campo preenchido </b>';
+      email_usuario.style.color = "red";
+      email_usuario.style.border = "1px solid red";
+    }
+  }
+
+  function display_show_password() {
+    form_show_password.style.display = "none";
+    form_hidden_password.style.display = "block";
+    ipt_senha.type = "text";
+  }
+  function display_hidden_password() {
+    form_show_password.style.display = "block";
+    form_hidden_password.style.display = "none";
+    ipt_senha.type = "password";
+  }
+
+  // ---------------------------- CONEXÂO COM O BANCO --------------------------------
+
+  function entrar() {
+    var emailVar = email_usuario.value;
+    var senhaVar = ipt_senha.value;
+
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({ emailServer: emailVar, senhaServer: senhaVar }),
+    })
+      .then(function (resposta) {
+        console.log("Estou no then da função entrar()!");
+
+        if (resposta.ok) {
+
+          console.log(resposta);
+
+          resposta.json()
+          .then((json) => {
+            console.log(json);
+
+            console.log(JSON.stringify(json)); 
+
+            sessionStorage.ID_USER = json.id_usuario_suporte;
+            sessionStorage.EMAIL_USUARIO = json.email_usuario_suporte;
+            sessionStorage.CARGO_USUARIO = json.cargo_usuario_suporte;
+            sessionStorage.FK_EMPRESA = json.fk_empresa;
+
+            Swal.fire({
+            title: 'Parabéns!',
+            text: 'Login correto!',
+            icon: 'success',
+            showConfirmButton: false,
+            confirmButtonText: 'Confirmar',
+            timer: 3000,
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
+            
+          })
+
+            setTimeout(function () {
+                window.location = "dashboardv2.html";
+            }, 2000);
+
+            // window.location = "dashboard.html"
+
+            //--------------------FUNÇÃO PARA ENTRAR NA DASH PÓS VALIDAÇÃO-----------------------------------
+
+            // setTimeout(function () {
+            //     window.location = "/Dashboard/Dashboard.html";
+            // }, 1000); // apenas para exibir o loading
+
+            // ----------------------------------------------------------------------------------------------
+          });
+
+        } else {
+
+          console.log("Houve um erro ao tentar realizar o login!");
+
+          Swal.fire({
+            title: 'Erro!',
+            text: 'Tente novamente...',
+            icon: 'error',
+            showConfirmButton: true,
+            confirmButtonText: 'Tentar Novamente',
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
+            
+          })
+
+          resposta.text().then((texto) => {
+            console.error(texto);
+
+            // VALIDAÇÃO BACK-END
+
+            // invalido.innerHTML = `</span style='color: red;'> Usuario ou senha invalida </span> `
+          });
+        }
+      })
+      .catch(function (erro) {
+
+        Swal.fire({
+            title: 'Erro!',
+            text: 'Tente novamente...',
+            icon: 'error',
+            showConfirmButton: true,
+            confirmButtonText: 'Tentar Novamente',
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
+            
+          })
+
+
+        console.log(erro);
+      });
+
+    return false;
+  }
+</script>

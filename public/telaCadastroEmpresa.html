@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Cadastro</title>
+  <link rel="icon" href="assets/img/Group 97.png">
+  <link rel="stylesheet" href="css/cadastroEmpresa.css">
+  <link
+  rel="stylesheet"
+  href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+/>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+<link rel="shortcut icon" href="assets/logo/logo-footer.png" type="image/x-icon">
+
+</head>
+
+<body>
+
+  <!-- INICIO BANNER UM -->
+  <a href="index.html">
+    <img class="btn-voltar" src="./assets/icons/setaVoltar.png"></a>
+
+  <div class="BannerUm">
+    <div class="container">
+      <div class="ImgBanner">
+        <img class="imagem_um" src="assets/imgs/imgCadEmp.svg" alt="">
+      </div>
+
+      <div class="ContentsInputs">
+        <div class="text_left">
+          <img class="uil-user-circle" src="assets/imgs/icon-empresa.svg" alt="">
+            <h1>CADASTRO</h1>
+          <div class="img_left"></div>
+        </div>
+
+        <div class="cad_top">
+          <div class="textfield">
+            <label for="usuario">Nome da empresa:</label>
+            <input id="input_cadastro_nomeempresa"  onkeyup="validacao_nome_register()"
+            placeholder="Insira o nome da empresa"/>
+            <i class="uil uil-building"></i>
+            <span id="msg_name_validation_register"></span>
+          </div>
+          
+          <div class="textfield">
+            <label for="usuario">CNPJ:</label>
+            <input id="input_cadastro_cnpj" onkeyup="validacao_cnpj_register()"
+            placeholder="Insira o CNPJ" />
+            <i class="uil uil-file-alt"></i>
+            <span id="msg_cnpj_validation_register"></span>
+          </div>
+        </div>
+
+        <div class="cad_top">
+          <div class="textfield">
+            <label for="usuario">CEP:</label>
+            <input  id="input_cadastro_cep"
+            placeholder="Insira o CEP" />
+           <i class="uil uil-map-marker-question"></i>
+           <span id="msg_cep_validation_register"></span>
+          </div>
+
+          <div class="textfield">
+            <label for="usuario">logradouro:</label>
+            <input id="input_cadastro_endereco" onkeyup="validacao_endereco_register()"
+            placeholder="Insira o logradouro" />
+            <i class="uil uil-map-marker-alt"></i>
+            <span id="msg_endereco_validation_register"></span>
+          </div>
+        </div>
+
+        <div class="cad_top">
+          <div class="textfield">
+            <label for="usuario">Bairro:</label>
+            <input  id="input_cadastro_bairro" onkeyup="validacao_bairro_register()"
+             placeholder="Insira o Bairro" />
+            <i class="uil uil-map"></i>
+             <span id="msg_bairro_validation_register"></span>
+          </div>
+          <div class="textfield">
+            <label for="usuario">Cidade:</label>
+            <input id="input_cadastro_cidade" onkeyup="validacao_cidade_register()"
+             placeholder="Insira a cidade" />
+            <i class="uil uil-location-pin-alt"></i>  
+            <span id="msg_cidade_validation_register"></span>        
+          </div>
+        </div>
+
+        <button  class="btnlogin" onclick="cadastrar()">Enviar</button>
+
+
+        
+      </div>
+      
+    </div>
+
+  </div>
+
+
+  <!-- <div class="footer">
+    <div class="img_footer">
+        <img src="img/Group 97.png">
+
+    </div>
+
+      
+    <span class="text_footer">© 2022 Specula</span>
+
+    <div class="voltar">
+        <a href="#navbar"> <img src="img/carbon_back-to-top.png"></a>
+
+    </div> -->
+
+</div>
+
+</body>
+</html>
+
+<script>
+
+     // Expressões Regulares
+    //Expressão Nome
+    var nomeReg = /^[À-úA-z ]{3,35}$/;
+    //Expressão Cnpj
+    var cnpjReg = /^[0-9]{2}.?[0-9]{3}.?[0-9]{3}.?[0-9]{4}\-?[0-9]{2}$/;
+    //Expressão cep
+    var cepReg = /^[0-9]{5}-.?[0-9]{3}$/;
+    //Expressão cidade
+    var cidadeReg = /^[À-úA-z ]{3,100}$/;
+    //Expressão endereco
+    var enderecoReg = /^[À-úA-z0-9 , ?]{3,100}$/;
+    //Expressão bairro
+    var bairroReg = /^[À-úA-z ]{3,100}$/;
+
+   
+    function validacao_nome_register() {
+        var nome = input_cadastro_nomeempresa.value;
+        // Verifica Nome
+        if (nome.match(nomeReg)) {
+            msg_name_validation_register.innerHTML = '';
+            input_cadastro_nomeempresa.style.border = '1px solid green ';
+            input_cadastro_nomeempresa.style.color = " green";
+        } else {
+            msg_name_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
+            input_cadastro_nomeempresa.style.color = "red";
+            input_cadastro_nomeempresa.style.border = '1px solid red';
+
+        }
+    }
+
+    function validacao_cnpj_register() {
+        var cnpj = input_cadastro_cnpj.value;
+        // Verifica Cnpj
+        if (cnpj.match(cnpjReg)) {
+            msg_cnpj_validation_register.innerHTML = '';
+            input_cadastro_cnpj.style.border = '1px solid green ';
+            input_cadastro_cnpj.style.color = " green";
+        } else {
+            msg_cnpj_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
+            input_cadastro_cnpj.style.color = "red";
+            input_cadastro_cnpj.style.border = '1px solid red';
+
+
+        }
+    }
+
+    function validacao_cep_register() {
+        var cep = input_cadastro_cep.value;
+        // Verifica Cep
+        if (cep.match(cepReg)) {
+            msg_cep_validation_register.innerHTML = '';
+            input_cadastro_cep.style.border = '1px solid green ';
+            input_cadastro_cep.style.color = " green";
+        } else {
+            msg_cep_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
+            input_cadastro_cep.style.color = "red";
+            input_cadastro_cep.style.border = '1px solid red';
+
+        }
+    }
+    function validacao_endereco_register() {
+        var endereco = input_cadastro_endereco.value;
+        // Verifica endereco
+        if (endereco.match(enderecoReg)) {
+            msg_endereco_validation_register.innerHTML = '';
+            input_cadastro_endereco.style.border = '1px solid green ';
+            input_cadastro_endereco.style.color = " green";
+        } else {
+            msg_endereco_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
+            input_cadastro_endereco.style.color = "red";
+            input_cadastro_endereco.style.border = '1px solid red';
+        }
+    }
+
+
+    function validacao_cidade_register() {
+        var cidade = input_cadastro_cidade.value;
+        // Verifica cidade
+        if (cidade.match(cidadeReg)) {
+            msg_cidade_validation_register.innerHTML = '';
+            input_cadastro_cidade.style.border = '1px solid green ';
+            input_cadastro_cidade.style.color = " green";
+        } else {
+            msg_cidade_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
+            input_cadastro_cidade.style.color = "red";
+            input_cadastro_cidade.style.border = '1px solid red';
+        }
+    }
+
+    function validacao_bairro_register() {
+        var bairro = input_cadastro_bairro.value;
+        // Verifica bairro
+        if (bairro.match(bairroReg)) {
+            msg_bairro_validation_register.innerHTML = '';
+            input_cadastro_bairro.style.border = '1px solid green ';
+            input_cadastro_bairro.style.color = " green";
+        } else {
+            msg_bairro_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
+            input_cadastro_bairro.style.color = "red";
+            input_cadastro_bairro.style.border = '1px solid red';
+        }
+    }
+
+// ---------------------------- CONEXÂO COM O BANCO --------------------------------
+
+    function cadastrar() {
+            
+        var nomeEmp = input_cadastro_nomeempresa.value
+        var cnpj = input_cadastro_cnpj.value
+        var cep = input_cadastro_cep.value
+        var logradouro = input_cadastro_endereco.value
+        var bairro = input_cadastro_bairro.value
+        var cidade = input_cadastro_cidade.value
+
+        console.log(`Valores a serem inseridos ${nomeEmp}, ${cnpj}, ${cep}, ${logradouro}, ${bairro}, ${cidade}`)
+
+
+// Enviando o valor da nova input
+
+        fetch("/usuarios/cadastrarEmpresa", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeEmpServer: nomeEmp,
+                cnpjServer: cnpj,
+                cepServer: cep,
+                logradouroServer: logradouro,
+                bairroServer: bairro,
+                cidadeServer: cidade
+                  // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+            }),
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+
+
+            Swal.fire({
+            title: 'Parabéns!',
+            text: 'Cadastro realizado com sucesso!!',
+            icon: 'success',
+            showConfirmButton: false,
+            confirmButtonText: 'Confirmar',
+            timer: 3000,
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
+            
+             })
+
+             console.log(`Resposta ${resposta.status}`)
+
+              setInterval(() => {
+          
+                window.location = 'cadastroUsuario.html';
+
+              }, 3000);
+
+                 
+
+            } else {
+
+              Swal.fire({
+            title: 'Erro!',
+            text: 'Tente novamente...',
+            icon: 'error',
+            showConfirmButton: true,
+            confirmButtonText: 'Tentar Novamente',
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
+            
+            })
+
+            }
+
+
+
+        }).catch(function (resposta) {
+
+          Swal.fire({
+            title: 'Erro!',
+            text: 'Tente novamente...',
+            icon: 'error',
+            showConfirmButton: true,
+            confirmButtonText: 'Tentar Novamente',
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
+            
+          })
+
+            console.log(`#ERRO: ${resposta}`);
+            
+        });
+
+        return false;
+        }
+            
+
+
+</script>
