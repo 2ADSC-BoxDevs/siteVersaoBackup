@@ -15,4 +15,8 @@ router.get("/verify", function (req, res) {
     medidaController.verifyMachines(req,res);
 })
 
+router.post("/OnMachines", function (req, res) {
+    medidaController.OnMachines(req,res);
+})
+
 module.exports = router;

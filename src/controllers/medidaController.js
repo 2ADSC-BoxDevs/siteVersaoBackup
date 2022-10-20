@@ -68,9 +68,39 @@ function verifyMachines (req, res){
 
 }
 
+function OnMachines (req, res){
+
+    var id = req.body.idMachine
+
+    medidaModel.OnMachines(id)
+    .then(function (resultado) {
+
+        if(resultado.length > 0){
+
+            res.status(200).json(resultado);
+
+        } else {
+
+            res.status(204).send("Nenhum computador foi encontrado!");
+
+        }
+    }).catch(function (erro) {
+
+        console.log(erro)
+
+        res.status(500).json(erro.sqlMessage);
+
+    })
+
+
+}
+
+
+
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    verifyMachines
+    verifyMachines,
+    OnMachines
 
 }

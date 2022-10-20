@@ -49,8 +49,19 @@ function verifyMachines(){
 
 }
 
+function OnMachines(id){
+
+    instrucaoSql = `SELECT isActivade FROM maquina WHERE id_maquina = ${id};`;
+
+    console.log("Executando esse select " + instrucaoSql)
+
+    return database.executar(instrucaoSql);
+
+}
+
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    verifyMachines
+    verifyMachines,
+    OnMachines
 }

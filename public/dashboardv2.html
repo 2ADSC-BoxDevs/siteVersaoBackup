@@ -12,7 +12,7 @@
     <title>Specula | DashBoard</title>
 </head>
 
-<body onload="verificarCargo()">
+<body onload="verificarCargo(), verifiyMachine()">
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
@@ -569,12 +569,9 @@ function sairPage(){
 
 function verificarCargo(){
 
-    console.log("Cheguei no session")
-
     if(sessionStorage.getItem("CARGO_USUARIO") == "gerente"){
 
-
-        console.log("gerente")
+        console.log("Is admin")
 
 
     } else {
@@ -582,8 +579,6 @@ function verificarCargo(){
         icon4.style.display = "none"
         linkIcon4.style.display = "none"
         LIIncon4.style.display = "none"
-
-        console.log("Não é gerente")
 
     }
 
@@ -612,11 +607,12 @@ function verificarCargo(){
 
 <!-- scripts dash donuts cads -->
 <script>
+
     const labels = [
 
     ];
 
-    const data = {
+    var data = {
         labels: [
 
         ],
@@ -631,10 +627,11 @@ function verificarCargo(){
         }]
     };
 
-    const config = {
+    var config = {
         type: 'doughnut',
         data: data,
     };
+
 </script>
 
 <script>
@@ -1446,7 +1443,9 @@ function verificarCargo(){
 
 
 
-    function verifiyMachine(){}
+// Trazendo as maquinas cadastradas
+
+    function verifiyMachine(){
 
     fetch("/medidas/verify", {
         method: "GET",
@@ -1458,23 +1457,38 @@ function verificarCargo(){
         resposta.json()
         .then((json) => {
 
-
-            console.log(JSON.stringify(json))
+            // console.log(json) //Objeto inteiro vindo em JSON
 
             //function aqui
 
             for (i = 0; i < json.length; i++){
 
-            var div = `<div class="screens">
-                       <figcaption> ${json[i].codigo_patrimonio} <span style="color: green;"> ON </span>
+            // console.log("Aqui " + JSON.stringify(json[i])) //Objeto inteiro vindo em STRING
+
+            if(json[i].isActivade == "true"){
+
+            var div = `<div class="screens" onload="OnMachine(${json[i].id_maquina})">
+                       <figcaption> ${json[i].codigo_patrimonio} <br> <span style="color:green; font-size: 15px;"> MAQUINA ${i+1} ON </span>
                        </figcaption>
                        <img src="/assets/imgs/screenOn.png">
                        </div>`;
 
             id_painel_maquinas.innerHTML += div
 
-        }
-            
+
+            } else {
+
+            var div = `<div class="screens" onload="OnMachine(${json[i].id_maquina})">
+                       <figcaption> ${json[i].codigo_patrimonio} <br> <span style="color:red; font-size: 15px;"> MAQUINA ${i+1} OFF </span>
+                       </figcaption>
+                       <img src="/assets/imgs/screenOff.png">
+                       </div>`;
+
+            id_painel_maquinas.innerHTML += div
+
+            }
+                 
+            }
 
 
         })
@@ -1484,12 +1498,10 @@ function verificarCargo(){
      console.log("Erro -> " + erro);
 
   })
-
-  function createMachine (){
-
+}
 
 
 
-  }
+
 
  </script>
