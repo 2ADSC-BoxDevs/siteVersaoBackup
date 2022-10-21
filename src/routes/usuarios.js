@@ -17,8 +17,16 @@ router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 })
 
+router.post("/verifyEmail", function (req, res) {
+    usuarioController.verifyEmail(req, res);
+})
+
 router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
+});
+
+router.post("/autenticarGoogle", function (req, res) {
+    usuarioController.entrarGoogle(req, res);
 });
 
 router.post("/cadastrarEmpresa", function (req, res) {

@@ -205,13 +205,12 @@
   }
 
   function cadastrar() {
+    
     var nomeUser = input_cadastro_nomeempresa.value;
     var cargoUser = input_cadastro_cargoempresa.value;
     var emailUser = email_usuario.value;
     var senhaUser = Number(ipt_senha.value);
     var fk_gestor = sessionStorage.getItem("ID_USER"); // ID_USER vira FK_GESTOR
-
-    console.log(fk_gestor + " fk aqui")
 
     // Enviando o valor da nova input
 
@@ -233,7 +232,6 @@
       }),
     }).then(function (resposta) {
 
-          console.log("Resposta do sistema " + resposta);
 
         if(resposta.ok){
 

@@ -237,8 +237,6 @@
         var bairro = input_cadastro_bairro.value
         var cidade = input_cadastro_cidade.value
 
-        console.log(`Valores a serem inseridos ${nomeEmp}, ${cnpj}, ${cep}, ${logradouro}, ${bairro}, ${cidade}`)
-
 
 // Enviando o valor da nova input
 
@@ -264,7 +262,7 @@
 
             Swal.fire({
             title: 'Parabéns!',
-            text: 'Cadastro realizado com sucesso!!',
+            text: 'Empresa cadastrada com sucesso!!',
             icon: 'success',
             showConfirmButton: false,
             confirmButtonText: 'Confirmar',
@@ -279,7 +277,7 @@
 
               setInterval(() => {
           
-                window.location = 'cadastroUsuario.html';
+                window.location = 'cadastroUsuarioSuporte.html';
 
               }, 3000);
 
@@ -307,7 +305,7 @@
 
           Swal.fire({
             title: 'Erro!',
-            text: 'Tente novamente...',
+            text: 'Erro ao cadastrar empresa...',
             icon: 'error',
             showConfirmButton: true,
             confirmButtonText: 'Tentar Novamente',

@@ -32,6 +32,11 @@
       href="assets/logo/logo-footer.png"
       type="image/x-icon"
     />
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+
+
   </head>
 
   <body onload="autenticar()">
@@ -75,6 +80,10 @@
             <i class="uil uil-padlock"></i>
           </div>
 
+          
+          <div id="buttonDiv" style="margin:10px;"></div>
+
+
           <button class="btnlogin" onclick="entrar()">Login</button>
 
           <form>
@@ -109,6 +118,48 @@
   </div> -->
   </body>
 </html>
+
+
+<script>
+  function handleCredentialResponse(response) {
+
+    const data = jwt_decode(response.credential)
+
+    //Todos os dados
+    console.log(data)
+
+    var email = data.email
+    var sub = data.sub
+
+    email_usuario.value = email
+
+    setTimeout(() => {
+    
+      entrarGoogle(email, sub)
+      
+    }, 1000);
+    
+
+  }
+  window.onload = function () {
+    google.accounts.id.initialize({
+      client_id: "569659693618-1tjn34dqmuo8rr1vnut5a4qf5d13l1r5.apps.googleusercontent.com",
+      callback: handleCredentialResponse
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("buttonDiv"),
+      { theme: "outline", 
+        size: "large",
+        shape: "pill",
+        width: "400",
+        type: "standard" }  // customization attributes
+    );
+    // google.accounts.id.prompt(); // also display the One Tap dialog
+  }
+</script>
+
+
 
 <script>
   window.sr = ScrollReveal({ reset: true });
@@ -147,9 +198,10 @@
     ipt_senha.type = "password";
   }
 
-  // ---------------------------- CONEXÂO COM O BANCO --------------------------------
+  // ---------------------------- CONEXÂO COM O BANCO SEM GOOGLE --------------------------------
 
   function entrar() {
+    
     var emailVar = email_usuario.value;
     var senhaVar = ipt_senha.value;
 
@@ -255,4 +307,118 @@
 
     return false;
   }
+
+
+    // ---------------------------- CONEXÂO COM O BANCO COM GOOGLE --------------------------------
+
+
+
+    function entrarGoogle(email, sub) {
+    
+    var emailVar = email;
+    var subVar = sub;
+
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", subVar);
+
+    fetch("/usuarios/autenticarGoogle", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({ emailServer: emailVar, subServer: subVar }),
+    })
+      .then(function (resposta) {
+        console.log("Estou no then da função entrar com Google()!");
+
+        if (resposta.ok) {
+
+          console.log(resposta);
+
+          resposta.json()
+          .then((json) => {
+            console.log(json);
+
+            console.log(JSON.stringify(json)); 
+
+            sessionStorage.ID_USER = json.id_usuario_suporte;
+            sessionStorage.EMAIL_USUARIO = json.email_usuario_suporte;
+            sessionStorage.CARGO_USUARIO = json.cargo_usuario_suporte;
+            sessionStorage.FK_EMPRESA = json.fk_empresa;
+
+            Swal.fire({
+            title: 'Parabéns!',
+            text: 'Login correto!',
+            icon: 'success',
+            showConfirmButton: false,
+            confirmButtonText: 'Confirmar',
+            timer: 3000,
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
+            
+          })
+
+            setTimeout(function () {
+                window.location = "dashboardv2.html";
+            }, 2000);
+
+            // window.location = "dashboard.html"
+
+            //--------------------FUNÇÃO PARA ENTRAR NA DASH PÓS VALIDAÇÃO-----------------------------------
+
+            // setTimeout(function () {
+            //     window.location = "/Dashboard/Dashboard.html";
+            // }, 1000); // apenas para exibir o loading
+
+            // ----------------------------------------------------------------------------------------------
+          });
+
+        } else {
+
+          console.log("Houve um erro ao tentar realizar o login!");
+
+          Swal.fire({
+            title: 'Erro!',
+            text: 'Tente novamente...',
+            icon: 'error',
+            showConfirmButton: true,
+            confirmButtonText: 'Tentar Novamente',
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
+            
+          })
+
+          resposta.text().then((texto) => {
+            console.error(texto);
+
+            // VALIDAÇÃO BACK-END
+
+            // invalido.innerHTML = `</span style='color: red;'> Usuario ou senha invalida </span> `
+          });
+        }
+      })
+      .catch(function (erro) {
+
+        Swal.fire({
+            title: 'Erro!',
+            text: 'Tente novamente...',
+            icon: 'error',
+            showConfirmButton: true,
+            confirmButtonText: 'Tentar Novamente',
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
+            
+          })
+
+
+        console.log(erro);
+      });
+
+    return false;
+  }
+
 </script>
