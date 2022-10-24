@@ -14,6 +14,10 @@ create table empresa(
     cidade varchar(45)
 );
 
+insert into empresa values 
+(null,"Empresa do Matheus", "08532120", 08532120, "Tanquinho", "Rua neusa rodrigues", "São paulo");
+
+
 create table usuario_suporte (
 	id_usuario_suporte int primary key auto_increment,
     fk_empresa int,
@@ -27,8 +31,6 @@ create table usuario_suporte (
     sub_usuario_suporte varchar(45)
 );
 
-select * from usuario_suporte;
-truncate usuario_suporte;
 
 create table setor (
 	id_setor int primary key auto_increment,
@@ -80,3 +82,19 @@ create table base_conhecimento (
     descricao varchar(255),
     data_hora_descricao datetime default current_timestamp
 );
+
+
+select * from empresa;
+select * from usuario_suporte;
+select * from setor;
+select * from usuario_maquina;
+select * from maquina;
+select * from historico_maquina;
+
+
+truncate empresa;
+truncate usuario_suporte;
+truncate setor;
+truncate usuario_maquina;
+truncate maquina;
+truncate historico_maquina;
