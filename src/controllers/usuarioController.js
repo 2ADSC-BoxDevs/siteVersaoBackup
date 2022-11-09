@@ -209,14 +209,14 @@ function cadastrarEmpresa(req, res) {
 
         .then(function (resultado) {
 
-            if (resultado.length > 0) {
+            // if (resultado.length > 0) {
 
                 res.status(200).json(resultado);
 
-            } else {
+            // } else {
 
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
+            //     res.status(204).send("Nenhum resultado encontrado!")
+            // }
         }).catch(function (erro) {
 
                 console.log(erro);
