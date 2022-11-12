@@ -16,6 +16,8 @@
 <script src="sweetalert2.min.js"></script>
 <link rel="stylesheet" href="sweetalert2.min.css">
 <link rel="shortcut icon" href="assets/logo/logo-footer.png" type="image/x-icon">
+<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+
 
 </head>
 
@@ -49,8 +51,8 @@
           
           <div class="textfield">
             <label for="usuario">CNPJ:</label>
-            <input id="input_cadastro_cnpj" onkeyup="validacao_cnpj_register()"
-            placeholder="Insira o CNPJ" />
+            <input id="input_cadastro_cnpj"  onkeyup="validacao_cnpj_register()"
+            placeholder="Insira o CNPJ"  />
             <i class="uil uil-file-alt"></i>
             <span id="msg_cnpj_validation_register"></span>
           </div>
@@ -85,7 +87,7 @@
           <div class="textfield">
             <label for="usuario">Cidade:</label>
             <input id="input_cadastro_cidade" onkeyup="validacao_cidade_register()"
-             placeholder="Insira a cidade" />
+             placeholder="Insira a cidade" type="text" />
             <i class="uil uil-location-pin-alt"></i>  
             <span id="msg_cidade_validation_register"></span>        
           </div>
@@ -121,6 +123,16 @@
 </body>
 </html>
 
+
+<script>
+jQuery(function($){
+  $("#input_cadastro_cnpj").mask("99/99/9999");
+  $("#campoTelefone").mask("(999) 999-9999");
+  $("#campoSenha").mask("***-****");
+  });
+</script>
+
+
 <script>
 
      // Expressões Regulares
@@ -144,7 +156,7 @@
         if (nome.match(nomeReg)) {
             msg_name_validation_register.innerHTML = '';
             input_cadastro_nomeempresa.style.border = '1px solid green ';
-            input_cadastro_nomeempresa.style.color = " green";
+            input_cadastro_nomeempresa.style.color = "white";
         } else {
             msg_name_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
             input_cadastro_nomeempresa.style.color = "red";
@@ -159,7 +171,7 @@
         if (cnpj.match(cnpjReg)) {
             msg_cnpj_validation_register.innerHTML = '';
             input_cadastro_cnpj.style.border = '1px solid green ';
-            input_cadastro_cnpj.style.color = " green";
+            input_cadastro_cnpj.style.color = "white";
         } else {
             msg_cnpj_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
             input_cadastro_cnpj.style.color = "red";
@@ -175,7 +187,7 @@
         if (cep.match(cepReg)) {
             msg_cep_validation_register.innerHTML = '';
             input_cadastro_cep.style.border = '1px solid green ';
-            input_cadastro_cep.style.color = " green";
+            input_cadastro_cep.style.color = "white";
         } else {
             msg_cep_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
             input_cadastro_cep.style.color = "red";
@@ -189,7 +201,7 @@
         if (endereco.match(enderecoReg)) {
             msg_endereco_validation_register.innerHTML = '';
             input_cadastro_endereco.style.border = '1px solid green ';
-            input_cadastro_endereco.style.color = " green";
+            input_cadastro_endereco.style.color = "white";
         } else {
             msg_endereco_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
             input_cadastro_endereco.style.color = "red";
@@ -204,7 +216,7 @@
         if (cidade.match(cidadeReg)) {
             msg_cidade_validation_register.innerHTML = '';
             input_cadastro_cidade.style.border = '1px solid green ';
-            input_cadastro_cidade.style.color = " green";
+            input_cadastro_cidade.style.color = "white";
         } else {
             msg_cidade_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
             input_cadastro_cidade.style.color = "red";
@@ -218,7 +230,7 @@
         if (bairro.match(bairroReg)) {
             msg_bairro_validation_register.innerHTML = '';
             input_cadastro_bairro.style.border = '1px solid green ';
-            input_cadastro_bairro.style.color = " green";
+            input_cadastro_bairro.style.color = "white";
         } else {
             msg_bairro_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
             input_cadastro_bairro.style.color = "red";
@@ -322,6 +334,28 @@
         return false;
         }
             
+
+
+</script>
+
+
+<!-- SCRIPT PARA MASCARAS -->
+<script>
+  var cleave = new Cleave('#input_cadastro_cnpj', {
+    delimiters: ['.', '.', '/', '-'],
+    blocks: [2, 3, 3, 4, 2],
+    numericOnly: true,
+});
+13165-000
+var cleave = new Cleave('#input_cadastro_cep', {
+    delimiter: '-',
+    blocks: [5, 3],
+    numericOnly: true,
+});
+
+
+
+
 
 
 </script>
