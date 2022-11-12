@@ -1,5 +1,3 @@
-drop  database specula;
-
 create database specula;
 
 use specula;
@@ -17,7 +15,6 @@ create table empresa(
 insert into empresa values 
 (null,"Empresa do Matheus", "08532120", 08532120, "Tanquinho", "Rua neusa rodrigues", "São paulo");
 
-
 create table usuario_suporte (
 	id_usuario_suporte int primary key auto_increment,
     fk_empresa int,
@@ -31,12 +28,10 @@ create table usuario_suporte (
     sub_usuario_suporte varchar(45)
 );
 
-
 create table setor (
 	id_setor int primary key auto_increment,
     nome_setor varchar(45)
 );
-
 
 create table usuario_maquina(
 	id_usuario_maquina int primary key auto_increment,
@@ -47,7 +42,10 @@ create table usuario_maquina(
     identificacao_usuario varchar(45)
 );
 
-							
+insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario) values
+("m","m");
+
+update usuario_maquina set nome_usuario_maquina = "Gabriel Romão" where id_usuario_maquina = 1;
 
 create table maquina (
 	id_maquina int primary key auto_increment,
@@ -62,6 +60,8 @@ create table maquina (
     disco_detalhe varchar(45)
 );
 
+insert into maquina (fk_empresa,fk_usuario_maquina) values
+(1,2);
 
 create table historico_maquina (
 	id_historico int primary key auto_increment,
@@ -74,7 +74,6 @@ create table historico_maquina (
     data_hora_registro datetime default current_timestamp
 );
 
-
 create table base_conhecimento (
     id_descricao int primary key auto_increment,
     fk_usuario_suporte int,
@@ -83,6 +82,7 @@ create table base_conhecimento (
     data_hora_descricao datetime default current_timestamp
 );
 
+UPDATE maquina SET isActivade = '2',codigo_patrimonio = 'kauan',cpu_detalhe = 'Kauan',ram_detalhe = 'Kauan',disco_detalhe = 'Matheus'  WHERE id_maquina = 1;
 
 select * from empresa;
 select * from usuario_suporte;
@@ -91,10 +91,10 @@ select * from usuario_maquina;
 select * from maquina;
 select * from historico_maquina;
 
-
 truncate empresa;
 truncate usuario_suporte;
 truncate setor;
 truncate usuario_maquina;
+
 truncate maquina;
 truncate historico_maquina;
