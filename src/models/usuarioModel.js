@@ -3,7 +3,12 @@ var database = require("../database/config")
 function listar(req, res) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-        SELECT nome_usuario_maquina FROM usuario_maquina;
+    SELECT usuario_maquina.*, setor.*, empresa.* 
+    FROM usuario_maquina
+    JOIN setor
+    ON usuario_maquina.fk_setor=setor.id_setor
+    JOIN empresa
+    ON usuario_maquina.fk_empresa_usuario=empresa.id_empresa;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -37,7 +42,22 @@ function cadastrar(fk_gestor, cargo, nome, email, senha, sub) {
     //  e na ordem de inserção dos dados.
 
     var instrucao = `
-       insert into usuario_suporte (fk_empresa, fk_gestor, cargo_usuario_suporte, nome_usuario_suporte, email_usuario_suporte, senha_usuario_suporte, sub_usuario_suporte) values (1, ${fk_gestor}, '${cargo}', '${nome}', '${email}', '${senha}', '${sub}');
+       INSERT INTO usuario_suporte (fk_empresa, fk_gestor, cargo_usuario_suporte, nome_usuario_suporte, email_usuario_suporte, senha_usuario_suporte, sub_usuario_suporte) values (1, ${fk_gestor}, '${cargo}', '${nome}', '${email}', '${senha}', '${sub}');
+    `;
+    console.log("Executando a instrução SQL: " + instrucao);
+    
+    return database.executar(instrucao);
+}
+
+function cadastrarUser(fk_gestor, fk_empresa, cargo, nome, email, senha, sub) {
+
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+
+    var instrucao = `
+    INSERT INTO usuario_maquina values (null, #SETOR, #EMPRESA, '#NOME', '#CARGO', '#IDENTIFICAÇÃO');
     `;
     console.log("Executando a instrução SQL: " + instrucao);
     
@@ -75,6 +95,7 @@ module.exports = {
     entrar,
     entrarGoogle,
     cadastrar,
+    cadastrarUser,
     verifyEmail,
     cadastrarEmpresa
 };
