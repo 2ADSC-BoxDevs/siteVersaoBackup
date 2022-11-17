@@ -6,8 +6,8 @@ use specula;
 create table empresa(
 	id_empresa int primary key auto_increment,
     nome_empresa varchar(60),
-    cnpj char(14),
-    cep bigint,
+    cnpj varchar(45),
+    cep varchar(45),
     bairro varchar(45),
     logradouro varchar(45),
     cidade varchar(45)

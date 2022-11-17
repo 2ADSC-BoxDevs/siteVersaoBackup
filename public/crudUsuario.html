@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastrar usuário</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <!-- Link fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="css/cadastroUsuario.css" />
+    <!-- Link icones -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="assets/logo/logo-footer.png"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body onload="AllUsers()">
+    <div class="mainlogin">
+      <div class="son_card">
+        <div class="text_left">
+          <h1>CADASTRAR USUÁRIO</h1>
+        </div>
+
+        <div class="block_text">
+          <div class="cad_top">
+            <div class="textfield">
+              <label for="maquina">Nome do usuário</label>
+              <input
+                id="input_cadastro_nomeempresa"
+                type="text"
+                onkeyup="validacao_nome_register()"
+                placeholder="Insira o nome do usuário"
+              />
+              <i class="uil-user"></i>
+              <label id="msg_name_validation_register"></label>
+            </div>
+
+            <div class="textfield">
+              <label for="usuario">Cargo:</label>
+              <input
+                id="input_cadastro_cargoempresa"
+                onkeyup="validacao_cargo_register()"
+                placeholder="Insira o cargo"
+              />
+              <i class="uil uil-briefcase-alt"></i>
+              <label id="msg_cargo_validation_register"></label>
+            </div>
+          </div>
+          <div class="textfield">
+            <label for="usuario">Email:</label>
+            <input
+              id="email_usuario"
+              onkeyup="validacao_email_register()"
+              placeholder="Insira o email"
+            />
+            <i class="uil uil-envelope"></i>
+            <label id="msg_email_validation_register"></label>
+          </div>
+
+          <div class="textfield">
+            <label for="usuario">Senha:</label>
+            <input
+              type="password"
+              id="ipt_senha"
+              placeholder="Insira a senha"
+            />
+            <i class="uil uil-padlock"></i>
+            <i
+              class="fa fa-eye-slash icon-display-password"
+              id="form_show_password"
+              onclick="display_show_password()"
+            ></i>
+            <i
+              class="fa fa-eye icon-display-password"
+              id="form_hidden_password"
+              onclick="display_hidden_password()"
+            ></i>
+          </div>
+
+          <button class="btnlogin" onclick="cadastrar()">Cadastrar</button>
+        </div>
+
+        <div>
+
+          <table id="tabelaUsuarios" style="width:100rem;">
+
+            <tr> 
+            <td>ID:</td>
+            <td>Nome:</td>
+            <td>Empresa:</td>
+            <td>Setor:</td>
+            <td>Identificação:</td> 
+          </tr>
+
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+    <!--  <div class="footer">
+      <div class="img_footer">
+          <img src="img/Group 97.png">
+      </div>
+  
+      <div class="social">
+          <h1>Social</h1>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Linkedin</a></li>
+      </div>
+  
+  
+      <div class="ajuda">
+          <h1>Ajuda</h1>
+          <li><a href="#">Suporte</a></li>
+          <li><a href="#">Contato</a></li>
+  
+      </div>
+  
+  
+  
+      <div class="voltar">
+         <a href="#navbar"> <img src="img/carbon_back-to-top.png"></a>
+  
+      </div>
+  
+  </div> -->
+  </body>
+</html>
+
+<script>
+  // Expressões Regulares
+  //Expressão Nome
+  var nomeReg = /^[À-úA-z ]{3,35}$/;
+  //Expressão cargo
+  var cargoReg = /^[À-úA-z ]{3,35}$/;
+  //Expressão email
+  var emailReg = /^([À-úA-z0-9._-]+@[a-z0-9._-]+\.[A-z0-9_-]+)$/;
+
+  function validacao_nome_register() {
+    var nome = input_cadastro_nomeempresa.value;
+    // Verifica Nome
+    if (nome.match(nomeReg)) {
+      msg_name_validation_register.innerHTML = "";
+      input_cadastro_nomeempresa.style.border = "1px solid green ";
+      input_cadastro_nomeempresa.style.color = " green";
+    } else {
+      msg_name_validation_register.innerHTML =
+        '<b style="color: red;"> Verifique o campo preenchido </b>';
+      input_cadastro_nomeempresa.style.color = "red";
+      input_cadastro_nomeempresa.style.border = "1px solid red";
+    }
+  }
+
+  function validacao_cargo_register() {
+    var cargo = input_cadastro_cargoempresa.value;
+    // Verifica cargo
+    if (cargo.match(cargoReg)) {
+      msg_cargo_validation_register.innerHTML = "";
+      input_cadastro_cargoempresa.style.border = "1px solid green ";
+      input_cadastro_cargoempresa.style.color = " green";
+    } else {
+      msg_cargo_validation_register.innerHTML =
+        '<b style="color: red;"> Verifique o campo preenchido </b>';
+      input_cadastro_cargoempresa.style.color = "red";
+      input_cadastro_cargoempresa.style.border = "1px solid red";
+    }
+  }
+
+  function validacao_email_register() {
+    var email = email_usuario.value;
+    // Verifica email
+    if (email.match(emailReg)) {
+      msg_email_validation_register.innerHTML = "";
+      email_usuario.style.border = "1px solid green ";
+      email_usuario.style.color = " green";
+    } else {
+      msg_email_validation_register.innerHTML =
+        '<b style="color: red;"> Verifique o campo preenchido </b>';
+      email_usuario.style.color = "red";
+      email_usuario.style.border = "1px solid red";
+    }
+  }
+
+  function display_show_password() {
+    form_show_password.style.display = "none";
+    form_hidden_password.style.display = "block";
+    ipt_senha.type = "text";
+  }
+  function display_hidden_password() {
+    form_show_password.style.display = "block";
+    form_hidden_password.style.display = "none";
+    ipt_senha.type = "password";
+  }
+
+  function AllUsers(){
+
+    fetch("usuarios/listar", {
+      method: "GET",
+      headersa: {
+        "Content-Type": "application/json"
+      }
+    }).then(function (resposta){
+
+      console.log("Front ok")
+
+      resposta.json()
+      .then((json) =>{
+
+          console.log(json)
+
+          for(i = 0; i < json.length; i++){
+
+           div = `<tr> <td> ${json[i].id_usuario_maquina} </td> 
+                       <td> ${json[i].nome_usuario_maquina} </td> 
+                       <td> ${json[i].nome_empresa} </td> 
+                       <td> ${json[i].nome_setor} </td> 
+                       <td> <input readonly type="password"value='${json[i].identificacao_usuario}' ></td>
+                       <td> <span style="cursor:pointer;"> Editar </span> </td>
+                      <td>  <span style="cursor:pointer;"> Excluir </span> </td>
+                        </tr>`
+
+
+           tabelaUsuarios.innerHTML += div
+
+
+          }
+
+
+
+
+      })
+
+
+    }).catch(function (resposta){
+
+      console.log("Front zuo")
+
+      console.log(resposta)
+
+    })
+
+
+  }
+
+  function cadastrar() {
+    
+    var nomeUser = input_cadastro_nomeempresa.value;
+    var cargoUser = input_cadastro_cargoempresa.value;
+    var emailUser = email_usuario.value;
+    var senhaUser = Number(ipt_senha.value);
+    var fk_gestor = sessionStorage.getItem("ID_USER"); // ID_USER vira FK_GESTOR
+
+    // Enviando o valor da nova input
+
+    if(fk_gestor != null || fk_gestor != ""){
+
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeUser,
+        cargoServer: cargoUser,
+        emailServer: emailUser,
+        senhaServer: senhaUser,
+        fk_gestorServer: fk_gestor
+      }),
+    }).then(function (resposta) {
+
+
+        if(resposta.ok){
+
+          Swal.fire({
+            title: 'Parabéns!',
+            text: 'Cadastro realizado com sucesso!!',
+            icon: 'success',
+            showConfirmButton: false,
+            confirmButtonText: 'Confirmar',
+            timer: 3000,
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
+            
+             })
+
+             console.log(`Resposta ${resposta.status}`)
+
+              setInterval(() => {
+          
+                window.location = 'login.html';
+
+              }, 3000);
+
+            }
+        
+      })
+      .catch(function (resposta) {
+
+        Swal.fire({
+            title: 'Erro!',
+            text: 'Não conseguimos efetuar o seu login...',
+            icon: 'error',
+            showConfirmButton: true,
+            confirmButtonText: 'Tentar Novamente',
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
+            
+          })
+
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+
+
+    } else {
+
+
+
+      fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeUser,
+        cargoServer: cargoUser,
+        emailServer: emailUser,
+        senhaServer: senhaUser,
+        fk_gestorServer: null
+      }),
+    }).then(function (resposta) {
+        
+        if (resposta.ok) {
+          
+          Swal.fire({
+            title: 'Parabéns!',
+            text: 'Cadastro realizado com sucesso!!',
+            icon: 'success',
+            showConfirmButton: false,
+            confirmButtonText: 'Confirmar',
+            timer: 3000,
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
+            
+             })
+
+             console.log(`Resposta ${resposta.status}`)
+
+              setInterval(() => {
+          
+                window.location = 'login.html';
+
+              }, 3000);
+
+            
+        }
+      })
+      .catch(function (resposta) {
+
+        Swal.fire({
+            title: 'Erro!',
+            text: 'Tente novamente...',
+            icon: 'error',
+            showConfirmButton: true,
+            confirmButtonText: 'Tentar Novamente',
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
+            
+          })
+
+        console.log(`#ERRO: ${resposta}`);
+        
+      });
+
+
+    }
+  }
+</script>
