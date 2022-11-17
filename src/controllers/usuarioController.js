@@ -172,6 +172,34 @@ function cadastrar(req, res) {
     // }
 }
 
+function cadastrarUser(req, res) {
+
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var cargo = req.body.cargoServer;
+    var nome = req.body.nomeServer;
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
+    var fk_gestor = req.body.fk_gestorServer;
+    var sub = req.body.subServer
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarUser(fk_gestor, cargo, nome, email, senha, sub)
+            .then(function (resultado) {
+
+                    res.json(resultado);
+                }
+
+            ).catch(function (erro) {
+
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar o cadastro! Erro: ",erro.sqlMessage);
+
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    // }
+}
+
 function verifyEmail(req, res) {
 
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -232,6 +260,7 @@ module.exports = {
     entrar,
     entrarGoogle,
     cadastrar,
+    cadastrarUser,
     verifyEmail,
     listar,
     testar,

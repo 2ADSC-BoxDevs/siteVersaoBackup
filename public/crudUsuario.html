@@ -33,15 +33,10 @@
     />
   </head>
 
-  <body>
+  <body onload="AllUsers()">
     <div class="mainlogin">
       <div class="son_card">
         <div class="text_left">
-          <img
-            class="uil-user-circle"
-            src="assets/imgs/icon-usuario.png"
-            alt=""
-          />
           <h1>CADASTRAR USUÁRIO</h1>
         </div>
 
@@ -104,7 +99,21 @@
           <button class="btnlogin" onclick="cadastrar()">Cadastrar</button>
         </div>
 
-        <img src="assets/imgs/img-usuario.png" class="img_right" />
+        <div>
+
+          <table id="tabelaUsuarios" style="width:100rem;">
+
+            <tr> 
+            <td>ID:</td>
+            <td>Nome:</td>
+            <td>Empresa:</td>
+            <td>Setor:</td>
+            <td>Identificação:</td> 
+          </tr>
+
+          </table>
+
+        </div>
       </div>
     </div>
 
@@ -202,6 +211,56 @@
     form_show_password.style.display = "block";
     form_hidden_password.style.display = "none";
     ipt_senha.type = "password";
+  }
+
+  function AllUsers(){
+
+    fetch("usuarios/listar", {
+      method: "GET",
+      headersa: {
+        "Content-Type": "application/json"
+      }
+    }).then(function (resposta){
+
+      console.log("Front ok")
+
+      resposta.json()
+      .then((json) =>{
+
+          console.log(json)
+
+          for(i = 0; i < json.length; i++){
+
+           div = `<tr> <td> ${json[i].id_usuario_maquina} </td> 
+                       <td> ${json[i].nome_usuario_maquina} </td> 
+                       <td> ${json[i].nome_empresa} </td> 
+                       <td> ${json[i].nome_setor} </td> 
+                       <td> <input readonly type="password"value='${json[i].identificacao_usuario}' ></td>
+                       <td> <span style="cursor:pointer;"> Editar </span> </td>
+                      <td>  <span style="cursor:pointer;"> Excluir </span> </td>
+                        </tr>`
+
+
+           tabelaUsuarios.innerHTML += div
+
+
+          }
+
+
+
+
+      })
+
+
+    }).catch(function (resposta){
+
+      console.log("Front zuo")
+
+      console.log(resposta)
+
+    })
+
+
   }
 
   function cadastrar() {
