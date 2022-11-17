@@ -1,3 +1,4 @@
+drop database specula;
 create database specula;
 
 use specula;
@@ -39,7 +40,10 @@ create table usuario_maquina(
     foreign key(fk_setor) references setor(id_setor),
     nome_usuario_maquina varchar(45),
     cargo_usuario_maquina varchar(45),
-    identificacao_usuario varchar(45)
+    identificacao_usuario varchar(45),
+     fk_empresa int,
+    foreign key(fk_empresa) references empresa(id_empresa)
+    
 );
 
 insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario) values
@@ -87,7 +91,7 @@ UPDATE maquina SET isActivade = '2',codigo_patrimonio = 'kauan',cpu_detalhe = 'K
 select * from empresa;
 select * from usuario_suporte;
 select * from setor;
-select * from usuario_maquina;
+select * from usuario_maquina ;  
 select * from maquina;
 select * from historico_maquina;
 
