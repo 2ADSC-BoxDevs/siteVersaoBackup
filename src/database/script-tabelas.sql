@@ -96,7 +96,7 @@ select * from maquina;
 select * from historico_maquina;
 
 truncate empresa;
-truncate usuario_suporte;
+truncate usuario_suporte; 
 truncate setor;
 truncate usuario_maquina;
 
