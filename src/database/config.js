@@ -24,14 +24,7 @@ var mySqlConfig = {
     host: "localhost",
     user: "root",
     database: "specula",
-<<<<<<< HEAD
-    password: "#Gf53187038875",
-=======
-    password: "Spitfire@44",
-
->>>>>>> 055e63818c4b97f5f1bd39094329943a442859ee
-
-
+    password: "72853897",
 };
 
 

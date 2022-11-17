@@ -14,6 +14,32 @@ function listar(req, res) {
     return database.executar(instrucao);
 }
 
+function listarMaquinas(req, res) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT maquina.*, usuario_maquina.*, empresa.*
+    FROM maquina
+    join usuario_maquina
+    ON maquina.fk_usuario_maquina=usuario_maquina.id_usuario_maquina
+    join empresa
+    on maquina.Fk_empresa=empresa.id_empresa;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function listarSuporte(req, res) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT usuario_suporte.*, empresa.*
+    FROM usuario_suporte
+    join empresa
+    ON usuario_suporte.fk_empresa=empresa.id_empresa;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
@@ -97,5 +123,8 @@ module.exports = {
     cadastrar,
     cadastrarUser,
     verifyEmail,
-    cadastrarEmpresa
+    cadastrarEmpresa,
+    listarMaquinas,
+    listarSuporte
+
 };

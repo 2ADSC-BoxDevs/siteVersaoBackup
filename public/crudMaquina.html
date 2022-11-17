@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastrar maquina</title>
+    <title>maquina</title>
     <!-- Link fonte -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,7 +27,7 @@
     />
   </head>
 
-  <body>
+  <body onload="AllMachines()">
     <div class="mainlogin">
       <div class="son_card">
         <div class="text_left">
@@ -54,9 +54,23 @@
 
           <button class="btnlogin" onclick="cadastrarMaquina()">Proximo</button>
         </div>
-
-        <img src="assets/imgs/imgCadasMaqui.png" class="img_right" />
       </div>
+
+      <div>
+
+        <table id="tabelaMaquina" style="width:100rem;">
+
+          <tr> 
+          <td>ID:</td>
+          <td>Código de Patrimonio:</td>
+          <td>Usuário da Máquina:</td>
+          <td>Empresa:</td>
+        </tr>
+
+        </table>
+
+      </div>
+      
     </div>
 
     <!-- <div class="footer">
@@ -125,17 +139,56 @@
 
 // }
 
-function cadastrarMaquina(){
- 
-  var id = id_maquina.value
-  var empresa = sessionStorage.getItem("FK_EMPRESA")
-  var user = user_maquina.value
-  var setor = setor_maquina.value
 
-  console.log(`Valores a serem inseridos  ${id}, ${user}, ${setor}, ${empresa}`)
+function AllMachines(){
+
+fetch("usuarios/listarMaquinas", {
+  method: "GET",
+  headersa: {
+    "Content-Type": "application/json"
+  }
+}).then(function (resposta){
+
+  console.log("Front ok")
+
+  resposta.json()
+  .then((json) =>{
+
+      console.log(json)
+
+      for(i = 0; i < json.length; i++){
+
+       div = `<tr> <td> ${json[i].id_maquina} </td> 
+                   <td> ${json[i].codigo_patrimonio} </td> 
+                   <td> ${json[i].nome_usuario_maquina} </td> 
+                   <td> ${json[i].nome_empresa} </td> 
+                   <td> <span style="cursor:pointer;"> Editar </span> </td>
+                  <td>  <span style="cursor:pointer;"> Excluir </span> </td>
+                    </tr>`
+
+
+       tabelaMaquina.innerHTML += div
+
+
+      }
+
+
+
+
+  })
+
+
+}).catch(function (resposta){
+
+  console.log("Front zuo")
+
+  console.log(resposta)
+
+})
 
 
 }
+
 
 
 
