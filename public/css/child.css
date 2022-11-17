@@ -150,6 +150,7 @@
   grid-gap: 5em 1em;
   text-align: center;
   padding: 5em 1em;
+  overflow-x: hidden;
 }
 
 /* Imagem Membros */
@@ -164,7 +165,7 @@
   font-family: "Nunito";
 }
 .content-membros > section > article > h2:hover{
-font-size: 2.1em;
+transform: scale(1.2);
 color: var(--primary);
 }
 
