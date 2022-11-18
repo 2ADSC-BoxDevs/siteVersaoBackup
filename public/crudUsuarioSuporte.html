@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>usuário - Suporte</title>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css">
+  <!-- Link fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="css/cadastrarUsuarioSuporte.css" />
+  <!-- Link icones -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+  <link rel="shortcut icon" href="assets/logo/logo-footer.png" type="image/x-icon" />
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+
+</head>
+
+<body onload="AllUsersSuporte()">
+  <div class="mainlogin">
+   
+
+    <div>
+
+        <table id="tabelaUsuariosSuporte" style="width:100rem;">
+  
+          <tr> 
+          <td>ID:</td>
+          <td>Nome:</td>
+          <td>Email:</td>
+          <td>Senha:</td>
+          <td>Empresa:</td> 
+        </tr>
+  
+        </table>
+  
+      </div>
+
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+function AllUsersSuporte(){
+
+fetch("usuarios/listarSuporte", {
+  method: "GET",
+  headersa: {
+    "Content-Type": "application/json"
+  }
+}).then(function (resposta){
+
+  console.log("Front ok")
+
+  resposta.json()
+  .then((json) =>{
+
+      console.log(json)
+
+      for(i = 0; i < json.length; i++){
+
+       div = `<tr> <td> ${json[i].id_usuario_suporte} </td> 
+                   <td> ${json[i].nome_usuario_suporte} </td> 
+                   <td> ${json[i].email_usuario_suporte} </td> 
+                   <td> <input readonly type="password"value='${json[i].senha_usuario_suporte}' ></td>
+                   <td> ${json[i].nome_empresa} </td> 
+                   <td> <span style="cursor:pointer;"> Editar </span> </td>
+                  <td>  <span style="cursor:pointer;"> Excluir </span> </td>
+                    </tr>`
+
+
+       tabelaUsuariosSuporte.innerHTML += div
+
+
+      }
+
+
+
+
+  })
+
+
+}).catch(function (resposta){
+
+  console.log("Front zuo")
+
+  console.log(resposta)
+
+})
+
+
+}
+ 
+</script>

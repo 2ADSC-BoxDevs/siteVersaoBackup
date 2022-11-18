@@ -3,23 +3,15 @@ var router = express.Router();
 
 var usuarioController = require("../controllers/usuarioController");
 
+
+
 router.get("/", function (req, res) {
     usuarioController.testar(req, res);
 });
 
-router.get("/listar", function (req, res) {
-    usuarioController.listar(req, res);
+router.post("/cadastrarEmpresa", function (req, res) {
+    usuarioController.cadastrarEmpresa(req, res);
 });
-
-//Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
-
-router.post("/cadastrar", function (req, res) {
-    usuarioController.cadastrar(req, res);
-})
-
-router.post("/cadastrarUser", function (req, res) {
-    usuarioController.cadastrarUser(req, res);
-})
 
 router.post("/verifyEmail", function (req, res) {
     usuarioController.verifyEmail(req, res);
@@ -33,9 +25,86 @@ router.post("/autenticarGoogle", function (req, res) {
     usuarioController.entrarGoogle(req, res);
 });
 
-router.post("/cadastrarEmpresa", function (req, res) {
-    usuarioController.cadastrarEmpresa(req, res);
+
+
+
+// ------------------------------------------CRUDS----------------------------------------------
+
+
+
+
+
+
+// -----------------------------------USUARIOS - MAQUINA----------------------------------------
+
+
+router.get("/listar", function (req, res) {
+    usuarioController.listar(req, res);
+
+
 });
 
+
+// Pendente
+router.post("/cadastrarUser", function (req, res) {
+    usuarioController.cadastrarUser(req, res);
+})
+
+
+
+//-----------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+// -----------------------------------USUARIOS - SUPORTE------------------------------------------
+
+
+router.get("/listarSuporte", function (req, res) {
+    usuarioController.listarSuporte(req, res);
+});
+
+
+router.post("/cadastrar", function (req, res) {
+    usuarioController.cadastrar(req, res);
+})
+
+//------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+// ---------------------------------------MAQUINA------------------------------------------------
+
+
+router.get("/listarMaquinas", function (req, res) {
+    usuarioController.listarMaquinas(req, res);
+});
+
+
+//------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+// ---------------------------------------CRUD - FIM----------------------------------------------
+
+
+
+//Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
 
 module.exports = router;
