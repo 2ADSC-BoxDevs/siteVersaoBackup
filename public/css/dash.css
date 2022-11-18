@@ -5,6 +5,7 @@ body {
   background-color: #272932;
   color: #666666;
   font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
 }
 
 .material-icons-outlined {
@@ -13,7 +14,9 @@ body {
 }
 
 .text-primary {
-  color: #666666;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .text-blue {
@@ -74,6 +77,9 @@ body {
   height: 40px;
   width: 500px;
   padding: 0 0 0 10px;
+  background-color: #21232D;
+  border: #d2d2d3 2px solid;
+  color: #d2d2d3;
 }
 
 .user {
@@ -171,6 +177,7 @@ body {
   grid-area: main;
   overflow-y: auto;
   padding: 20px 20px;
+  color: #ffffff;
 }
 
 .main-title {
@@ -195,11 +202,12 @@ body {
   flex-direction: column;
   justify-content: space-around;
   padding: 25px;
-  background-color: #ffffff;
+  background-color: #21232D;
   box-sizing: border-box;
   border: 1px solid #d2d2d3;
   border-radius: 5px;
   box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
 }
 
 .uil-desktop {
@@ -258,7 +266,6 @@ body {
 .charts {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
   height: 90%;
   background-color: #21232D;
   padding: 50px 50px 50px 50px;
@@ -282,6 +289,7 @@ body {
   height: 75%;
   width: 400px;
   padding: 30px 30px 30px 30px;
+  overflow-x: hidden;
 }
 
 .chart-lateral .nav{
@@ -322,6 +330,7 @@ body {
   height: 70px;
   width: 270px;
   color: #fff;
+  background-color: #367952;
 }
 
 
@@ -330,7 +339,7 @@ body {
 }
 
 .rd_tabs:checked ~ .content{
-  display: block;
+  display: flex;
 }
 
 .graph_container {
