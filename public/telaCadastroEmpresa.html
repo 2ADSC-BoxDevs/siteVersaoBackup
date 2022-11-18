@@ -141,7 +141,7 @@ jQuery(function($){
     //Expressão Cnpj
     var cnpjReg = /^[0-9]{2}.?[0-9]{3}.?[0-9]{3}.?[0-9]{4}\-?[0-9]{2}$/;
     //Expressão cep
-    var cepReg = /^[0-9]{5}-.?[0-9]{3}$/;
+    var cepReg = /^[0-9 \-]{5}-[0-9]{3}$/;
     //Expressão cidade
     var cidadeReg = /^[À-úA-z ]{3,100}$/;
     //Expressão endereco
@@ -186,8 +186,8 @@ jQuery(function($){
         // Verifica Cep
         if (cep.match(cepReg)) {
             msg_cep_validation_register.innerHTML = '';
-            input_cadastro_cep.style.border = '1px solid green ';
             input_cadastro_cep.style.color = "white";
+            input_cadastro_cep.style.border = '1px solid green';
         } else {
             msg_cep_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
             input_cadastro_cep.style.color = "red";
