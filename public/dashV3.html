@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <link rel="shortcut icon" href="assets/logo/logo-footer.png" type="image/x-icon">
+    <title>Dashboard | Specula</title>
 
     <!-- Montserrat Font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -48,10 +49,10 @@
 
         <ul class="sidebar-list">
           <li class="sidebar-list-item">
-            <i class="uil uil-graph-bar"></i> Dashboard
+            <i class="uil uil-graph-bar"></i> Painel 
           </li>
           <li class="sidebar-list-item">
-            <i class="uil uil-chart-line"></i>Painel
+            <i class="uil uil-chart-line"></i> Dashboard
           </li>
           <li class="sidebar-list-item">
             <i class="uil uil-monitor"></i>Cadastrar máquina
@@ -69,7 +70,7 @@
       <!-- Main -->
       <main class="main-container">
         <div class="main-title">
-          <p class="font-weight-bold">DASHBOARD</p>
+          <p class="font-weight-bold">PAINEL DE MÁQUINAS</p>
         </div>
 
         <div class="main-cards">
@@ -127,8 +128,39 @@
         </div>
 
         <div class="chart-lateral">
-          <div class="graph_container">
-            <canvas id="Chart1"></canvas>
+               
+          <nav class="nav">
+            <ul>
+              <li>
+                
+                <input type="radio" name="tabs" class="rd_tabs" id="tab1" checked>
+                <label for="tab1"> Geral</label>
+              <div class="content">
+                  <article>
+                    aaaaaaaaaaaaaaa
+                  </article>
+                </div>
+      
+              </li>
+              <li>
+                
+                <input type="radio" name="tabs" class="rd_tabs" id="tab2">
+                <label for="tab2"> Máquinas </label>
+              <div class="content">
+                  <article>
+                    bbbbbbbbbbbbbbb
+                  </article>
+                </div>
+            
+              </li>
+            </ul>
+          </nav>
+
+
+
+
+          <!-- <div class="graph_container">
+            <canvas id="Chart1"></canvas> -->
           </div>
         </div>
 
