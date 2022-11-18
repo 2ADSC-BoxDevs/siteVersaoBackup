@@ -130,39 +130,27 @@
         <div class="chart-lateral">
                
           <nav class="nav">
-            <ul>
-              <li>
-                
-                <input type="radio" name="tabs" class="rd_tabs" id="tab1" checked>
-                <label for="tab1"> Geral</label>
-              <div class="content">
-                  <article>
-                  <div class="graph_container">
-            <canvas id="Chart1"></canvas>
-                  </div>
-                  </article>
-                </div>
-      
-              </li>
-              <li>
-                
-                <input type="radio" name="tabs" class="rd_tabs" id="tab2">
-                <label for="tab2"> Máquinas </label>
-              <div class="content">
-                  <article>
-                    bbbbbbbbbbbbbbb
-                  </article>
-                </div>
-            
-              </li>
-            </ul>
+                <button onclick="OpcDeDash(0)" class="rd_tabs" id="tab1"> <b>Geral</b> </button>
+
+                <button onclick="OpcDeDash(1)" class="rd_tabs" id="tab2"> <b>Máquinas</b>   </button>
           </nav>
+
+          <div id="dashs_lateral_geral" style="display: none">
+              <H1> AQUI VAI FICAR OS DADOS GERAL</H1>
+          </div>
+
+          <div id="dashs_lateral_Maquina" style="display: none">
+            <H1> AQUI VAI FICAR OS DADOS MAQUINA</H1>
+          </div>
 
 
 
 
         
-          </div>
+        </div>
+
+
+
         </div>
 
         </div>
@@ -350,3 +338,40 @@ fetch("/medidas/verify", {
   
    
 </html>
+
+
+<!-- // SCRIPT DE GERAL-MAQUINAS -->
+<script>
+      var btn_geral = tab1;
+      var btn_maquinas = tab2;
+      var dash_geral = dashs_lateral_geral;
+      var dash_maquina = dashs_lateral_Maquina;
+    function OpcDeDash(selected){
+      if(selected == 0){
+
+        btn_geral.style.border = "1px solid red"
+        btn_geral.style.backgroundColor = "pink"
+        btn_maquinas.style.border = "1px solid"
+        btn_maquinas.style.backgroundColor = "white"
+        
+
+
+        dash_geral.style.display = "flex"
+        dash_maquina.style.display = "none"
+      } 
+      else if(selected == 1){
+
+        btn_geral.style.border = "1px solid"
+        btn_geral.style.backgroundColor = "white"
+        btn_maquinas.style.border = "1px solid red"
+        btn_maquinas.style.backgroundColor = "pink"
+
+        dash_geral.style.display = "none"
+        dash_maquina.style.display = "flex"
+      }
+    }
+
+  
+
+
+</script>
