@@ -23,7 +23,7 @@
 
 
   </head>
-  <body>
+  <body onload="verifiyMachine()">
     <div class="grid-container">
 
       <!-- Header -->
@@ -80,7 +80,7 @@
               <p class="text-primary">Máquinas ativas</p>
               <i class="uil uil-desktop"></i>
             </div>
-            <span class="text-primary font-weight-bold">249</span>
+            <span class="text-primary font-weight-bold" id="machinesIsAct">0</span>
           </div>
 
           <div class="card">
@@ -290,6 +290,60 @@ var myChart = new Chart(ctx, {
 
     options: barOptions_stacked,
 });
+
+
+
+
+// Trazendo as maquinas cadastradas
+
+function verifiyMachine(){
+
+fetch("/medidas/verify", {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json",
+    },
+}).then(function (resposta){
+
+    resposta.json()
+    .then((json) => {
+
+        // console.log(json) //Objeto inteiro vindo em JSON
+
+        //function aqui
+
+        for (i = 0; i < json.length; i++){
+
+        // console.log("Aqui " + JSON.stringify(json[i])) //Objeto inteiro vindo em STRING
+
+        if(json[i].isActivade == "true"){
+
+        // var div = `<div class="screens" onload="OnMachine(${json[i].id_maquina})">
+        //            <figcaption> ${json[i].codigo_patrimonio} <br> <span style="color:green; font-size: 15px;"> MAQUINA ${i+1} ON </span>
+        //            </figcaption>
+        //            <img src="/assets/imgs/screenOn.png">
+        //            </div>`;
+
+                   machinesIsAct.innerHTML++;
+
+
+            }
+                
+          }
+
+
+    })
+
+}).catch(function (erro) {
+
+ console.log("Erro -> " + erro);
+
+})
+}
+
+
+
+
   </script>
   
    
