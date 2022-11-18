@@ -291,18 +291,19 @@ body {
   border-radius: 11px;
   height: 75%;
   width: 400px;
-  padding: 30px 30px 30px 30px;
-  overflow-x: hidden;
+  padding: 0px 30px 30px 30px;
+  overflow-x: none;
 }
 
 .chart-lateral .nav{
   background-color: #1d34a5; /* Tirar */
-  width: 100%;
+  width: 20vw;
   height: 12%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+
 }
 
 .chart-lateral .rd_tabs{
@@ -316,18 +317,24 @@ body {
 
 }
 
-.dashs-lateral-geral{
+#dashs_lateral_geral{
   width: 100%;
-  height: 100%;
+  height: 90%;
+  max-height: 58vh;
   background-color: green;
   display: none;
+  overflow-x: auto;
+  flex-wrap: wrap;
 }
 
-.dashs-lateral-Maquina{
+#dashs_lateral_Maquina{
   width: 100%;
-  height: 100%;
+  height: 90%;
+  max-height: 58vh;
   background-color: rgb(214, 236, 8);
   display: none;
+  overflow-x: auto;
+  flex-wrap: wrap;
 }
 
 
