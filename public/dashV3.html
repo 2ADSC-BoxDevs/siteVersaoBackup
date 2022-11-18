@@ -122,7 +122,7 @@
           </div>  
 
           <div class="alerts">
-            <div class="ball"></div> <div class="ball3"></div><div class="ball2"></div>
+            <!-- <div class="ball"></div> <div class="ball3"></div><div class="ball2"></div> -->
         </div>
 
         </div>
@@ -137,7 +137,9 @@
                 <label for="tab1"> Geral</label>
               <div class="content">
                   <article>
-                    aaaaaaaaaaaaaaa
+                  <div class="graph_container">
+            <canvas id="Chart1"></canvas>
+                  </div>
                   </article>
                 </div>
       
@@ -159,8 +161,7 @@
 
 
 
-          <!-- <div class="graph_container">
-            <canvas id="Chart1"></canvas> -->
+        
           </div>
         </div>
 
@@ -178,11 +179,17 @@
     new Chart(ctx2, {
       type: 'bar',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['Memória', 'Disco', 'CPU'],
         datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
+          label: 'Alertas mensais',
+          data: [12, 19, 3],
+          backgroundColor: [
+      '#87B7FF',
+      '#E3C93C',
+      '#DF2935',
+     
+    ],
+          borderWidth: 0
         }]
       },
       options: {

@@ -204,7 +204,7 @@ body {
   padding: 25px;
   background-color: #21232D;
   box-sizing: border-box;
-  border: 1px solid #d2d2d3;
+  border: 1px solid #87B7FF;
   border-radius: 5px;
   box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
   color: #ffffff;
@@ -336,6 +336,7 @@ body {
 
 .content article{
   padding: 10px;
+  
 }
 
 .rd_tabs:checked ~ .content{
