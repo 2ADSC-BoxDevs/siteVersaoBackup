@@ -6,15 +6,20 @@ use specula;
 create table empresa(
 	id_empresa int primary key auto_increment,
     nome_empresa varchar(60),
-    cnpj varchar(45),
-    cep varchar(45),
+    cnpj char(14),
+    cep bigint,
     bairro varchar(45),
     logradouro varchar(45),
     cidade varchar(45)
 );
 
+#INSERT LOCAL
 insert into empresa values 
 (null,"Empresa do Matheus", "08532120", 08532120, "Tanquinho", "Rua neusa rodrigues", "São paulo");
+
+#INSERT AZURE
+insert into empresa values
+('Empresa do Matheus', '08532120', '08532120', 'Tanquinho', 'Rua neusa rodrigues', 'São paulo');
 
 create table usuario_suporte (
 	id_usuario_suporte int primary key auto_increment,
@@ -46,10 +51,14 @@ create table usuario_maquina(
     
 );
 
+#INSERT LOCAL
 insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario) values
-("m","m");
+("n1","n1");
 
-update usuario_maquina set nome_usuario_maquina = "Gabriel Romão" where id_usuario_maquina = 1;
+#INSERT AZURE
+insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario) values
+('n1','n1');
+
 
 create table maquina (
 	id_maquina int primary key auto_increment,
@@ -64,8 +73,8 @@ create table maquina (
     disco_detalhe varchar(45)
 );
 
-insert into maquina (fk_empresa,fk_usuario_maquina) values
-(1,2);
+insert into maquina (fk_empresa,fk_usuario_maquina,codigo_patrimonio) values
+(1,1,2121212);
 
 create table historico_maquina (
 	id_historico int primary key auto_increment,
@@ -86,7 +95,7 @@ create table base_conhecimento (
     data_hora_descricao datetime default current_timestamp
 );
 
-UPDATE maquina SET isActivade = '2',codigo_patrimonio = 'kauan',cpu_detalhe = 'Kauan',ram_detalhe = 'Kauan',disco_detalhe = 'Matheus'  WHERE id_maquina = 1;
+UPDATE maquina SET isActivade = '1',codigo_patrimonio = 'kauan',cpu_detalhe = 'Kauan',ram_detalhe = 'Kauan',disco_detalhe = 'Matheus'  WHERE id_maquina = 1;
 
 select * from empresa;
 select * from usuario_suporte;
@@ -96,9 +105,8 @@ select * from maquina;
 select * from historico_maquina;
 
 truncate empresa;
-truncate usuario_suporte; 
+truncate usuario_suporte;
 truncate setor;
 truncate usuario_maquina;
-
 truncate maquina;
 truncate historico_maquina;
