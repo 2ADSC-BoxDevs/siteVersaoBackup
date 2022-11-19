@@ -554,37 +554,36 @@ body{
     align-self: center;
     justify-self: center;
     margin-top: 10px;
+    border: 1px solid #87B7FF;
+border-radius: 12px;
     background-color: #272932;
     height: 90vh;
-    width: 80vw;
+    width: 81vw;
     z-index: 1000;
     overflow: auto;
 
 }
 
 .title-painel-dash{
-    width: 80vw;
+    width: 80.8%;
     height: 60px;
-    background-color: #0b0c0f;
     color: aliceblue;
     display: flex;
+    border-radius: 12px 12px 0px 0px;
     flex-direction: row;
     justify-content: center;
     position: fixed;
+    background-color: #1E1F25;
+   
 
 }
 
-.titletext h1{
-
-    justify-content: center;
-    align-self: center;
-    
-}
 
 .titletext{
-    width: 55%;
+    width: 100%;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding: 8px;
     text-align: end;
     display: flex;
 }
@@ -618,21 +617,22 @@ body{
 /* container cpu */
 .container-cpu{
     padding-top: 75px;
-    background-color: #393b4679;
+    background-color: #1C1D25;
     border-bottom: 1px solid #ff001149;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .container-cpu-left{
     padding: 15px;
     height: auto;
-    width: 50%;
+    width: 48%;
 
 }
 
 .cad-hard-info{
-    background-color:#0b0c0f;
+    background-color:#1C1D25;
     border-radius: 0px 20px 20px 20px;
     padding: 10px;
     width: 100%;
@@ -641,10 +641,12 @@ body{
     flex-direction: row;
     justify-content: space-evenly;
 }
-
+.hard-info-cpu h2{
+    color: white;
+}
 .titulo-cpu h2{
     padding-left: 10px;
-    background-color: #0b0c0f;
+    background-color: #1C1D25;
     padding: 5px 15px 5px 15px;
     width:fit-content;
     border-radius: 20px 20px 0px 0px;
@@ -661,12 +663,13 @@ body{
 
 .hard-info-cpu h3{
     font-size: 24px;
-    color: #d2101deb;
+    color: #e9e9e9;
 }
 
 .hard-info-cpu span{
     font-size: 22px;
     color:#ffff;
+    font-weight: 900;
 }
 
 .destaque-info-cpu{
@@ -679,7 +682,7 @@ body{
 
 .circle_destaque{
     background-color:#1E1F25;
-    border: 1px solid #ff00117c;
+    border: 1px solid #87B7FF;
     justify-content: center;
     height: 150px;
     width: 150px;
@@ -707,16 +710,19 @@ body{
 /* container memoria */
 
 .container-memoria{
-    background-color: #0b0c0f;
+    background-color: #272932;
     border-bottom: 1px solid #ff001149;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+
 }
 
 .container-memoria-left{
     padding: 15px;
     height: auto;
-    width: 50%;
+    width: 48%;
+
 }
 
 .titulo-memoria h2{
@@ -736,7 +742,8 @@ body{
     height: 80%;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    padding: 90px 104px 90px 82px;
+    justify-content: space-between;
 }
 
 .hard-info-memoria{
@@ -751,14 +758,18 @@ body{
 
 .hard-info-memoria h3{
     font-size: 24px;
-    color: #d2101deb;
+    color: #e9e9e9;
 }
 
 .hard-info-memoria span{
     font-size: 22px;
     color:#ffff;
+    font-weight: 900;
 }
 
+.hard-info-memoria h2{
+    color: #fff;
+}
 .destaque-info-memoria{
     width: 30%;
     display: flex;
@@ -769,7 +780,7 @@ body{
 
 .circle_destaque-memoria{
     background-color:#1E1F25;
-    border: 1px solid #ff00117c;
+    border: 1px solid #87B7FF;
     justify-content: center;
     height: 150px;
     width: 150px;
@@ -792,7 +803,7 @@ body{
 /* container disco */
 
 .container-disco{
-    background-color: #393b4679;
+    background-color: #1C1D25;
     border-bottom: 1px solid #ff001149;
     display: flex;
     flex-direction: row;
@@ -801,12 +812,11 @@ body{
 .container-disco-left{
     padding: 15px;
     height: auto;
-    width: 50%;
+    width: 48%;
 
 }
 
 .cad-hard-info{
-    background-color:#0b0c0f;
     border-radius: 0px 20px 20px 20px;
     padding: 10px;
     width: 100%;
@@ -816,14 +826,8 @@ body{
     justify-content: space-evenly;
 }
 
-.titulo-disco h2{
-    padding-left: 10px;
-    background-color: #0b0c0f;
-    padding: 5px 15px 5px 15px;
-    width:fit-content;
-    border-radius: 20px 20px 0px 0px;
-    color: aliceblue;
-}
+
+
 
 .hard-info-disco{
     display: flex;
@@ -835,12 +839,17 @@ body{
 
 .hard-info-disco h3{
     font-size: 24px;
-    color: #d2101deb;
+    color: #e9e9e9;
 }
 
 .hard-info-disco span{
     font-size: 22px;
     color:#ffff;
+    font-weight: 900;
+}
+.hard-info-disco h2{
+    padding-top: 10px;
+    color: #fff;
 }
 
 .destaque-info-disco{
@@ -853,7 +862,7 @@ body{
 
 .circle_destaque-disco{
     background-color:#1E1F25;
-    border: 1px solid #ff00117c;
+    border: 1px solid #87B7FF;
     justify-content: center;
     height: 150px;
     width: 150px;
