@@ -555,7 +555,7 @@ body{
     justify-self: center;
     margin-top: 10px;
     border: 1px solid #87B7FF;
-border-radius: 12px;
+border-radius: 2px;
     background-color: #272932;
     height: 90vh;
     width: 81vw;
@@ -565,11 +565,11 @@ border-radius: 12px;
 }
 
 .title-painel-dash{
-    width: 80.8%;
+    width: 80.3%;
     height: 60px;
     color: aliceblue;
     display: flex;
-    border-radius: 12px 12px 0px 0px;
+    border-radius: 12px 0px 0px 0px;
     flex-direction: row;
     justify-content: center;
     position: fixed;
