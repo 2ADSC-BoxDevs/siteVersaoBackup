@@ -103,7 +103,7 @@
 
         <div class="card">
           <div class="card-inner">
-            <p class="text-primary">Totais de alertas de Disco</p>
+            <p class="text-primary">Totais de alertas de RAM</p>
             <i class="uil uil-compact-disc"></i>
           </div>
           <span class="text-primary font-weight-bold">79</span>
@@ -160,113 +160,8 @@
             </div>
 
             <div id="dashs_lateral_Maquina" style="display: none">
-              <div class="maquina">
-                <h2 id="hostname_maquina">BD0725</h2>
-                <div class="dados-title">
-
-                  <div class="dado-name">
-                    <span class="material-symbols-outlined ram">
-                      donut_large
-                      </span>
-                    RAM</div>
-                  <div class="dado-name-cpu">
-                    <span class="material-symbols-outlined">
-                      memory
-                    </span>
-                    CPU
-                  </div>
-                  <div class="dado-name">
-                    <span class="material-symbols-outlined storage">
-                      storage
-                    </span>
-                    MEMORIA</div>
-
-                </div>
-
-                <div class="dados-number">
-                  <div class="dado">
-                    <span id="dado_ram">00.0</span>%
-                  </div>
-                  <div class="dado" id="dado_cpu">
-                    <span id="dado_cpu">00.0</span>%
-                  </div>
-                  <div class="dado" id="dado_memoria">
-                    <span id="dado_memoria">00.0</span>%
-                  </div>
-
-                </div>
-
-
-              </div>
-
-              <div class="maquina">
-                <h2 id="hostname_maquina">BD0725</h2>
-                <div class="dados-title">
-
-                  <div class="dado-name">
-                    <span class="material-symbols-outlined ram">
-                      donut_large
-                      </span>
-                    RAM</div>
-                  <div class="dado-name-cpu"> <span class="material-symbols-outlined">
-                      memory
-                    </span>CPU </div>
-                  <div class="dado-name">
-                    <span class="material-symbols-outlined storage">
-                      storage
-                    </span>
-                    MEMORIA</div>
-
-                </div>
-
-                <div class="dados-number">
-                  <div class="dado">
-                    <span id="dado_ram">00.0</span>%
-                  </div>
-                  <div class="dado" id="dado_cpu">
-                    <span id="dado_cpu">00.0</span>%
-                  </div>
-                  <div class="dado" id="dado_memoria">
-                    <span id="dado_memoria">00.0</span>%
-                  </div>
-
-                </div>
-
-
-              </div>
-
-              <div class="maquina">
-                <h2 id="hostname_maquina">BD0725</h2>
-                <div class="dados-title">
-
-                  <div class="dado-name">
-                    <span class="material-symbols-outlined ram">
-                      donut_large
-                      </span>
-                    RAM</div>
-                  <div class="dado-name-cpu"> <span class="material-symbols-outlined">
-                      memory
-                    </span>CPU </div>
-                  <div class="dado-name">
-                    <span class="material-symbols-outlined storage">
-                      storage
-                    </span>
-                    MEMORIA</div>
-
-                </div>
-
-                <div class="dados-number">
-                  <div class="dado">
-                    <span id="dado_ram">00.0</span>%
-                  </div>
-                  <div class="dado" id="dado_cpu">
-                    <span id="dado_cpu">00.0</span>%
-                  </div>
-                  <div class="dado" id="dado_memoria">
-                    <span id="dado_memoria">00.0</span>%
-                  </div>
-
-                </div>
+              <div id="cardMaquinas" class="maquina">
+ 
 
 
               </div>
@@ -409,12 +304,45 @@
   });
 
 
+  // <h2 id="hostname_maquina">BD0725</h2>
+  //               <div class="dados-title">
 
+  //                 <div class="dado-name">
+  //                   <span class="material-symbols-outlined ram">
+  //                     donut_large
+  //                     </span>
+  //                   RAM</div>
+  //                 <div class="dado-name-cpu">
+  //                   <span class="material-symbols-outlined">
+  //                     memory
+  //                   </span>
+  //                   CPU
+  //                 </div>
+  //                 <div class="dado-name">
+  //                   <span class="material-symbols-outlined storage">
+  //                     storage
+  //                   </span>
+  //                   MEMORIA</div>
+
+  //               </div>
+
+
+  //               <div class="dados-number">
+  //                 <div class="dado">
+  //                   <span id="dado_ram">00.0</span>%
+  //                 </div>
+  //                 <div class="dado" id="dado_cpu">
+  //                   <span id="dado_cpu">00.0</span>%
+  //                 </div>
+  //                 <div class="dado" id="dado_memoria">
+  //                   <span id="dado_memoria">00.0</span>%
+  //                 </div>
+
+  //               </div>
 
   // Trazendo as maquinas cadastradas
 
   function verifiyMachine() {
-
     fetch("/medidas/verify", {
       method: "GET",
       headers: {
@@ -424,28 +352,59 @@
 
       resposta.json()
         .then((json) => {
+    console.log("ENTREI NA FUNÇÃO THEN");
 
-          // console.log(json) //Objeto inteiro vindo em JSON
 
           //function aqui
 
           for (i = 0; i < json.length; i++) {
 
-            // console.log("Aqui " + JSON.stringify(json[i])) //Objeto inteiro vindo em STRING
+             console.log("Aqui " + JSON.stringify(json[i])) //Objeto inteiro vindo em STRING
 
-            if (json[i].isActivade == "true") {
+            if (json[i].isActivade == "ativo") {
 
-              // var div = `<div class="screens" onload="OnMachine(${json[i].id_maquina})">
-              //            <figcaption> ${json[i].codigo_patrimonio} <br> <span style="color:green; font-size: 15px;"> MAQUINA ${i+1} ON </span>
-              //            </figcaption>
-              //            <img src="/assets/imgs/screenOn.png">
-              //            </div>`;
+              console.log("entrei no if")
+               var criaMaquina = `
+                <h2 id="hostname_maquina">${json[i].codigo_patrimonio}</h2>
+                <div class="dados-title">
+                  <div class="dado-name">
+                    <span class="material-symbols-outlined ram">
+                      donut_large
+                    </span>
+                      RAM
+                  </div>
+                  <div class="dado-name-cpu">
+                    <span class="material-symbols-outlined">
+                      memory
+                    </span>
+                    CPU
+                  </div>
+                  <div class="dado-name">
+                    <span class="material-symbols-outlined storage">
+                      storage
+                    </span>
+                    MEMORIA</div>
 
-              machinesIsAct.innerHTML++;
+                </div>
+
+
+                <div class="dados-number">
+                  <div class="dado">
+                    <span id="dado_ram">${json[i].ram_detalhe}</span>%
+                  </div>
+                  <div class="dado" id="dado_cpu">
+                    <span id="dado_cpu">${json[i].cpu_detalhe}</span>%
+                  </div>
+                  <div class="dado" id="dado_memoria">
+                    <span id="dado_memoria">${json[i].disco_detalhe}</span>%
+                  </div>
+
+                </div>`;
+
+                cardMaquinas.innerHTML += criaMaquina ;
 
 
             }
-
           }
 
 
