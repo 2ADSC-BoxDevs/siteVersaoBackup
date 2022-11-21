@@ -30,16 +30,23 @@
   <body onload="AllMachines()">
     <div class="mainlogin">
       <div class="son_card">
-        <div class="text_left">
-          <img
-            class="uil-user-circle"
-            src="assets/imgs/icon-maquina.png"
-            alt=""
-          />
-          <h1>CADASTRO DE MÁQUINA</h1>
+        <div class="header">
+          <div class="header-title">
+            <img
+              class="uil-user-circle"
+              src="assets/imgs/icon-maquina.png"
+              alt=""
+            />
+            <h1>MÁQUINAS</h1>
+          </div>
+
+            <div>
+              <button onclick="TesteListar()">refresh</button>
+              <button class="btn-add-machine" onclick="AddMachine()">+ add</button>
+            </div>
         </div>
 
-        <div class="block_text">
+        <!--    <div class="block_text">
           <div class="textfield">
             <label for="maquina">ID da máquina:</label>
             <input id="id_maquina" type="text" placeholder="Insira o id" />
@@ -48,29 +55,30 @@
 
           <div class="textfield">
             <label for="usuario">Setor:</label>
-            <input id="setor_maquina" type="password" placeholder="Insira o setor:" />
+            <input
+              id="setor_maquina"
+              type="password"
+              placeholder="Insira o setor:"
+            />
             <i class="uil uil-store-alt"></i>
           </div>
 
           <button class="btnlogin" onclick="cadastrarMaquina()">Proximo</button>
         </div>
-      </div>
+      </div> -->
 
-      <div>
+      <div id="modal" class="modal-add-machine"></div>
 
-        <table id="tabelaMaquina" style="width:100rem;">
-
-          <tr> 
-          <td>ID:</td>
-          <td>Código de Patrimonio:</td>
-          <td>Usuário da Máquina:</td>
-          <td>Empresa:</td>
-        </tr>
-
+      <div class="div-list-machines">
+        <table id="tabelaMaquina" class="table-machines">
+          <tr>
+            <td class="td-title">ID:</td>
+            <td class="td-title">Código de Patrimonio:</td>
+            <td class="td-title">Usuário da Máquina:</td>
+            <td class="td-title">Empresa:</td>
+          </tr>
         </table>
-
       </div>
-      
     </div>
 
     <!-- <div class="footer">
@@ -93,8 +101,6 @@
 
       </div>
 
-
-
       <div class="voltar">
          <a href="#navbar"> <img src="img/carbon_back-to-top.png"></a>
 
@@ -106,90 +112,161 @@
 
 <script>
 
-// function listUser(){
+  function TesteListar(){
 
-//   fetch("/usuarios/listar",{
-//     method: "GET",
-//     headers: {
-//         "Content-Type": "application/json",
-//       },
+    var json = [
+      {
+        id_maquina: 1,
+        codigo_patrimonio: "123456",
+        nome_usuario_maquina: "Paul",  
+        nome_empresa: "Beatles",
+      },
+      {
+        id_maquina: 2,
+        codigo_patrimonio: "123456",
+        nome_usuario_maquina: "Paul",
+        nome_empresa: "Beatles",
+      },
+      {
+        id_maquina: 3,
+        codigo_patrimonio: "123456",
+        nome_usuario_maquina: "Ring",
+        nome_empresa: "Beatles",
+      },
+      {
+        id_maquina: 4,
+        codigo_patrimonio: "123456",
+        nome_usuario_maquina: "George",
+        nome_empresa: "Beatles",        
+      },
+    ];
 
-//   }).then(function (resposta) {
+    console.log(json[0]);
 
-//      resposta.json()
-//      .then((json) => {
+    for (i = 0; i < json.length; i++) {
+            div = `<tr id="users-data" class="machines-data"> 
+                    <td class="td-content"> ${json[i].id_maquina} </td> 
+                    <td class="td-content"> ${json[i].codigo_patrimonio} </td> 
+                    <td class="td-content"> ${json[i].nome_usuario_maquina} </td> 
+                    <td class="td-content"> ${json[i].nome_empresa} </td> 
+                    <td class="td-content"> 
+                      <span style="cursor:pointer;"> 
+                        <img src="assets/svg/edit.svg"> 
+                      </span> 
+                    </td>
+                    <td class="td-content">  
+                      <span style="cursor:pointer;"> 
+                        <img src="assets/svg/delete.svg">
+                      </span> 
+                    </td>
+                  </tr>`;
 
-//       console.log("ACERTO JSON ", json)
-//       console.log("ACERTO JSON STRING ",JSON.stringify(json))
-
-//       for(i = 0; i < json.length; i++){
-
-//         user_maquina.innerHTML += `<option value="${json[i].nome_usuario_maquina}"> ${json[i].nome_usuario_maquina} </option>`
-
-//            }
-
-//      })
-
-//   }).catch(function (erro) {
-
-//      console.log("O erro -> " + erro);
-
-//   })
-
-
-// }
-
-
-function AllMachines(){
-
-fetch("usuarios/listarMaquinas", {
-  method: "GET",
-  headersa: {
-    "Content-Type": "application/json"
+            tabelaMaquina.innerHTML += div;
   }
-}).then(function (resposta){
-
-  console.log("Front ok")
-
-  resposta.json()
-  .then((json) =>{
-
-      console.log(json)
-
-      for(i = 0; i < json.length; i++){
-
-       div = `<tr> <td> ${json[i].id_maquina} </td> 
-                   <td> ${json[i].codigo_patrimonio} </td> 
-                   <td> ${json[i].nome_usuario_maquina} </td> 
-                   <td> ${json[i].nome_empresa} </td> 
-                   <td> <span style="cursor:pointer;"> Editar </span> </td>
-                  <td>  <span style="cursor:pointer;"> Excluir </span> </td>
-                    </tr>`
-
-
-       tabelaMaquina.innerHTML += div
-
-
-      }
-
-
-
-
-  })
-
-
-}).catch(function (resposta){
-
-  console.log("Front zuo")
-
-  console.log(resposta)
-
-})
-
-
 }
 
+function AddMachine() {
+    document.getElementById("modal").style.display = "flex";
 
+    document.getElementById("modal").innerHTML = `
+    <div class="modal-header">
+      <h2>Add User</h2>
+      <button onclick="CloseModal()" class="btn-close-modal"> 
+        <img src="assets/svg/cancel.svg">
+      </button>
+    </div>
+    <div class="block_text">
+      <div class="textfield">
+        <label for="maquina">ID da máquina:</label>
+        <input id="id_maquina" type="text" placeholder="Insira o id" />
+        <i class="uil uil-cog"></i>
+      </div>
 
+      <div class="textfield">
+        <label for="usuario">Setor:</label>
+          <input
+            id="setor_maquina"
+            type="password"
+            placeholder="Insira o setor:"
+          />
+          <i class="uil uil-store-alt"></i>
+      </div>
+      <button class="btnlogin" onclick="cadastrarMaquina()">Proximo</button>
+    </div>
+    `;
+}
 
+function CloseModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+  // function listUser(){
+
+  //   fetch("/usuarios/listar",{
+  //     method: "GET",
+  //     headers: {
+  //         "Content-Type": "application/json",
+  //       },
+
+  //   }).then(function (resposta) {
+
+  //      resposta.json()
+  //      .then((json) => {
+
+  //       console.log("ACERTO JSON ", json)
+  //       console.log("ACERTO JSON STRING ",JSON.stringify(json))
+
+  //       for(i = 0; i < json.length; i++){
+
+  //         user_maquina.innerHTML += `<option value="${json[i].nome_usuario_maquina}"> ${json[i].nome_usuario_maquina} </option>`
+
+  //            }
+
+  //      })
+
+  //   }).catch(function (erro) {
+
+  //      console.log("O erro -> " + erro);
+
+  //   })
+
+  // }
+
+  function AllMachines() {
+    fetch("usuarios/listarMaquinas", {
+      method: "GET",
+      headersa: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(function (resposta) {
+        console.log("Front ok");
+
+        resposta.json().then((json) => {
+          console.log(json);
+
+          for (i = 0; i < json.length; i++) {
+            div = `<tr> 
+                    <td> ${json[i].id_maquina} </td> 
+                    <td> ${json[i].codigo_patrimonio} </td> 
+                    <td> ${json[i].nome_usuario_maquina} </td> 
+                    <td> ${json[i].nome_empresa} </td> 
+                    <td> 
+                      <span style="cursor:pointer;"> Editar </span> 
+                    </td>
+                    <td>  
+                      <span style="cursor:pointer;"> Excluir </span> 
+                    </td>
+                  </tr>`;
+
+            tabelaMaquina.innerHTML += div;
+          }
+        }); 
+      })
+      .catch(function (resposta) {
+        console.log("Front zuo");
+
+        console.log(resposta);
+      });
+  }
 </script>
