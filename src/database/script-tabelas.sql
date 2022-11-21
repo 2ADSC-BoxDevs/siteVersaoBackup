@@ -6,8 +6,8 @@ use specula;
 create table empresa(
 	id_empresa int primary key auto_increment,
     nome_empresa varchar(60),
-    cnpj char(14),
-    cep bigint,
+    cnpj char(20),
+    cep char(20),
     bairro varchar(45),
     logradouro varchar(45),
     cidade varchar(45)
@@ -98,6 +98,7 @@ create table historico_maquina (
     memoria_em_uso varchar (30),
     memoria_disponivel varchar(30),
     processador_em_uso varchar(30),
+    disco_em_uso varchar(30),
     data_hora_registro datetime default current_timestamp
 );
 
