@@ -27,7 +27,7 @@
 
 </head>
 
-<body onload="verifiyMachine(), OpcDeDash(1)">
+<body onload="buscarUltimasMedidas(), verifiyMachine(), verificarCargo()">
   <div class="grid-container">
 
     <!-- Header -->
@@ -148,16 +148,6 @@
 
 
             <div id="dashs_lateral_geral" style="display: none">
-              <H1> AQUI VAI FICAR OS DADOS GERAL</H1>
-              <H1> AQUI VAI FICAR OS DADOS GERAL</H1>
-              <H1> AQUI VAI FICAR OS DADOS GERAL</H1>
-              <H1> AQUI VAI FICAR OS DADOS GERAL</H1>
-              <H1> AQUI VAI FICAR OS DADOS GERAL</H1>
-              <H1> AQUI VAI FICAR OS DADOS GERAL</H1>
-              <H1> AQUI VAI FICAR OS DADOS GERAL</H1>
-              <H1> AQUI VAI FICAR OS DADOS GERAL</H1>
-              <H1> AQUI VAI FICAR OS DADOS GERAL</H1>
-              <H1> AQUI VAI FICAR OS DADOS GERAL</H1>
 
             </div>
 
@@ -344,17 +334,22 @@
 
   // Trazendo as maquinas cadastradas
 
-  function verifiyMachine() {
-    fetch("/medidas/verify", {
+  function buscarUltimasMedidas() {
+
+   var idEmpresa = sessionStorage.FK_EMPRESA;
+
+    console.log("Entrei no buscarMedida")
+    fetch(`/medidas/ultimas/${idEmpresa}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     }).then(function (resposta) {
 
+      console.log("Entrei no buscarMedida then")
+
       resposta.json()
         .then((json) => {
-    console.log("ENTREI NA FUNÇÃO THEN");
 
 
           //function aqui
@@ -365,7 +360,41 @@
 
             if (json[i].isActivade == "ativo") {
 
-              console.log("entrei no if")
+            console.log("DEU TUDO CERTO")
+
+            }
+          }
+
+
+        })
+
+    }).catch(function (erro) {
+
+      console.log("Erro -> " + erro);
+
+    })
+  }
+
+
+  function verifiyMachine() {
+    fetch("/medidas/verify", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(function (resposta) {
+
+      resposta.json()
+        .then((json) => {
+
+          //function aqui
+
+          for (i = 0; i < json.length; i++) {
+
+             console.log("Aqui " + JSON.stringify(json[i])) //Objeto inteiro vindo em STRING
+
+            if (json[i].isActivade == "ativo") {
+
                var criaMaquina = `
                 <h2 id="hostname_maquina">${json[i].codigo_patrimonio}</h2>
                 <div class="dados-title">
@@ -462,6 +491,24 @@
   }
 
 
+
+
+  function verificarCargo(){
+
+if(sessionStorage.getItem("CARGO_USUARIO") == "Admin"){
+
+    console.log("Is admin")
+
+
+} else {
+
+    icon4.style.display = "none"
+    linkIcon4.style.display = "none"
+    LIIncon4.style.display = "none"
+
+}
+
+}
 
 
 </script>

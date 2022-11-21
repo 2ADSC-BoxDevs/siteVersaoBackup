@@ -1,25 +1,32 @@
+const { request } = require("http");
 var medidaModel = require("../models/medidaModel");
 
 function buscarUltimasMedidas(req, res) {
 
-    const limite_linhas = 7;
+    var idEmpresa = req.params.fkEmpresaServer
 
-    var idAquario = req.params.idAquario;
+    // var idEmpresa = req.body.fkEmpresaServer
+    console.log(idEmpresa)
 
+    medidaModel.buscarUltimasMedidas(idEmpresa)
+    .then(function (resultado) {
 
-    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
+        if(resultado.length > 0){
 
-    medidaModel.buscarUltimasMedidas(idAquario, limite_linhas).then(function (resultado) {
-        if (resultado.length > 0) {
             res.status(200).json(resultado);
+
         } else {
-            res.status(204).send("Nenhum resultado encontrado!")
+
+            res.status(204).send("Nenhum registro encontrado");
+
         }
     }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+
+        console.log(erro)
+
         res.status(500).json(erro.sqlMessage);
-    });
+
+    })
 }
 
 
