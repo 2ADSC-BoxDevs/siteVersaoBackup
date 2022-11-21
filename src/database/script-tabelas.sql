@@ -6,8 +6,8 @@ use specula;
 create table empresa(
 	id_empresa int primary key auto_increment,
     nome_empresa varchar(60),
-    cnpj char(20),
-    cep char(20),
+    cnpj char(14),
+    cep bigint,
     bairro varchar(45),
     logradouro varchar(45),
     cidade varchar(45)
@@ -15,11 +15,13 @@ create table empresa(
 
 #INSERT LOCAL
 insert into empresa values 
-(null,"Empresa do Matheus", "08532120", 08532120, "Tanquinho", "Rua neusa rodrigues", "São paulo");
+(null,"Solução sempre LTDA", "2237525263", 08532120, "Tanquinho", "Rua Neusa Rodrigues", "São paulo"),
+(null,"Box delivery LTDA", "4273527324", 08264723, "Centro", "Rua Haddock Lobo", "São paulo");
 
 #INSERT AZURE
 insert into empresa values
-('Empresa do Matheus', '08532120', '08532120', 'Tanquinho', 'Rua neusa rodrigues', 'São paulo');
+('Solução sempre LTDA', '2237525263', 08532120, 'Tanquinho', 'Rua Neusa Rodrigues', 'São paulo'),
+('Box delivery LTDA', '4273527324', 08264723, 'Centro', 'Rua Haddock Lobo', 'São paulo');
 
 create table usuario_suporte (
 	id_usuario_suporte int primary key auto_increment,
@@ -55,9 +57,17 @@ create table usuario_maquina(
 insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario) values
 ("n1","n1");
 
+insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario, fk_empresa) values
+("n1Empresa2","n1Empresa",2);
+
+
+
 #INSERT AZURE
 insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario) values
 ('n1','n1');
+
+insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario, fk_empresa) values
+('n1Empresa2','n1Empresa2',2);
 
 
 create table maquina (
