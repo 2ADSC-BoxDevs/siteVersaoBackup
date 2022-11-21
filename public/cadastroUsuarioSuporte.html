@@ -1,80 +1,124 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastrar usuário</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css" />
+    <!-- Link fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="css/cadastrarUsuarioSuporte.css" />
+    <!-- Link icones -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="assets/logo/logo-footer.png"
+      type="image/x-icon"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cadastrar usuário</title>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="sweetalert2.min.js"></script>
-  <link rel="stylesheet" href="sweetalert2.min.css">
-  <!-- Link fonte -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <!-- Link CSS -->
-  <link rel="stylesheet" href="css/cadastrarUsuarioSuporte.css" />
-  <!-- Link icones -->
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
-  <link rel="shortcut icon" href="assets/logo/logo-footer.png" type="image/x-icon" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+  </head>
 
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+  <body>
+    <div class="mainlogin">
+      <div class="son_card">
+        <div class="text_left">
+          <img
+            class="uil-user-circle"
+            src="assets/imgs/icon-usuario.png"
+            alt=""
+          />
+          <h1>CADASTRAR USUÁRIO SUPORTE</h1>
+        </div>
 
-</head>
+        <div class="block_text">
+          <div class="cad_top">
+            <div class="textfield">
+              <label for="maquina">Nome do usuário</label>
+              <input
+                id="input_cadastro_nomeempresa"
+                type="text"
+                value=""
+                onkeyup="validacao_nome_register()"
+                placeholder="Insira o nome do usuário"
+              />
+              <i class="uil-user"></i>
+              <label id="msg_name_validation_register"></label>
+            </div>
 
-<body>
-  <div class="mainlogin">
-    <div class="son_card">
-      <div class="text_left">
-        <img class="uil-user-circle" src="assets/imgs/icon-usuario.png" alt="" />
-        <h1>CADASTRAR USUÁRIO SUPORTE</h1>
-      </div>
-
-      <div class="block_text">
-        <div class="cad_top">
+            <div class="textfield">
+              <label for="select_cargo">Cargo:</label>
+              <select
+                class="input_cadastro"
+                name="select_cargo"
+                id="input_cadastro_cargoempresa"
+                placeholder="Insira o cargo"
+              />
+              <option value="Admin">Admin</option>
+            </div>
+          </div>
           <div class="textfield">
-            <label for="maquina">Nome do usuário</label>
-            <input id="input_cadastro_nomeempresa" type="text" value="" onkeyup="validacao_nome_register()"
-              placeholder="Insira o nome do usuário" />
-            <i class="uil-user"></i>
-            <label id="msg_name_validation_register"></label>
+            <label for="usuario">Email:</label>
+            <input
+              id="email_usuario"
+              onkeyup="validacao_email_register()"
+              placeholder="Insira o email"
+            />
+            <i class="uil uil-envelope"></i>
+            <label id="msg_email_validation_register"></label>
           </div>
 
           <div class="textfield">
-            <label for="select_cargo">Cargo:</label>
-            <select class="input_cadastro"  name="select_cargo" id="input_cadastro_cargoempresa" placeholder="Insira o cargo" />
-            <option value="Admin">Admin</option>
+            <label for="usuario">Senha:</label>
+            <input
+              type="password"
+              id="ipt_senha"
+              value=""
+              placeholder="Insira a senha"
+            />
+            <i class="uil uil-padlock"></i>
+            <i
+              class="fa fa-eye-slash icon-display-password"
+              id="form_show_password"
+              onclick="display_show_password()"
+            ></i>
+            <i
+              class="fa fa-eye icon-display-password"
+              id="form_hidden_password"
+              onclick="display_hidden_password()"
+            ></i>
           </div>
-        </div>
-        <div class="textfield">
-          <label for="usuario">Email:</label>
-          <input id="email_usuario" onkeyup="validacao_email_register()" placeholder="Insira o email" />
-          <i class="uil uil-envelope"></i>
-          <label id="msg_email_validation_register"></label>
-        </div>
 
-        <div class="textfield">
-          <label for="usuario">Senha:</label>
-          <input type="password" id="ipt_senha" value="" placeholder="Insira a senha" />
-          <i class="uil uil-padlock"></i>
-          <i class="fa fa-eye-slash icon-display-password" id="form_show_password"
-            onclick="display_show_password()"></i>
-          <i class="fa fa-eye icon-display-password" id="form_hidden_password" onclick="display_hidden_password()"></i>
-        </div>
+          <div class="textfield">
+            <input
+              type="hidden"
+              id="id_sub"
+              value=""
+              placeholder="Insira a senha"
+            />
+          </div>
 
-        <div class="textfield">
-          <input type="hidden" id="id_sub" value="" placeholder="Insira a senha" />
-        </div>
-
-          <div id="buttonDiv" style="margin:10px;">Cadastrar-se com Google</div>
+          <div id="buttonDiv" style="margin: 10px">Cadastrar-se com Google</div>
 
           <button class="btnlogin" onclick="cadastrar()">Cadastrar</button>
         </div>
-
-
 
         <img src="assets/imgs/img-usuario.png" class="img_right" />
       </div>
@@ -96,41 +140,34 @@
       <div class="ajuda">
           <h1>Ajuda</h1>
           <li><a href="#">Suporte</a></li>
-          <li><a href="#">Contato</a></li>
-  
+          <li><a href="#">Contato</a></li>  
       </div>
-  
-  
-  
+
       <div class="voltar">
          <a href="#navbar"> <img src="img/carbon_back-to-top.png"></a>
   
       </div>
   
   </div> -->
-</body>
-
+  </body>
 </html>
-
-
 
 <script>
   function handleCredentialResponse(response) {
-
-    const data = jwt_decode(response.credential)
+    const data = jwt_decode(response.credential);
 
     //Todos os dados
-    input_cadastro_nomeempresa.value = data.name
-    email_usuario.value = data.email
-    id_sub.value = data.sub
+    input_cadastro_nomeempresa.value = data.name;
+    email_usuario.value = data.email;
+    id_sub.value = data.sub;
 
-    verifyEmail(data.email)
-
+    verifyEmail(data.email);
   }
   window.onload = function () {
     google.accounts.id.initialize({
-      client_id: "569659693618-1tjn34dqmuo8rr1vnut5a4qf5d13l1r5.apps.googleusercontent.com",
-      callback: handleCredentialResponse
+      client_id:
+        "569659693618-1tjn34dqmuo8rr1vnut5a4qf5d13l1r5.apps.googleusercontent.com",
+      callback: handleCredentialResponse,
     });
 
     google.accounts.id.renderButton(
@@ -140,14 +177,12 @@
         size: "large",
         shape: "pill",
         width: "200",
-        type: "standard"
-      }  // customization attributes
+        type: "standard",
+      } // customization attributes
     );
     // google.accounts.id.prompt(); // also display the One Tap dialog
-  }
+  };
 </script>
-
-
 
 <script>
   // Expressões Regulares
@@ -215,25 +250,25 @@
   }
 
   function cadastrar() {
-
     var nomeUser = input_cadastro_nomeempresa.value;
     var cargoUser = input_cadastro_cargoempresa.value;
     var emailUser = email_usuario.value;
     var senhaUser = Number(ipt_senha.value);
     var fk_gestor = sessionStorage.getItem("ID_USER"); // ID_USER vira FK_GESTOR
-    var sub_usuario = id_sub.value
+    var sub_usuario = id_sub.value;
 
-
-    if (sub_usuario == null || sub_usuario == 0 || sub_usuario == "" || sub_usuario == " "){
-
+    if (
+      sub_usuario == null ||
+      sub_usuario == 0 ||
+      sub_usuario == "" ||
+      sub_usuario == " "
+    ) {
       sub_usuario = 0;
-
     }
 
     // Enviando o valor da nova input
 
     if (fk_gestor != null || fk_gestor != "") {
-
       fetch("/usuarios/cadastrar", {
         method: "POST",
         headers: {
@@ -247,59 +282,45 @@
           emailServer: emailUser,
           senhaServer: senhaUser,
           fk_gestorServer: fk_gestor,
-          subServer: sub_usuario
+          subServer: sub_usuario,
         }),
-      }).then(function (resposta) {
-
-        if (resposta.ok) {
-
-          Swal.fire({
-            title: 'Parabéns!',
-            text: 'Cadastro realizado com sucesso!!',
-            icon: 'success',
-            showConfirmButton: false,
-            confirmButtonText: 'Confirmar',
-            timer: 3000,
-            color: 'white',
-            background: '#1e1f25',
-            confirmButtonColor: '#272990'
-
-          })
-
-          console.log(`Resposta ${resposta.status}`)
-
-          setInterval(() => {
-
-            window.location = 'login.html';
-
-          }, 3000);
-
-        }
-
       })
+        .then(function (resposta) {
+          if (resposta.ok) {
+            Swal.fire({
+              title: "Parabéns!",
+              text: "Cadastro realizado com sucesso!!",
+              icon: "success",
+              showConfirmButton: false,
+              confirmButtonText: "Confirmar",
+              timer: 3000,
+              color: "white",
+              background: "#1e1f25",
+              confirmButtonColor: "#272990",
+            });
+
+            console.log(`Resposta ${resposta.status}`);
+
+            setInterval(() => {
+              window.location = "login.html";
+            }, 3000);
+          }
+        })
         .catch(function (resposta) {
-
           Swal.fire({
-            title: 'Erro!',
-            text: 'Não conseguimos efetuar o seu login...',
-            icon: 'error',
+            title: "Erro!",
+            text: "Não conseguimos efetuar o seu login...",
+            icon: "error",
             showConfirmButton: true,
-            confirmButtonText: 'Tentar Novamente',
-            color: 'white',
-            background: '#1e1f25',
-            confirmButtonColor: '#272990'
-
-          })
+            confirmButtonText: "Tentar Novamente",
+            color: "white",
+            background: "#1e1f25",
+            confirmButtonColor: "#272990",
+          });
 
           console.log(`#ERRO: ${resposta}`);
         });
-
-
-
     } else {
-
-
-
       fetch("/usuarios/cadastrar", {
         method: "POST",
         headers: {
@@ -312,98 +333,73 @@
           cargoServer: cargoUser,
           emailServer: emailUser,
           senhaServer: senhaUser,
-          fk_gestorServer: null
+          fk_gestorServer: null,
         }),
-      }).then(function (resposta) {
-
-        if (resposta.ok) {
-
-          Swal.fire({
-            title: 'Parabéns!',
-            text: 'Cadastro realizado com sucesso!!',
-            icon: 'success',
-            showConfirmButton: false,
-            confirmButtonText: 'Confirmar',
-            timer: 3000,
-            color: 'white',
-            background: '#1e1f25',
-            confirmButtonColor: '#272990'
-
-          })
-
-          console.log(`Resposta ${resposta.status}`)
-
-          setInterval(() => {
-
-            window.location = 'login.html';
-
-          }, 3000);
-
-
-        }
       })
+        .then(function (resposta) {
+          if (resposta.ok) {
+            Swal.fire({
+              title: "Parabéns!",
+              text: "Cadastro realizado com sucesso!!",
+              icon: "success",
+              showConfirmButton: false,
+              confirmButtonText: "Confirmar",
+              timer: 3000,
+              color: "white",
+              background: "#1e1f25",
+              confirmButtonColor: "#272990",
+            });
+
+            console.log(`Resposta ${resposta.status}`);
+
+            setInterval(() => {
+              window.location = "login.html";
+            }, 3000);
+          }
+        })
         .catch(function (resposta) {
-
           Swal.fire({
-            title: 'Erro!',
-            text: 'Tente novamente...',
-            icon: 'error',
+            title: "Erro!",
+            text: "Tente novamente...",
+            icon: "error",
             showConfirmButton: true,
-            confirmButtonText: 'Tentar Novamente',
-            color: 'white',
-            background: '#1e1f25',
-            confirmButtonColor: '#272990'
-
-          })
+            confirmButtonText: "Tentar Novamente",
+            color: "white",
+            background: "#1e1f25",
+            confirmButtonColor: "#272990",
+          });
 
           console.log(`#ERRO: ${resposta}`);
-
         });
-
-
     }
   }
 
-
-  function verifyEmail (email){
-
+  function verifyEmail(email) {
     fetch("/usuarios/verifyEmail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          emailServer: email
-        }),
-      }).then(function (resposta) {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        emailServer: email,
+      }),
+    })
+      .then(function (resposta) {
+        resposta.json().then((json) => {
+          console.log("Esse é o resultado ", json.length);
 
-        resposta.json()
-        .then((json) => {
-
-        console.log("Esse é o resultado ", json.length)
-
-        if(json.length > 0){
-
-          msg_email_validation_register.innerHTML = "Existem mais de um usuário com esse email"
-          msg_email_validation_register.style.color = "red"
-
-        } else {
-
-          msg_email_validation_register.innerHTML = "Email correto!"
-          msg_email_validation_register.style.color = "blue"
-
-        }
-
-        })
-
-      })
-        .catch(function (resposta) {
-
-          console.log(`DEU ERRO AQUI: ${resposta}`);
-
+          if (json.length > 0) {
+            msg_email_validation_register.innerHTML =
+              "Existem mais de um usuário com esse email";
+            msg_email_validation_register.style.color = "red";
+          } else {
+            msg_email_validation_register.innerHTML = "Email correto!";
+            msg_email_validation_register.style.color = "blue";
+          }
         });
-
+      })
+      .catch(function (resposta) {
+        console.log(`DEU ERRO AQUI: ${resposta}`);
+      });
   }
-
- 
 </script>

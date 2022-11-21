@@ -82,7 +82,7 @@ body {
 
 /* FIM HEADER */
 
-.text_left {
+/* .text_left {
   display: flex;
   align-items: center;
   align-self: flex-start;
@@ -94,6 +94,26 @@ body {
   color: #ffffff;
   font-size: 3rem;
   padding-left: 15px;
+} */
+
+.header {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  justify-content: space-between;
+  padding-top: 30px;
+  width: 84%;
+}
+
+.header h1 {
+  color: #ffffff;
+  font-size: 3rem;
+  padding-left: 15px;
+}
+
+.header .header-title{
+  display: flex;
+  align-items: center;
 }
 
 .uil-user-circle {
@@ -105,10 +125,9 @@ body {
   width: 100%;
   min-height: 100vh;
   display: flex;
-
   background-color: #272932;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .son_card {
@@ -274,3 +293,74 @@ form span {
     min-height: 80vh;
   }
 }
+
+/* List of machines */
+
+.div-list-machines {
+  color: #ffffff;
+  background-color: #00000052;
+  border-radius: 20px;
+  height: auto;
+  width: auto;
+  padding: 36px;
+  margin: 44px 0 40px 0;
+}
+
+.table-machines tr .td-title {
+  padding: 0 14rem 1rem 0;
+  font-size: 20px;
+}
+
+.table-machines .machines-data .td-content {
+  font-size: 18px;
+  padding: 0 0 6px 0;
+}
+
+.table-machines .machines-data .td-content span {
+  padding: 0 16px 0 0;
+}
+
+.btn-add-machine {
+  font-size: 0.9em;
+  font-weight: 600;
+  text-decoration: none;
+  background: #DF2935;
+  color: #FAF0CA;
+  border: 1px solid #DF2935;
+  border-radius: 30px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.8s ease, color 0.8s ease-out;
+  letter-spacing: 0.5px;
+  padding: 7px 35px;
+}
+
+.modal-add-machine {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 54vh;
+  width: 34vw;
+  position: fixed;
+  z-index: 10000;
+  top: 20%;
+  background-color: #000000;
+  border-radius: 20px;
+}
+
+.btn-close-modal {
+  background-color: #000000;
+  border: none;
+  margin: 0 0 0 2rem;
+  height: 34px;
+  cursor: pointer;
+} 
+
+.modal-header {
+  color: white;
+  width: 68%;
+  display: flex;
+  justify-content: space-between;
+}
+/* ------------------------------ */
