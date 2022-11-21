@@ -56,22 +56,22 @@ create table usuario_maquina(
 #INSERT LOCAL
 insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario) values
 ("n1","n1");
-
 insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario, fk_empresa) values
 ("n1Empresa2","n1Empresa",2);
-
 insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario, fk_empresa) values
 ("n1Empresa2","n1Empresa2",2);
+insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario, fk_empresa) values
+("n2","n2",2);
 
 #INSERT AZURE
 insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario) values
 ('n1','n1');
-
 insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario, fk_empresa) values
 ('n1Empresa2','n1Empresa2',2);
-
 insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario, fk_empresa) values
 ('n1Empresa2','n1Empresa',2);
+insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario, fk_empresa) values
+('n2','n2',2);
 
 
 create table maquina (
