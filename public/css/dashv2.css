@@ -217,11 +217,10 @@ body{
 /* Div de todos conteudos */
 
 .home_content {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     background-color: #272932;
-    padding-top: 56px;
-    padding-left: 100px;
+  
     overflow: auto;
     justify-content: center;
     align-items: center;
