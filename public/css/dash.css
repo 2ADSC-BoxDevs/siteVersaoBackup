@@ -766,7 +766,7 @@ DOWNLOAD */
 
 .painel-dashboards{
   justify-self: center;
-  margin-top: 10px;
+  margin-top: -80px;
   border: 1px solid #87B7FF;
 border-radius: 2px;
   background-color: #272932;
