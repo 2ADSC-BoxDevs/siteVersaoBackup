@@ -80,7 +80,7 @@
     <main class="main-container">
         
 
-<div class="charts">
+<div class="charts" id="container_painel_id">
 
     <div class="dashboards" id="dashboards_id">
 
@@ -108,7 +108,7 @@
                 </div>
             </div>
 
-           
+        </div>
             
             <div class="painel-dashboards" style="display: none;">
                 <div class="title-painel-dash">
@@ -199,7 +199,7 @@
                 </div>
             </div>
            
-            </div>
+           
         </div>
         
     
@@ -402,32 +402,33 @@
     
     <script>
     
-        let allscreen = document.querySelector(".charts")
-        var painel_maquinas = document.getElementById("container_painel_id");
+        let allscreen = document.querySelector(".grid-container")
         var tela_dashs = document.getElementById("dashboards_id");
+    var painel_maquinas = document.getElementById("container_painel_id");
+
         let dashboard_selected = document.querySelector(".maquinas");
-    
         let painel_dash = document.querySelector(".painel-dashboards")
     
-    
         function alterarDispoDaTela(selected){
-            if(selected == 0){
-                painel_maquinas.style.display = "flex";
-                titulo_pagina_id.innerHTML = "";
-                titulo_pagina_id.innerHTML = "Painel de máquinas";
-                icon1.style.color = "red"
-                icon2.style.color = "white"
-                tela_dashs.style.display = "none"
-                
-            }
-            if(selected == 1){
-                painel_maquinas.style.display = "none";
-              
-                icon1.style.color = "white"
-                icon2.style.color = "red"
-                tela_dashs.style.display = "flex"
-            }
+        if(selected == 0){
+            painel_maquinas.style.display = "flex";
+            titulo_pagina_id.innerHTML = "";
+            titulo_pagina_id.innerHTML = "Painel de máquinas";
+            icon1.style.color = "red"
+            icon2.style.color = "white"
+            tela_dashs.style.display = "none"
+            
         }
+        if(selected == 1){
+            painel_maquinas.style.display = "none";
+            titulo_pagina_id.innerHTML = "";
+            titulo_pagina_id.innerHTML = "Dashboards";
+            icon1.style.color = "white"
+            icon2.style.color = "red"
+            tela_dashs.style.display = "flex"
+        }
+    }
+    
     
         dashboard_selected.onclick = function(){
     

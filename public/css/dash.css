@@ -763,19 +763,8 @@ DOWNLOAD */
 
 /* Tela de dashboard selecionada */
 
-.home_content {
-  height: 100%;
-  width: 100%;
-  
-  overflow: auto;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
 
-  
-}
 .painel-dashboards{
-  align-self: center;
   justify-self: center;
   margin-top: 10px;
   border: 1px solid #87B7FF;
