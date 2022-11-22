@@ -619,7 +619,7 @@ DOWNLOAD */
 }
 .maquinas{
   width: 560px;
-  height: 530px;
+  height: 380px;
   background-color: #1E1F25;
   margin: 20px;
   transition: all 0.5s ease;
@@ -669,11 +669,6 @@ DOWNLOAD */
   width: 25px;
   height: 25px;
 }
-
-
-
-
-
 
 
 
@@ -770,7 +765,7 @@ DOWNLOAD */
   border: 1px solid #87B7FF;
 border-radius: 2px;
   background-color: #272932;
-  height: 90vh;
+  height: 84vh;
   width: 81vw;
   z-index: 1000;
   overflow: auto;
@@ -867,11 +862,11 @@ border-radius: 2px;
 }
 
 .hard-info-cpu{
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   align-items: flex-start;
-  line-height: 44px;
+  
 }
 
 .hard-info-cpu h3{
@@ -926,6 +921,7 @@ border-radius: 2px;
   background-color: #272932;
   border-bottom: 1px solid #ff001149;
   display: flex;
+  height: 480px;
   flex-direction: row;
   justify-content: space-between;
 
@@ -948,23 +944,21 @@ border-radius: 2px;
 }
 
 .cad-hard-info-memoria{
-  background-color:#272932;
-  border-radius: 0px 20px 20px 20px;
   padding: 10px;
   width: 100%;
-  height: 80%;
+  height: 88%;
   display: flex;
   flex-direction: row;
-  padding: 90px 104px 90px 82px;
+  padding-top: 50px;
   justify-content: space-between;
 }
 
 .hard-info-memoria{
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
-  line-height: 44px;
+  
 
 
 }
@@ -1043,11 +1037,10 @@ border-radius: 2px;
 
 
 .hard-info-disco{
-  display: flex;
+  
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
-  line-height: 44px;
 }
 
 .hard-info-disco h3{
