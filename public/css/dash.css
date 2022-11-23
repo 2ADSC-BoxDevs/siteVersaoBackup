@@ -774,7 +774,7 @@ border-radius: 2px;
 
 .title-painel-dash{
   width: 80.3%;
-  height: 60px;
+  height: 72px;
   color: aliceblue;
   display: flex;
   border-radius: 12px 0px 0px 0px;
@@ -812,6 +812,7 @@ border-radius: 2px;
   justify-self: flex-end;
   height: 100%;
   pointer-events: visible;
+  padding-top: 24px;
 }
 
 .title-painel-dash .bx-x-circle:hover{
