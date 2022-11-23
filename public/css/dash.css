@@ -945,12 +945,12 @@ border-radius: 2px;
 
 .cad-hard-info-memoria{
   padding: 10px;
-  width: 100%;
+  width: 157%;
   height: 88%;
   display: flex;
   flex-direction: row;
-  padding-top: 50px;
-  justify-content: space-between;
+  /* padding-top: 50px; */
+  /* justify-content: space-between; */
 }
 
 .hard-info-memoria{
@@ -958,7 +958,7 @@ border-radius: 2px;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
-  
+  padding-left: 58px;
 
 
 }
@@ -978,7 +978,7 @@ border-radius: 2px;
   color: #fff;
 }
 .destaque-info-memoria{
-  width: 30%;
+  width: 57%;
   display: flex;
   justify-content: center;
   align-items: center;
