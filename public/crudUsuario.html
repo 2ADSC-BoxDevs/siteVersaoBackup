@@ -46,7 +46,6 @@
             <h1>USUÁRIOS</h1>
           </div>
           <div>
-            <button onclick="TesteListar()">refresh</button>
             <button class="btn-add-user" onclick="AddUser()">+ add user</button>
           </div>
         </div>
@@ -172,319 +171,255 @@
     document.getElementById("modal").style.display = "none";
   }
 
-  // Alimenta a table com dador aleatorios, simulando o backend
-  function TesteListar() {
-    
-    var jsonTeste = [
-      {
-        id_usuario_maquina: 1,
-        nome_usuario_maquina: "John",
-        nome_empresa: "Beatles",
-        nome_setor: "Vocal",
-        identificacao_usuario: "123456",
-      },
-      {
-        id_usuario_maquina: 2,
-        nome_usuario_maquina: "Paul",
-        nome_empresa: "Beatles",
-        nome_setor: "Bass",
-        identificacao_usuario: "123456",
-      },
-      {
-        id_usuario_maquina: 3,
-        nome_usuario_maquina: "Ring",
-        nome_empresa: "Beatles",
-        nome_setor: "Drum",
-        identificacao_usuario: "123456",
-      },
-      {
-        id_usuario_maquina: 4,
-        nome_usuario_maquina: "George",
-        nome_empresa: "Beatles",
-        nome_setor: "Guitar",
-        identificacao_usuario: "123456",
-      },
-    ];
+  // Expressões Regulares
+  //Expressão Nome
+  var nomeReg = /^[À-úA-z ]{3,35}$/;
+  //Expressão cargo
+  var cargoReg = /^[À-úA-z ]{3,35}$/;
+  //Expressão email
+  var emailReg = /^([À-úA-z0-9._-]+@[a-z0-9._-]+\.[A-z0-9_-]+)$/;
 
-    console.log(jsonTeste[0]);
-
-    for (i = 0; i < jsonTeste.length; i++) {
-      div = `<tr id="users-data" class="users-data"> 
-                <td class="td-content"> ${jsonTeste[i].nome_usuario_maquina} </td> 
-                <td class="td-content"> ${jsonTeste[i].nome_empresa} </td> 
-                <td class="td-content"> ${jsonTeste[i].nome_setor} </td> 
-                <td class="td-content"> 
-                  <input class="identificacao" readonly type="password"value='${jsonTeste[i].identificacao_usuario}'>
-                </td>
-                <td class="td-content"> 
-                  <span style="cursor:pointer;">
-                    <img src="assets/svg/edit.svg"> 
-                  </span>
-                </td>
-                <td class="td-content"> 
-                  <span style="cursor:pointer;"> 
-                    <img src="assets/svg/delete.svg">
-                  </span> 
-                </td>
-            </tr>`;
-
-    
-      tabelaUsuarios.innerHTML += div;
+  function validacao_nome_register() {
+    var nome = input_cadastro_nomeempresa.value;
+    // Verifica Nome
+    if (nome.match(nomeReg)) {
+      msg_name_validation_register.innerHTML = "";
+      input_cadastro_nomeempresa.style.border = "1px solid green ";
+      input_cadastro_nomeempresa.style.color = " green";
+    } else {
+      msg_name_validation_register.innerHTML =
+        '<b style="color: red;"> Verifique o campo preenchido </b>';
+      input_cadastro_nomeempresa.style.color = "red";
+      input_cadastro_nomeempresa.style.border = "1px solid red";
     }
   }
 
-  //--------------------------------------------//
+  function validacao_cargo_register() {
+    var cargo = input_cadastro_cargoempresa.value;
+    // Verifica cargo
+    if (cargo.match(cargoReg)) {
+      msg_cargo_validation_register.innerHTML = "";
+      input_cadastro_cargoempresa.style.border = "1px solid green ";
+      input_cadastro_cargoempresa.style.color = " green";
+    } else {
+      msg_cargo_validation_register.innerHTML =
+        '<b style="color: red;"> Verifique o campo preenchido </b>';
+      input_cadastro_cargoempresa.style.color = "red";
+      input_cadastro_cargoempresa.style.border = "1px solid red";
+    }
+  }
 
-  // // Expressões Regulares
-  // //Expressão Nome
-  // var nomeReg = /^[À-úA-z ]{3,35}$/;
-  // //Expressão cargo
-  // var cargoReg = /^[À-úA-z ]{3,35}$/;
-  // //Expressão email
-  // var emailReg = /^([À-úA-z0-9._-]+@[a-z0-9._-]+\.[A-z0-9_-]+)$/;
+  function validacao_email_register() {
+    var email = email_usuario.value;
+    // Verifica email
+    if (email.match(emailReg)) {
+      msg_email_validation_register.innerHTML = "";
+      email_usuario.style.border = "1px solid green ";
+      email_usuario.style.color = " green";
+    } else {
+      msg_email_validation_register.innerHTML =
+        '<b style="color: red;"> Verifique o campo preenchido </b>';
+      email_usuario.style.color = "red";
+      email_usuario.style.border = "1px solid red";
+    }
+  }
 
-  // function validacao_nome_register() {
-  //   var nome = input_cadastro_nomeempresa.value;
-  //   // Verifica Nome
-  //   if (nome.match(nomeReg)) {
-  //     msg_name_validation_register.innerHTML = "";
-  //     input_cadastro_nomeempresa.style.border = "1px solid green ";
-  //     input_cadastro_nomeempresa.style.color = " green";
-  //   } else {
-  //     msg_name_validation_register.innerHTML =
-  //       '<b style="color: red;"> Verifique o campo preenchido </b>';
-  //     input_cadastro_nomeempresa.style.color = "red";
-  //     input_cadastro_nomeempresa.style.border = "1px solid red";
-  //   }
-  // }
+  function display_show_password() {
+    form_show_password.style.display = "none";
+    form_hidden_password.style.display = "block";
+    ipt_senha.type = "text";
+  }
+  function display_hidden_password() {
+    form_show_password.style.display = "block";
+    form_hidden_password.style.display = "none";
+    ipt_senha.type = "password";
+  }
 
-  // function validacao_cargo_register() {
-  //   var cargo = input_cadastro_cargoempresa.value;
-  //   // Verifica cargo
-  //   if (cargo.match(cargoReg)) {
-  //     msg_cargo_validation_register.innerHTML = "";
-  //     input_cadastro_cargoempresa.style.border = "1px solid green ";
-  //     input_cadastro_cargoempresa.style.color = " green";
-  //   } else {
-  //     msg_cargo_validation_register.innerHTML =
-  //       '<b style="color: red;"> Verifique o campo preenchido </b>';
-  //     input_cadastro_cargoempresa.style.color = "red";
-  //     input_cadastro_cargoempresa.style.border = "1px solid red";
-  //   }
-  // }
+  function AllUsers(){
 
-  // function validacao_email_register() {
-  //   var email = email_usuario.value;
-  //   // Verifica email
-  //   if (email.match(emailReg)) {
-  //     msg_email_validation_register.innerHTML = "";
-  //     email_usuario.style.border = "1px solid green ";
-  //     email_usuario.style.color = " green";
-  //   } else {
-  //     msg_email_validation_register.innerHTML =
-  //       '<b style="color: red;"> Verifique o campo preenchido </b>';
-  //     email_usuario.style.color = "red";
-  //     email_usuario.style.border = "1px solid red";
-  //   }
-  // }
+    fetch("usuarios/listar", {
+      method: "GET",
+      headersa: {
+        "Content-Type": "application/json"
+      }
+    }).then(function (resposta){
 
-  // function display_show_password() {
-  //   form_show_password.style.display = "none";
-  //   form_hidden_password.style.display = "block";
-  //   ipt_senha.type = "text";
-  // }
-  // function display_hidden_password() {
-  //   form_show_password.style.display = "block";
-  //   form_hidden_password.style.display = "none";
-  //   ipt_senha.type = "password";
-  // }
+      console.log("Front ok")
 
-  // function AllUsers(){
+      resposta.json()
+      .then((json) =>{
 
-  //   fetch("usuarios/listar", {
-  //     method: "GET",
-  //     headersa: {
-  //       "Content-Type": "application/json"
-  //     }
-  //   }).then(function (resposta){
+          console.log(json)
 
-  //     console.log("Front ok")
+          for(i = 0; i < json.length; i++){
 
-  //     resposta.json()
-  //     .then((json) =>{
+   div = `<tr id="users-data" class="users-data"> 
+            <td class="td-content"> ${json[i].nome_usuario_maquina} </td> 
+            <td class="td-content"> ${json[i].nome_empresa} </td> 
+            <td class="td-content"> ${json[i].nome_setor} </td> 
+            <td class="td-content"> 
+              <input class="identificacao" readonly type="password"value='${json[i].identificacao_usuario}'>
+            </td>
+            <td class="td-content"> 
+              <span style="cursor:pointer;">
+                <img src="assets/svg/edit.svg"> 
+              </span>
+            </td>
+              <td class="td-content"> 
+                <span style="cursor:pointer;"> 
+                  <img src="assets/svg/delete.svg">
+                </span> 
+              </td>
+          </tr>`
 
-  //         console.log(json)
+           tabelaUsuarios.innerHTML += div
 
-  //         for(i = 0; i < json.length; i++){
+          }
 
-  //  div = `<tr id="users-data" class="users-data">
-  //           <td> ${json[i].id_usuario_maquina} </td>
-  //           <td> ${json[i].nome_usuario_maquina} </td>
-  //           <td> ${json[i].nome_empresa} </td>
-  //           <td> ${json[i].nome_setor} </td>
-  //           <td>
-  //             <input readonly type="password"value='${json[i].identificacao_usuario}' >
-  //           </td>
-  //           <td class="td-content">
-  //             <span style="cursor:pointer;">
-  //               <img src="assets/svg/edit.svg">
-  //             </span>
-  //           </td>
-  //           <td class="td-content">
-  //             <span style="cursor:pointer;">
-  //               <img src="assets/svg/delete.svg">
-  //             </span>
-  //           </td>
-  //         </tr>`
+      })
 
-  //          tabelaUsuarios.innerHTML += div
+    }).catch(function (resposta){
 
-  //         }
+      console.log("Front zuo")
 
-  //     })
+      console.log(resposta)
 
-  //   }).catch(function (resposta){
+    })
 
-  //     console.log("Front zuo")
+  }
 
-  //     console.log(resposta)
+  function cadastrar() {
 
-  //   })
+    var nomeUser = input_cadastro_nomeempresa.value;
+    var cargoUser = input_cadastro_cargoempresa.value;
+    var emailUser = email_usuario.value;
+    var senhaUser = Number(ipt_senha.value);
+    var fk_gestor = sessionStorage.getItem("ID_USER"); // ID_USER vira FK_GESTOR
 
-  // }
+    // Enviando o valor da nova input
 
-  // function cadastrar() {
+    if(fk_gestor != null || fk_gestor != ""){
 
-  //   var nomeUser = input_cadastro_nomeempresa.value;
-  //   var cargoUser = input_cadastro_cargoempresa.value;
-  //   var emailUser = email_usuario.value;
-  //   var senhaUser = Number(ipt_senha.value);
-  //   var fk_gestor = sessionStorage.getItem("ID_USER"); // ID_USER vira FK_GESTOR
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeUser,
+        cargoServer: cargoUser,
+        emailServer: emailUser,
+        senhaServer: senhaUser,
+        fk_gestorServer: fk_gestor
+      }),
+    }).then(function (resposta) {
 
-  //   // Enviando o valor da nova input
+        if(resposta.ok){
 
-  //   if(fk_gestor != null || fk_gestor != ""){
+          Swal.fire({
+            title: 'Parabéns!',
+            text: 'Cadastro realizado com sucesso!!',
+            icon: 'success',
+            showConfirmButton: false,
+            confirmButtonText: 'Confirmar',
+            timer: 3000,
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
 
-  //   fetch("/usuarios/cadastrar", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       // crie um atributo que recebe o valor recuperado aqui
-  //       // Agora vá para o arquivo routes/usuario.js
-  //       nomeServer: nomeUser,
-  //       cargoServer: cargoUser,
-  //       emailServer: emailUser,
-  //       senhaServer: senhaUser,
-  //       fk_gestorServer: fk_gestor
-  //     }),
-  //   }).then(function (resposta) {
+             })
 
-  //       if(resposta.ok){
+             console.log(`Resposta ${resposta.status}`)
 
-  //         Swal.fire({
-  //           title: 'Parabéns!',
-  //           text: 'Cadastro realizado com sucesso!!',
-  //           icon: 'success',
-  //           showConfirmButton: false,
-  //           confirmButtonText: 'Confirmar',
-  //           timer: 3000,
-  //           color: 'white',
-  //           background: '#1e1f25',
-  //           confirmButtonColor: '#272990'
+              setInterval(() => {
 
-  //            })
+                window.location = 'login.html';
 
-  //            console.log(`Resposta ${resposta.status}`)
+              }, 3000);
 
-  //             setInterval(() => {
+            }
 
-  //               window.location = 'login.html';
+      })
+      .catch(function (resposta) {
 
-  //             }, 3000);
+        Swal.fire({
+            title: 'Erro!',
+            text: 'Não conseguimos efetuar o seu login...',
+            icon: 'error',
+            showConfirmButton: true,
+            confirmButtonText: 'Tentar Novamente',
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
 
-  //           }
+          })
 
-  //     })
-  //     .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
 
-  //       Swal.fire({
-  //           title: 'Erro!',
-  //           text: 'Não conseguimos efetuar o seu login...',
-  //           icon: 'error',
-  //           showConfirmButton: true,
-  //           confirmButtonText: 'Tentar Novamente',
-  //           color: 'white',
-  //           background: '#1e1f25',
-  //           confirmButtonColor: '#272990'
+    } else {
 
-  //         })
+      fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeUser,
+        cargoServer: cargoUser,
+        emailServer: emailUser,
+        senhaServer: senhaUser,
+        fk_gestorServer: null
+      }),
+    }).then(function (resposta) {
 
-  //       console.log(`#ERRO: ${resposta}`);
-  //     });
+        if (resposta.ok) {
 
-  //   } else {
+          Swal.fire({
+            title: 'Parabéns!',
+            text: 'Cadastro realizado com sucesso!!',
+            icon: 'success',
+            showConfirmButton: false,
+            confirmButtonText: 'Confirmar',
+            timer: 3000,
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
 
-  //     fetch("/usuarios/cadastrar", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       // crie um atributo que recebe o valor recuperado aqui
-  //       // Agora vá para o arquivo routes/usuario.js
-  //       nomeServer: nomeUser,
-  //       cargoServer: cargoUser,
-  //       emailServer: emailUser,
-  //       senhaServer: senhaUser,
-  //       fk_gestorServer: null
-  //     }),
-  //   }).then(function (resposta) {
+             })
 
-  //       if (resposta.ok) {
+             console.log(`Resposta ${resposta.status}`)
 
-  //         Swal.fire({
-  //           title: 'Parabéns!',
-  //           text: 'Cadastro realizado com sucesso!!',
-  //           icon: 'success',
-  //           showConfirmButton: false,
-  //           confirmButtonText: 'Confirmar',
-  //           timer: 3000,
-  //           color: 'white',
-  //           background: '#1e1f25',
-  //           confirmButtonColor: '#272990'
+              setInterval(() => {
 
-  //            })
+                window.location = 'login.html';
 
-  //            console.log(`Resposta ${resposta.status}`)
+              }, 3000);
 
-  //             setInterval(() => {
+        }
+      })
+      .catch(function (resposta) {
 
-  //               window.location = 'login.html';
+        Swal.fire({
+            title: 'Erro!',
+            text: 'Tente novamente...',
+            icon: 'error',
+            showConfirmButton: true,
+            confirmButtonText: 'Tentar Novamente',
+            color: 'white',
+            background: '#1e1f25',
+            confirmButtonColor: '#272990'
 
-  //             }, 3000);
+          })
 
-  //       }
-  //     })
-  //     .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
 
-  //       Swal.fire({
-  //           title: 'Erro!',
-  //           text: 'Tente novamente...',
-  //           icon: 'error',
-  //           showConfirmButton: true,
-  //           confirmButtonText: 'Tentar Novamente',
-  //           color: 'white',
-  //           background: '#1e1f25',
-  //           confirmButtonColor: '#272990'
+      });
 
-  //         })
-
-  //       console.log(`#ERRO: ${resposta}`);
-
-  //     });
-
-  //   }
-  // }
+    }
+  }
 </script>

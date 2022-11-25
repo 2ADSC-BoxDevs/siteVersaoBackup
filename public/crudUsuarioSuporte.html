@@ -47,7 +47,6 @@
         <h1>USUÁRIOS SUPORTE</h1>
       </div>
       <div>
-        <button onclick="TesteListar()">refresh</button>
         <button class="btn-add-user" onclick="AddUserSup()">
           <a href="cadastroUsuarioSuporte.html">+ add Users</a>
         </button>
@@ -71,36 +70,21 @@
 </html>
 
 <script>
-  function TesteListar() {
-    var json = [
-      {
-        id_usuario_suporte: 1,
-        nome_usuario_suporte: "Paul",
-        email_usuario_suporte: "theBeatles@appleCorps.com",
-        nome_empresa: "Beatles",
+  function AllUsersSuporte() {
+    fetch("usuarios/listarSuporte", {
+      method: "GET",
+      headersa: {
+        "Content-Type": "application/json",
       },
-      {
-        id_usuario_suporte: 2,
-        nome_usuario_suporte: "Paul",
-        email_usuario_suporte: "theBeatles@appleCorps.com",
-        nome_empresa: "Beatles",
-      },
-      {
-        id_usuario_suporte: 3,
-        nome_usuario_suporte: "Ring",
-        email_usuario_suporte: "theBeatles@appleCorps.com",
-        nome_empresa: "Beatles",
-      },
-      {
-        id_usuario_suporte: 4,
-        nome_usuario_suporte: "George",
-        email_usuario_suporte: "theBeatles@appleCorps.com",
-        nome_empresa: "Beatles",
-      },
-    ];
+    })
+      .then(function (resposta) {
+        console.log("Front ok");
 
-    for (i = 0; i < json.length; i++) {
-      div = `<tr id="users-data" class="users-data"> 
+        resposta.json().then((json) => {
+          console.log(json);
+
+          for (i = 0; i < json.length; i++) {
+            div = `<tr id="users-data" class="users-data"> 
                     <td class="td-content"> ${json[i].id_usuario_suporte} </td> 
                     <td class="td-content"> ${json[i].nome_usuario_suporte} </td> 
                     <td class="td-content"> ${json[i].email_usuario_suporte} </td> 
@@ -120,48 +104,14 @@
                     </td>
                   </tr>`;
 
-      tabelaUsuariosSuporte.innerHTML += div;
-    }
+            tabelaUsuariosSuporte.innerHTML += div;
+          }
+        });
+      })
+      .catch(function (resposta) {
+        console.log("Front zuo");
+
+        console.log(resposta);
+      });
   }
-
-  // function AllUsersSuporte() {
-  //   fetch("usuarios/listarSuporte", {
-  //     method: "GET",
-  //     headersa: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then(function (resposta) {
-  //       console.log("Front ok");
-
-  //       resposta.json().then((json) => {
-  //         console.log(json);
-
-  //         for (i = 0; i < json.length; i++) {
-  //           div = `<tr>
-  //                   <td> ${json[i].id_usuario_suporte} </td>
-  //                   <td> ${json[i].nome_usuario_suporte} </td>
-  //                   <td> ${json[i].email_usuario_suporte} </td>
-  //                   <td>
-  //                     <input readonly type="password"value='${json[i].senha_usuario_suporte}' >
-  //                   </td>
-  //                   <td> ${json[i].nome_empresa} </td>
-  //                   <td>
-  //                     <span style="cursor:pointer;"> Editar </span>
-  //                   </td>
-  //                   <td>
-  //                     <span style="cursor:pointer;"> Excluir </span>
-  //                   </td>
-  //                 </tr>`;
-
-  //           tabelaUsuariosSuporte.innerHTML += div;
-  //         }
-  //       });
-  //     })
-  //     .catch(function (resposta) {
-  //       console.log("Front zuo");
-
-  //       console.log(resposta);
-  //     });
-  // }
 </script>
