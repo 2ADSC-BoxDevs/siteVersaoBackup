@@ -28,6 +28,21 @@ body {
 
 /* INICIO HEADER */
 
+.btn-voltar{
+  width: 60px;
+  padding: 20px;
+  position: absolute;
+  transition: .6s;
+  
+  
+  }
+  
+  .btn-voltar:hover{
+    transform: translatex(-13px);
+    opacity: 0.9;
+  
+  }
+
 .navbar {
   padding: 0;
   width: 100%;
