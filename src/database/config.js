@@ -24,7 +24,7 @@ var mySqlConfig = {
     host: "localhost",
     user: "root",
     database: "specula",
-    password: "Spitfire@44",
+    password: "#Gf53187038875",
 
 
 };

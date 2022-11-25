@@ -48,7 +48,7 @@ create table usuario_maquina(
     nome_usuario_maquina varchar(45),
     cargo_usuario_maquina varchar(45),
     identificacao_usuario varchar(45),
-     fk_empresa int,
+    fk_empresa int,
     foreign key(fk_empresa) references empresa(id_empresa)
     
 );
@@ -56,22 +56,11 @@ create table usuario_maquina(
 #INSERT LOCAL
 insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario) values
 ("n1","n1");
-insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario, fk_empresa) values
-("n1Empresa2","n1Empresa",2);
-insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario, fk_empresa) values
-("n1Empresa2","n1Empresa2",2);
-insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario, fk_empresa) values
-("n2","n2",2);
+
 
 #INSERT AZURE
 insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario) values
 ('n1','n1');
-insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario, fk_empresa) values
-('n1Empresa2','n1Empresa2',2);
-insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario, fk_empresa) values
-('n1Empresa2','n1Empresa',2);
-insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario, fk_empresa) values
-('n2','n2',2);
 
 
 create table maquina (
@@ -80,37 +69,27 @@ create table maquina (
     foreign key(fk_empresa) references empresa(id_empresa),
 	fk_usuario_maquina int,
     foreign key(fk_usuario_maquina) references usuario_maquina(id_usuario_maquina),
-    isActivade varchar(15),
+    isActive varchar(15),
     codigo_patrimonio varchar(45),
     cpu_detalhe varchar(45),
     ram_detalhe varchar(45),
-    disco_detalhe varchar(45)
+    disco_detalhe varchar(45),
+    sistema_operacional varchar(45)
 );
 
-insert into maquina (fk_empresa,fk_usuario_maquina,codigo_patrimonio) values
-(1,1,2121212);
 
 create table historico_maquina (
 	id_historico int primary key auto_increment,
     fk_maquina int,
     foreign key(fk_maquina) references maquina(id_maquina),
     sistema_operacional varchar(30),
-    memoria_em_uso varchar (30),
-    memoria_disponivel varchar(30),
-    processador_em_uso varchar(30),
-    disco_em_uso varchar(30),
-    data_hora_registro datetime default current_timestamp
-);
+    memoriaRam_emUso varchar (30),
+    memoriaRam_disponivel varchar(30),
+    processador_emUso varchar(30),
+    disco_emUso varchar(30)
+    data_hora_registro varchar(30) default current_timestamp
+); 
 
-create table base_conhecimento (
-    id_descricao int primary key auto_increment,
-    fk_usuario_suporte int,
-    foreign key(fk_usuario_suporte) references usuario_suporte(id_usuario_suporte),
-    descricao varchar(255),
-    data_hora_descricao datetime default current_timestamp
-);
-
-UPDATE maquina SET isActivade = '1',codigo_patrimonio = 'kauan',cpu_detalhe = 'Kauan',ram_detalhe = 'Kauan',disco_detalhe = 'Matheus'  WHERE id_maquina = 1;
 
 select * from empresa;
 select * from usuario_suporte;
