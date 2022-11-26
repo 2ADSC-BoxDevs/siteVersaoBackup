@@ -42,10 +42,9 @@
             <h1>MÁQUINAS</h1>
           </div>
 
-            <div>
-              <button onclick="TesteListar()">refresh</button>
-              <button class="btn-add-machine" onclick="AddMachine()">+ add</button>
-            </div>
+          <div>
+            <button class="btn-add-machine" onclick="AddMachine()">+ add</button>
+          </div>
         </div>
 
         <!--    <div class="block_text">
@@ -113,59 +112,6 @@
 </html>
 
 <script>
-
-  function TesteListar(){
-
-    var json = [
-      {
-        id_maquina: 1,
-        codigo_patrimonio: "123456",
-        nome_usuario_maquina: "Paul",  
-        nome_empresa: "Beatles",
-      },
-      {
-        id_maquina: 2,
-        codigo_patrimonio: "123456",
-        nome_usuario_maquina: "Paul",
-        nome_empresa: "Beatles",
-      },
-      {
-        id_maquina: 3,
-        codigo_patrimonio: "123456",
-        nome_usuario_maquina: "Ring",
-        nome_empresa: "Beatles",
-      },
-      {
-        id_maquina: 4,
-        codigo_patrimonio: "123456",
-        nome_usuario_maquina: "George",
-        nome_empresa: "Beatles",        
-      },
-    ];
-
-    console.log(json[0]);
-
-    for (i = 0; i < json.length; i++) {
-            div = `<tr id="users-data" class="machines-data"> 
-                    <td class="td-content"> ${json[i].id_maquina} </td> 
-                    <td class="td-content"> ${json[i].codigo_patrimonio} </td> 
-                    <td class="td-content"> ${json[i].nome_usuario_maquina} </td> 
-                    <td class="td-content"> ${json[i].nome_empresa} </td> 
-                    <td class="td-content"> 
-                      <span style="cursor:pointer;"> 
-                        <img src="assets/svg/edit.svg"> 
-                      </span> 
-                    </td>
-                    <td class="td-content">  
-                      <span style="cursor:pointer;"> 
-                        <img src="assets/svg/delete.svg">
-                      </span> 
-                    </td>
-                  </tr>`;
-
-            tabelaMaquina.innerHTML += div;
-  }
-}
 
 function AddMachine() {
     document.getElementById("modal").style.display = "flex";
@@ -248,16 +194,20 @@ function CloseModal() {
           console.log(json);
 
           for (i = 0; i < json.length; i++) {
-            div = `<tr> 
-                    <td> ${json[i].id_maquina} </td> 
-                    <td> ${json[i].codigo_patrimonio} </td> 
-                    <td> ${json[i].nome_usuario_maquina} </td> 
-                    <td> ${json[i].nome_empresa} </td> 
-                    <td> 
-                      <span style="cursor:pointer;"> Editar </span> 
+            div = `<tr id="users-data" class="machines-data"> 
+                    <td class="td-content"> ${json[i].id_maquina} </td> 
+                    <td class="td-content"> ${json[i].codigo_patrimonio} </td> 
+                    <td class="td-content"> ${json[i].nome_usuario_maquina} </td> 
+                    <td class="td-content"> ${json[i].nome_empresa} </td> 
+                    <td class="td-content"> 
+                      <span style="cursor:pointer;"> 
+                        <img src="assets/svg/edit.svg"> 
+                      </span> 
                     </td>
-                    <td>  
-                      <span style="cursor:pointer;"> Excluir </span> 
+                    <td class="td-content">  
+                      <span style="cursor:pointer;"> 
+                        <img src="assets/svg/delete.svg">
+                      </span> 
                     </td>
                   </tr>`;
 
