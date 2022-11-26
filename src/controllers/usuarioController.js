@@ -279,6 +279,29 @@ function verifyEmail(req, res) {
     // }
 }
 
+function deleteMaquinas(req, res) {
+
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var id_maquina = req.params.idMaquina;
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.deleteMaquinas(id_maquina)
+            .then(function (resultado) {
+
+                    res.json(resultado);
+                }
+
+            ).catch(function (erro) {
+
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar o cadastro! Erro: ",erro.sqlMessage);
+
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    // }
+}
+
 
 function cadastrarEmpresa(req, res) {
 
@@ -322,5 +345,6 @@ module.exports = {
     testar,
     cadastrarEmpresa,
     listarMaquinas,
-    listarSuporte
+    listarSuporte,
+    deleteMaquinas
 }

@@ -36,6 +36,7 @@ body {
   
   
   }
+
   
   .btn-voltar:hover{
     transform: translatex(-13px);
@@ -329,6 +330,7 @@ form span {
 .table-machines .machines-data .td-content {
   font-size: 18px;
   padding: 0 0 6px 0;
+  border-bottom: 2px solid white;
 }
 
 .table-machines .machines-data .td-content span {
@@ -355,8 +357,8 @@ form span {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 54vh;
-  width: 34vw;
+  height: 84vh;
+  width: 64vw;
   position: fixed;
   z-index: 10000;
   top: 20%;

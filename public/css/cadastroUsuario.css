@@ -301,6 +301,7 @@ form span {
 .table-users .users-data .td-content {
   font-size: 18px;
   padding: 0 0 6px 0;
+  border-bottom: 2px solid white;
 }
 
 .table-users .users-data .td-content span {

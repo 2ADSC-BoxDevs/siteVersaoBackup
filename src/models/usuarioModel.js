@@ -109,7 +109,31 @@ function cadastrarEmpresa(nome, cnpj, cep, bairro, logradouro, cidade) {
 
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEmpresa()");
     var instrucao = `
-    insert into empresa (nome_empresa, cnpj, cep, bairro, logradouro, cidade) values ('${nome}', '${cnpj}', '${cep}', '${bairro}', '${logradouro}', '${cidade}')
+    insert into empresa values ('${nome}', '${cnpj}', '${cep}', '${bairro}', '${logradouro}', '${cidade}')
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+
+    return database.executar(instrucao);
+}
+
+function deleteHistoricoMaquinas(fk_maquina) {
+
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEmpresa()");
+    var instrucao = `
+    DELETE FROM historico_maquina WHERE fk_maquina = ${fk_maquina};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+
+    return database.executar(instrucao);
+}
+
+function deleteMaquinas(id_maquina) {
+
+    deleteHistoricoMaquinas(id_maquina);
+
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEmpresa()");
+    var instrucao = `
+    DELETE FROM maquina WHERE id_maquina = ${id_maquina};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
 
@@ -125,6 +149,7 @@ module.exports = {
     verifyEmail,
     cadastrarEmpresa,
     listarMaquinas,
-    listarSuporte
-
+    listarSuporte,
+    deleteMaquinas,
+    deleteHistoricoMaquinas
 };

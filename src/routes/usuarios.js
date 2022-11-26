@@ -44,12 +44,10 @@ router.get("/listar", function (req, res) {
 
 });
 
-
 // Pendente
 router.post("/cadastrarUser", function (req, res) {
     usuarioController.cadastrarUser(req, res);
 })
-
 
 
 //-----------------------------------------------------------------------------------------------
@@ -90,6 +88,10 @@ router.post("/cadastrar", function (req, res) {
 router.get("/listarMaquinas", function (req, res) {
     usuarioController.listarMaquinas(req, res);
 });
+
+router.delete("/DeletarMaquina/:idMaquina", function (req, res) {
+    usuarioController.deleteMaquinas(req, res);
+})
 
 
 //------------------------------------------------------------------------------------------------

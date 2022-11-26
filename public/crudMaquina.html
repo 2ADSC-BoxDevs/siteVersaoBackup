@@ -1,53 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>maquina</title>
-    <!-- Link fonte -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Link CSS -->
 
-    <link rel="stylesheet" href="css/cadastroMaquina.css" />
-    <!-- Link icones -->
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
-    />
-    <link
-      rel="shortcut icon"
-      href="assets/logo/logo-footer.png"
-      type="image/x-icon"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css">
+  <title>maquina</title>
+  <!-- Link fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet" />
+  <!-- Link CSS -->
 
-  <body onload="AllMachines()">
-    <div class="mainlogin">
-      <div class="son_card">
-        <a href="dashV3.html">
-          <img class="btn-voltar" src="./assets/icons/setaVoltar.png"></a>
-        <div class="header">
-          <div class="header-title">
-            <img
-              class="uil-user-circle"
-              src="assets/imgs/icon-maquina.png"
-              alt=""
-            />
-            <h1>MÁQUINAS</h1>
-          </div>
+  <link rel="stylesheet" href="css/cadastroMaquina.css" />
+  <!-- Link icones -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+  <link rel="shortcut icon" href="assets/logo/logo-footer.png" type="image/x-icon" />
+</head>
 
-          <div>
-            <button class="btn-add-machine" onclick="AddMachine()">+ add</button>
-          </div>
+<body onload="AllMachines()">
+  <div class="mainlogin">
+    <div class="son_card">
+      <a href="dashV3.html">
+        <img class="btn-voltar" src="./assets/icons/setaVoltar.png"></a>
+      <div class="header">
+        <div class="header-title">
+          <img class="uil-user-circle" src="assets/imgs/icon-maquina.png" alt="" />
+          <h1>MÁQUINAS</h1>
         </div>
 
-        <!--    <div class="block_text">
+        <div>
+          <button class="btn-add-machine" onclick="AddMachine('add')">+ add</button>
+        </div>
+      </div>
+
+      <!--    <div class="block_text">
           <div class="textfield">
             <label for="maquina">ID da máquina:</label>
             <input id="id_maquina" type="text" placeholder="Insira o id" />
@@ -108,45 +98,106 @@
       </div>
 
   </div> -->
-  </body>
+</body>
+
 </html>
 
 <script>
 
-function AddMachine() {
-    document.getElementById("modal").style.display = "flex";
+  function AddMachine(type) {
 
-    document.getElementById("modal").innerHTML = `
-    <div class="modal-header">
-      <h2>Add User</h2>
-      <button onclick="CloseModal()" class="btn-close-modal"> 
-        <img src="assets/svg/cancel.svg">
-      </button>
-    </div>
-    <div class="block_text">
-      <div class="textfield">
-        <label for="maquina">ID da máquina:</label>
-        <input id="id_maquina" type="text" placeholder="Insira o id" />
-        <i class="uil uil-cog"></i>
+
+    if(type == "edit"){
+
+      document.getElementById("modal").style.display = "flex";
+
+        document.getElementById("modal").innerHTML = `
+        <div class="modal-header">
+          <h2>Editar Máquina</h2>
+          <button onclick="CloseModal()" class="btn-close-modal"> 
+            <img src="assets/svg/cancel.svg">
+          </button>
+        </div>
+        <div class="block_text">
+          <div class="textfield">
+            <label for="maquina">ID da máquina:</label>
+            <input id="id_maquina" type="text" placeholder="Insira o id" />
+            <i class="uil uil-cog"></i>
+          </div>
+
+          <div class="textfield">
+            <label for="usuario">Setor:</label>
+              <input
+                id="setor_maquina"
+                type="password"
+                placeholder="Insira o setor:"
+              />
+              <i class="uil uil-store-alt"></i>
+          </div>
+          <button class="btnlogin" onclick="cadastrarMaquina()">Proximo</button>
+        </div>
+        `;
+
+
+    } else {
+
+
+      document.getElementById("modal").style.display = "flex";
+
+      document.getElementById("modal").innerHTML = `
+      <div class="modal-header">
+        <h2>Adicionar Máquina</h2>
+        <button onclick="CloseModal()" class="btn-close-modal"> 
+          <img src="assets/svg/cancel.svg">
+        </button>
       </div>
+      <div class="block_text">
+        <div class="textfield">
+          <label for="maquina"> Patrimonio da máquina:</label>
+          <input id="id_maquina" type="text" placeholder="Insira o Patrimonio" />
+          <i class="uil uil-cog"></i>
+        </div>
 
-      <div class="textfield">
-        <label for="usuario">Setor:</label>
-          <input
-            id="setor_maquina"
-            type="password"
-            placeholder="Insira o setor:"
-          />
-          <i class="uil uil-store-alt"></i>
+        <div class="textfield">
+          <label for="usuario"> Setor:</label>
+            <input
+              id="setor_maquina"
+              type="password"
+              placeholder="Insira o setor:"
+            />
+            <i class="uil uil-store-alt"></i>
+        </div>
+
+        <div class="textfield">
+          <label for="usuario"> Setor:</label>
+            <input
+              id="setor_maquina"
+              type="password"
+              placeholder="Insira o setor:"
+            />
+            <i class="uil uil-store-alt"></i>
+        </div>
+
+        <div class="textfield">
+          <label for="usuario"> Setor:</label>
+            <input
+              id="setor_maquina"
+              type="password"
+              placeholder="Insira o setor:"
+            />
+            <i class="uil uil-store-alt"></i>
+        </div>
+        <button class="btnlogin" onclick="cadastrarMaquina()">Proximo</button>
       </div>
-      <button class="btnlogin" onclick="cadastrarMaquina()">Proximo</button>
-    </div>
-    `;
-}
+      `;
 
-function CloseModal() {
+    }
+
+  }
+
+  function CloseModal() {
     document.getElementById("modal").style.display = "none";
-}
+  }
 
   // function listUser(){
 
@@ -183,7 +234,7 @@ function CloseModal() {
   function AllMachines() {
     fetch("usuarios/listarMaquinas", {
       method: "GET",
-      headersa: {
+      headers: {
         "Content-Type": "application/json",
       },
     })
@@ -200,12 +251,12 @@ function CloseModal() {
                     <td class="td-content"> ${json[i].nome_usuario_maquina} </td> 
                     <td class="td-content"> ${json[i].nome_empresa} </td> 
                     <td class="td-content"> 
-                      <span style="cursor:pointer;"> 
+                      <span style="cursor:pointer;" onclick="AddMachine('edit')"> 
                         <img src="assets/svg/edit.svg"> 
                       </span> 
                     </td>
                     <td class="td-content">  
-                      <span style="cursor:pointer;"> 
+                      <span style="cursor:pointer;" onclick="deleteMaquina(${json[i].id_maquina})"> 
                         <img src="assets/svg/delete.svg">
                       </span> 
                     </td>
@@ -213,7 +264,7 @@ function CloseModal() {
 
             tabelaMaquina.innerHTML += div;
           }
-        }); 
+        });
       })
       .catch(function (resposta) {
         console.log("Front zuo");
@@ -221,4 +272,123 @@ function CloseModal() {
         console.log(resposta);
       });
   }
+
+  function deleteMaquina(maquina) {
+
+    var idMaquina = maquina
+
+    console.log(idMaquina)
+
+    Swal.fire({
+      title: `Tem certeza que deseja excluir está máquina?`,
+      text: "",
+      icon: 'warning',
+      showCancelButton: true,
+      color: "white",
+      background: "#1e1f25",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim, confirmar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+                  fetch(`usuarios/DeletarMaquina/${idMaquina}`, {
+                  method: "DELETE",
+                  headers: {
+                    "Conten-Type": "application/json",
+                  }
+                })
+                  .then(function (resposta) {
+
+                    Swal.fire({
+                      title: "OK!",
+                      text: "Máquina excluida com sucesso!!",
+                      icon: "success",
+                      showConfirmButton: false,
+                      confirmButtonText: "Confirmar",
+                      timer: 3000,
+                      color: "white",
+                      background: "#1e1f25",
+                      confirmButtonColor: "#272990",
+                    })
+
+                    setInterval(() => {
+                      window.location = "crudMaquina.html";
+                    }, 3000);
+
+                  }).catch(function (resposta) {
+
+                    console.log("Deu erro no front")
+
+                    Swal.fire({
+                      title: "Erro!",
+                      text: "Tente novamente...",
+                      icon: "error",
+                      showConfirmButton: true,
+                      confirmButtonText: "Tentar Novamente",
+                      color: "white",
+                      background: "#1e1f25",
+                      confirmButtonColor: "#272990",
+                    });
+
+                  })
+
+      }
+    })
+
+
+
+  }
+
+  function editMaquina(idMaquina){
+
+   var id_maquina = idMaquina
+
+
+   fetch(`usuarios/DeletarMaquina/${idMaquina}`, {
+                  method: "DELETE",
+                  headers: {
+                    "Conten-Type": "application/json",
+                  }
+                })
+                  .then(function (resposta) {
+
+                    Swal.fire({
+                      title: "OK!",
+                      text: "Máquina excluida com sucesso!!",
+                      icon: "success",
+                      showConfirmButton: false,
+                      confirmButtonText: "Confirmar",
+                      timer: 3000,
+                      color: "white",
+                      background: "#1e1f25",
+                      confirmButtonColor: "#272990",
+                    })
+
+                    setInterval(() => {
+                      window.location = "crudMaquina.html";
+                    }, 3000);
+
+                  }).catch(function (resposta) {
+
+                    console.log("Deu erro no front")
+
+                    Swal.fire({
+                      title: "Erro!",
+                      text: "Tente novamente...",
+                      icon: "error",
+                      showConfirmButton: true,
+                      confirmButtonText: "Tentar Novamente",
+                      color: "white",
+                      background: "#1e1f25",
+                      confirmButtonColor: "#272990",
+                    });
+
+                  })
+
+
+
+
+  }
+
 </script>
