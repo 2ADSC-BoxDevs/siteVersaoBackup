@@ -178,11 +178,9 @@
     if (email.match(emailReg)) {
       msg_email_validation_register.innerHTML = "";
       email_usuario.style.border = "1px solid green ";
-      email_usuario.style.color = " green";
     } else {
       msg_email_validation_register.innerHTML =
         '<b style="color: red;"> Verifique o campo preenchido </b>';
-      email_usuario.style.color = "red";
       email_usuario.style.border = "1px solid red";
     }
   }
