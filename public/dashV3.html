@@ -548,14 +548,11 @@
             if (ram > 6){
               AlertasRam++
             }
-
-
         }
-
         
-        dados.datasets[0].data.push(Number(AlertasRam).toFixed(0));
+        dados.datasets[0].data.push(AlertasRam);
 
-        dados.datasets[1].data.push(Number(AlertasCPU).toFixed(0));
+        dados.datasets[1].data.push(AlertasCPU);
 
         const config = {
             type: 'bar',
@@ -567,13 +564,14 @@
             config
         );
 
-        setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 2000);
+        console.log("plotei grafico")
+        setTimeout(() => myChart.update(), 2000);
     }
 
 
 
     function atualizarGrafico(idEmpresa, dados, myChart) {
-        fetch(`/medidas/tempo-realTodas/${idEmpresa}`, { cache: "no-store" })
+        fetch(`/medidas/todas/${idEmpresa}`, { cache: "no-store" })
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (novoRegistro) {
