@@ -8,6 +8,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="shortcut icon" href="assets/logo/logo-footer.png" type="image/x-icon">
     <title>Specula | Painel</title>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
     <!-- Montserrat Font -->
     <link
@@ -45,7 +46,6 @@
             </div>
         </header>
         <!-- End Header -->
-
 
         <!-- Sidebar -->
         <aside id="sidebar">
@@ -86,12 +86,9 @@
         </aside>
         <!-- End Sidebar -->
 
-
-        <main class="main-container">
-
-
-            <div class="charts" id="container_painel_id">
-                <div class="container-dash">
+        <main class="main-container" style="background-color: red;">
+            <div class="charts" id="container_painel_id" style="background-color: blue;">
+                <!-- <div class="container-dash">
                     <div id="maquina1" class="maquinas">
                         <div class="titulo-dash-maquina">
                             <div class="desligar">
@@ -102,133 +99,99 @@
                         </div>
                         <div class="dashs-maquinas-cads">
                             <canvas id="myChartDinamic"></canvas>
-
                         </div>
                     </div>
-                </div>
-                <div class="dashboards" id="dashboards_id">
-
-                    <div class="painel-dashboards" style="display: none;">
-                        <div class="title-painel-dash">
-                            <div class="titletext">
-                                <h1>BBD012274</h1><i class='bx bx-x-circle'></i>
-                            </div>
-
-                        </div>
-                        <div class="container-painel-dashs">
-                            <div class="container-cpu">
-                                <div class="container-cpu-left">
-                                    <div class="titulo-cpu">
-
-                                    </div>
-                                    <div class="cad-hard-info">
-                                        <div class="hard-info-cpu">
-                                            <h2>CPU</h2>
-                                            <h3>Nome: <span>AMD Ryzen 5 5500U</span></h3>
-                                            <h3>Pacotes Físicos: <span>1</span></h3>
-                                            <h3>CPUs Físicas: <span>6</span></h3>
-                                            <h3>CPUs Lógicas: <span>12 </span></h3>
-                                            <h3>Frequência: <span>4056000 </span></h3>
-                                            <h3>Fabricante: <span>Authentic AMD </span></h3>
-                                        </div>
-                                        <div class="destaque-info-cpu">
-                                            <div class="circle_destaque">
-                                                <h1>56%</h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="dash-container-cpu">
-                                    <canvas id="myChartcpu"></canvas>
-                                </div>
-                            </div>
-
-                            <div class="container-memoria">
-                                <div class="container-memoria-left">
-                                    <div class="titulo-memoria">
-                                    </div>
-                                    <div class="cad-hard-info-memoria">
-                                        <div class="hard-info-memoria">
-                                            <h2>Memoria</h2>
-
-                                            <h3>Em uso: <span>4,3</span></h3>
-                                            <h3>Disponível: <span>1,3</span></h3>
-                                            <h3>Total <span>5,7</span></h3>
-                                        </div>
-                                        <div class="destaque-info-memoria">
-                                            <div class="circle_destaque-memoria">
-                                                <h1>78%</h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="dash-container-memoria">
-                                    <canvas id="myChartmemoria"></canvas>
-                                </div>
-                            </div>
-
-
-
-                            <div class="container-disco">
-                                <div class="container-disco-left">
-                                    <div class="titulo-disco">
-                                    </div>
-                                    <div class="cad-hard-info">
-                                        <div class="hard-info-disco">
-                                            <h2>Disco</h2>
-
-                                            <h3>Tamho: <span>256</span></h3>
-                                            <h3>Leitura: <span>11</span></h3>
-                                            <h3>Bytes de leitura: <span>22</span></h3>
-                                            <h3>Escritas: <span>29</span></h3>
-                                            <h3>Bytes de escrita: <span>62</span></h3>
-                                            <h3>Tamanho atual da fila: <span>0</span></h3>
-                                            <h3>Tempo de transferência: <span>10</span></h3>
-                                        </div>
-                                        <div class="destaque-info-disco">
-                                            <div class="circle_destaque-disco">
-
-                                                <h1>0</h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="dash-container-disco">
-                                    <canvas id="myChartdisco"></canvas>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-
+                </div> -->
             </div>
 
+            <div class="dashboards" id="dashboards_id" style="display: none">
+                <div class="painel-dashboards" >
+                    <div class="title-painel-dash">
+                        <div class="titletext">
+                            <h1>BBD012274</h1><i class='bx bx-x-circle'></i>
+                        </div>
+                    </div>
+                    <div class="container-painel-dashs">
+                        <div class="container-cpu">
+                            <div class="container-cpu-left">
+                                <div class="titulo-cpu">
+                                </div>
+                                <div class="cad-hard-info">
+                                    <div class="hard-info-cpu">
+                                        <h2>CPU</h2>
+                                        <h3>Nome: <span>AMD Ryzen 5 5500U</span></h3>
+                                        <h3>Pacotes Físicos: <span>1</span></h3>
+                                        <h3>CPUs Físicas: <span>6</span></h3>
+                                        <h3>CPUs Lógicas: <span>12 </span></h3>
+                                        <h3>Frequência: <span>4056000 </span></h3>
+                                        <h3>Fabricante: <span>Authentic AMD </span></h3>
+                                    </div>
+                                    <div class="destaque-info-cpu">
+                                        <div class="circle_destaque">
+                                            <h1>56%</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dash-container-cpu">
+                                <canvas id="myChartcpu"></canvas>
+                            </div>
+                        </div>
+                        <div class="container-memoria">
+                            <div class="container-memoria-left">
+                                <div class="titulo-memoria">
+                                </div>
+                                <div class="cad-hard-info-memoria">
+                                    <div class="hard-info-memoria">
+                                        <h2>Memoria</h2>
+
+                                        <h3>Em uso: <span>4,3</span></h3>
+                                        <h3>Disponível: <span>1,3</span></h3>
+                                        <h3>Total <span>5,7</span></h3>
+                                    </div>
+                                    <div class="destaque-info-memoria">
+                                        <div class="circle_destaque-memoria">
+                                            <h1>78%</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dash-container-memoria">
+                                <canvas id="myChartmemoria"></canvas>
+                            </div>
+                        </div>
+                        <div class="container-disco">
+                            <div class="container-disco-left">
+                                <div class="titulo-disco">
+                                </div>
+                                <div class="cad-hard-info">
+                                    <div class="hard-info-disco">
+                                        <h2>Disco</h2>
+                                        <h3>Tamho: <span>256</span></h3>
+                                        <h3>Leitura: <span>11</span></h3>
+                                        <h3>Bytes de leitura: <span>22</span></h3>
+                                        <h3>Escritas: <span>29</span></h3>
+                                        <h3>Bytes de escrita: <span>62</span></h3>
+                                        <h3>Tamanho atual da fila: <span>0</span></h3>
+                                        <h3>Tempo de transferência: <span>10</span></h3>
+                                    </div>
+                                    <div class="destaque-info-disco">
+                                        <div class="circle_destaque-disco">
+                                            <h1>0</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dash-container-disco">
+                                <canvas id="myChartdisco"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
     </div>
-    </main>
-    </div>
-
-    <div class="modalConfirm">
-        <h1>Deseja mesmo reiniciar a máquina, </h1>
-
-        <div class="opcoes">
-            <button onclick="reiniciarMaquina()">
-                Sim
-            </button>
-            <button>
-                Não
-            </button>
-        </div>
-
-    </div>
-
-
-
-
 </body>
 
 
@@ -267,15 +230,16 @@
 
 <!-- Script para trazer maquinas -->
 <script>
-    function listarMaquinas() {
+    function verifyMachines() {
+        var idEmpresa = sessionStorage.FK_EMPRESA;
 
 
-        console.log("Entrei no buscarMedida")
-        fetch(`/medidas/ultimas/${idEmpresa}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
+        console.log("Entrei no verifyMachines")
+        fetch(`medidas/verify/${idEmpresa}`, {
+            // method: "GET",
+            // headers: {
+            //     "Content-Type": "application/json",
+            // },
         }).then(function (resposta) {
 
             console.log("Entrei no buscarMedida then")
@@ -286,23 +250,21 @@
                         console.log("Aqui " + JSON.stringify(json[i])) //Objeto inteiro vindo em STRING
                         if (json[i].isActivade == "sim") {
                             var criaMaquina =
-                                ` <div class="container-dash" onclick="obterDadosGraficoProcessador()})">
-                            <div id="maquina1" class="maquinas">
-                                <div class="titulo-dash-maquina">
-                                    <div class="desligar">
-                                        <img src="assets/icons/Group 156.png">
+                                `<div class="container-dash">
+                                    <div id="" class="maquinas">
+                                        <div class="titulo-dash-maquina">
+                                            <div class="desligar">
+                                                <i style="color : green" class='bx bxs-circle'></i>
+                                            </div>
+                                            <h2>${json[i].codigo_patrimonio}</h2>
+                                        </div>
+                                        <div class="dashs-maquinas-cads">
+                                            <h2> Titular da Máquina: </h1> <span> </span> <br>
+                                            <h2> Sistema Operacional: </h2> <span> </span> <br>
+                                            <h2>
+                                        </div>
                                     </div>
-                                    <h2>${json[i].codigo_patrimonio}</h2>
-                                    <img src="assets/icons/Icon-color.png" alt="">
                                 </div>
-                                <div class="dashs-maquinas-cads">
-                                    nome da maquina : sadada <br>
-                                    usuario da máquina : Victor <br>
-
-
-                                </div>
-                            </div>
-                        </div>
                         `;
 
 
@@ -310,42 +272,29 @@
 
                             var processadorEmUso = `${parseFloat(json[i].processador_em_uso).toFixed(0)}`
 
-                            const ctx = document.getElementById('myChartDinamic').getContext('2d');
-                            const myChartDinamic = new Chart(ctx, {
-                                type: 'line',
-                                data: {
-                                    labels: ['', '', '', '', ''],
-                                    datasets: [{
-                                        label: 'cpu em uso',
-                                        data: [processadorEmUso, processadorEmUso, processadorEmUso, processadorEmUso, processadorEmUso],
-                                        backgroundColor: [
-                                            'rgba(255, 99, 132, 0.2)',
-                                            'rgba(54, 162, 235, 0.2)',
-                                            'rgba(255, 206, 86, 0.2)',
-                                            'rgba(75, 192, 192, 0.2)',
-                                            'rgba(153, 102, 255, 0.2)',
-                                            'rgba(255, 159, 64, 0.2)'
-                                        ],
-                                        borderColor: [
-                                            'rgba(255, 99, 132, 1)',
-                                            'rgba(54, 162, 235, 1)',
-                                            'rgba(255, 206, 86, 1)',
-                                            'rgba(75, 192, 192, 1)',
-                                            'rgba(153, 102, 255, 1)',
-                                            'rgba(255, 159, 64, 1)'
-                                        ],
-                                        borderWidth: 1
-                                    }]
-                                },
-                                options: {
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true
-                                        }
-                                    }
-                                }
-                            });
+                        ;
 
+                        } else {
+                            var criaMaquina =
+                                `<div class="container-dash">
+                                    <div id="" class="maquinas">
+                                        <div class="titulo-dash-maquina">
+                                            <div class="desligar">
+                                                <i style="color : red" class='bx bxs-circle'></i>
+                                            </div>
+                                            <h2>${json[i].codigo_patrimonio}</h2>
+                                        </div>
+                                        <div class="dashs-maquinas-cads">
+                                            <h2> Titular da Máquina: </h1> <span> </span> <br>
+                                            <h2> Sistema Operacional: </h2> <span> </span> <br>
+                                            <h2>
+                                        </div>
+                                    </div>
+                                </div>
+                        `;
+
+
+                            container_painel_id.innerHTML += criaMaquina;
                         }
                     }
                 })
@@ -472,7 +421,7 @@
             });
     }
 
-    obterDadosGraficoProcessador()
-
+    obterDadosGraficoProcessador();
+    verifyMachines();
 
 </script>

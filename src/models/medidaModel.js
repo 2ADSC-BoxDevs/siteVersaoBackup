@@ -4,7 +4,7 @@ var database = require("../database/config");
 function buscarUltimasMedidas(idEmpresa) {
     instrucaoSql = `select m.*, h.*
     from maquina as m
-    right join historico_maquina as h
+     join historico_maquina as h
     on h.fk_maquina=m.id_maquina where m.fk_empresa = ${idEmpresa} order by h.id_historico desc limit 5;`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -14,7 +14,7 @@ function buscarMedidasEmTempoReal(idEmpresa) {
 
         instrucaoSql = `select m.*, h.*
         from maquina as m
-        right join historico_maquina as h
+         join historico_maquina as h
         on h.fk_maquina=m.id_maquina where m.fk_empresa = ${idEmpresa} order by h.id_historico desc limit 1;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -22,9 +22,9 @@ function buscarMedidasEmTempoReal(idEmpresa) {
    
 }
 
-function verifyMachines(){
+function verifyMachines(idEmpresa){
 
-    instrucaoSql = `SELECT * FROM maquina`;
+    instrucaoSql = `SELECT * FROM maquina WHERE fk_empresa = ${idEmpresa}`;
 
     console.log("Executando esse select " + instrucaoSql)
 
@@ -32,9 +32,9 @@ function verifyMachines(){
 
 }
 
-function OnMachines(id){
+function OnMachines(idEmpresa){
 
-    instrucaoSql = `SELECT isActivade FROM maquina WHERE id_maquina = ${id};`;
+    instrucaoSql = ` SELECT * FROM maquina WHERE fk_empresa = ${idEmpresa} and isActivade = "sim";`;
 
     console.log("Executando esse select " + instrucaoSql)
 

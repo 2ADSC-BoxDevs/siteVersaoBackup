@@ -13,11 +13,11 @@ router.get("/tempo-realTemperatura/:idEmpresa", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 
-router.get("/verify", function (req, res) {
+router.get("/verify/:idEmpresa", function (req, res) {
     medidaController.verifyMachines(req,res);
 })
 
-router.post("/OnMachines", function (req, res) {
+router.post("/OnMachines/:idEmpresa", function (req, res) {
     medidaController.OnMachines(req,res);
 })
 

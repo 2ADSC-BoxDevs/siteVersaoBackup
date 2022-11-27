@@ -41,7 +41,9 @@ function buscarMedidasEmTempoReal(req, res) {
 
 function verifyMachines (req, res){
 
-    medidaModel.verifyMachines()
+    var idEmpresa = req.params.idEmpresa;
+
+    medidaModel.verifyMachines(idEmpresa)
     .then(function (resultado) {
 
         if(resultado.length > 0){
@@ -65,6 +67,8 @@ function verifyMachines (req, res){
 }
 
 function OnMachines (req, res){
+
+    var idEmpresa = req.params.idEmpresa;
 
     var id = req.body.idMachine
 

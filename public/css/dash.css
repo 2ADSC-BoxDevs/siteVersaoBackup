@@ -318,12 +318,16 @@ transition: .6s;
   font-size: 35px;
 }
 
-.charts {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 90%;
-  background-color: #21232D;
-  padding: 50px 50px 50px 50px;
+#container_painel_id {
+  height: 100%;
+  /* border: 1px solid #ff00113b; */
+  display: flex;
+  flex-direction: row;    
+  flex-wrap: wrap;    
+  justify-content: space-evenly;
+   background-color: #1d212eb7;
+  align-content: flex-start;
+  border-left: 3px solid #0b0c0f;
 }
 
 .chart-mensal {
@@ -612,7 +616,7 @@ DOWNLOAD */
 }
 .container-dash {
   height: auto;
-  width: 100%;
+  width: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
