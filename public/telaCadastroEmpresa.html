@@ -237,7 +237,7 @@ jQuery(function($){
     var cidade = input_cadastro_cidade.value;
     var bairro = input_cadastro_bairro.value;
     // Valida Campos
-    if((name.match(nameReg) && cnpj.match(cnpjReg) && cep.match(cepReg) && endereco.match(enderecoReg) && cidade.match(cidadeReg) && bairro.match(bairroReg))){
+    if((name.match(nomeReg) && cnpj.match(cnpjReg) && cep.match(cepReg) && endereco.match(enderecoReg) && cidade.match(cidadeReg) && bairro.match(bairroReg))){
         cadastrar();
     } else{
         msg_register.style.display = 'block';

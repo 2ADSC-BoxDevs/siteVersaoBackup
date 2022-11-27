@@ -199,11 +199,9 @@
     if (nome.match(nomeReg)) {
       msg_name_validation_register.innerHTML = "";
       input_cadastro_nomeempresa.style.border = "1px solid green ";
-      input_cadastro_nomeempresa.style.color = " green";
     } else {
       msg_name_validation_register.innerHTML =
         '<b style="color: red;"> Verifique o campo preenchido </b>';
-      input_cadastro_nomeempresa.style.color = "red";
       input_cadastro_nomeempresa.style.border = "1px solid red";
     }
   }
@@ -214,11 +212,9 @@
     if (cargo.match(cargoReg)) {
       msg_cargo_validation_register.innerHTML = "";
       input_cadastro_cargoempresa.style.border = "1px solid green ";
-      input_cadastro_cargoempresa.style.color = " green";
     } else {
       msg_cargo_validation_register.innerHTML =
         '<b style="color: red;"> Verifique o campo preenchido </b>';
-      input_cadastro_cargoempresa.style.color = "red";
       input_cadastro_cargoempresa.style.border = "1px solid red";
     }
   }
@@ -229,11 +225,9 @@
     if (email.match(emailReg)) {
       msg_email_validation_register.innerHTML = "";
       email_usuario.style.border = "1px solid green ";
-      email_usuario.style.color = " green";
     } else {
       msg_email_validation_register.innerHTML =
         '<b style="color: red;"> Verifique o campo preenchido </b>';
-      email_usuario.style.color = "red";
       email_usuario.style.border = "1px solid red";
     }
   }
@@ -391,10 +385,10 @@
           if (json.length > 0) {
             msg_email_validation_register.innerHTML =
               "Existem mais de um usuário com esse email";
-            msg_email_validation_register.style.color = "red";
+            msg_email_validation_register.style.color = "white";
           } else {
             msg_email_validation_register.innerHTML = "Email correto!";
-            msg_email_validation_register.style.color = "blue";
+            msg_email_validation_register.style.color = "white";
           }
         });
       })

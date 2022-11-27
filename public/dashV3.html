@@ -359,21 +359,13 @@
       resposta.json()
         .then((json) => {
 
-
+          var criaMaquina = 0;
           //function aqui
 
           for (i = 0; i < json.length; i++) {
 
             console.log("Aqui " + JSON.stringify(json[i])) //Objeto inteiro vindo em STRING
 
-            if (json[i].isActive == "sim") {
-              var criaMaquina = 0;
-              criaMaquina++
-              machinesIsAct.innerHTML = criaMaquina;
-            } else {
-              criaMaquina--
-              machinesIsAct.innerHTML = criaMaquina;
-            }
 
             if (json[i].isActivade == "sim") {
               var processadorUso = json[i].processador_em_uso;
@@ -419,6 +411,8 @@
 
             }
           }
+
+          machinesIsAct.innerHTML = criaMaquina;
 
 
         })
