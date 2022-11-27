@@ -293,7 +293,8 @@ var painel_maquinas = document.getElementById("container_painel_id");
 <!-- Script para trazer maquinas -->
 <script>
     function verifyMachines() {
-        var idEmpresa = sessionStorage.FK_EMPRESA;
+
+        var idEmpresa = sessionStorage.getItem('FK_EMPRESA');
 
 
         console.log("Entrei no verifyMachines")
