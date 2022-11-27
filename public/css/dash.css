@@ -319,11 +319,13 @@ transition: .6s;
 }
 
 #container_painel_id {
-  height: 100%;
-  /* border: 1px solid #ff00113b; */
+  height: 100vh;
+  width: 100%;
+  border: 1px solid #ff00113b; 
   display: flex;
   flex-direction: row;    
-  flex-wrap: wrap;    
+  flex-wrap: wrap;   
+  overflow: auto; 
   justify-content: space-evenly;
    background-color: #1d212eb7;
   align-content: flex-start;
@@ -381,15 +383,7 @@ transition: .6s;
 
 }
 
-#dashs_lateral_geral{
-  width: 100%;
-  height: 90%;
-  max-height: 58vh;
-  background-color: green;
-  display: none;
-  overflow-x: auto;
-  flex-wrap: wrap;
-}
+
 
 #dashs_lateral_Maquina{
   width: 100%;
@@ -405,7 +399,7 @@ transition: .6s;
 #dashs_lateral_Maquina .maquina{
 display: flex;
 flex-direction: column;
-align-items: center;
+justify-content: flex-start;
 width: 100%;
 height: 50%;
 background-color: #272932;
@@ -608,150 +602,74 @@ DOWNLOAD */
 
 /* Dashboards */
 
-.dashboards {
-  height: auto;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.container-dash {
-  height: auto;
-  width: auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.maquinas{
-  width: 560px;
-  height: 380px;
-  background-color: #1E1F25;
+.container-dash{
+  height: 200px;
+  width: 400px;
   margin: 20px;
-  transition: all 0.5s ease;
-  /* transform: translate(-50%, -50%); */
 }
-.maquinas:hover{
-  transform: scale3d(1.1);
-  background-color: #1E1F25;
+
+.container-dash:hover{
+  height: 210px;
+  width: 410px;
   margin: 20px;
-  box-shadow: 5px 10px 50px black;
+  transition: 0.5s;
   cursor: pointer;
 }
-/* .maquinas .dashs-maquinas-cads{
+
+.titulo-dash-maquina{
+  background-color: #0b0c0f;
   display: flex;
-  align-items: center;
-} */
-@keyframes neon {
-  from{
-      filter: drop-shadow(0 0 0 red);
-  }
-  to{
-      filter: drop-shadow(0 0 30px red);
-  }
-}
-.maquinas{
-  animation: neon 3s alternate infinite ease-in-out;
-}
-.titulo-dash-maquina {
-  color: aliceblue;
-  font-family: 'Nunito', sans-serif;
-  text-align: center;
-  background-color: #0B0C0F;
-  width: 96%;
-  height: 38px;
-  display: flex;
-  padding: 10px;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
+  height: 70px;
+  width: 100%;
+}
+
+.titulo-dash-maquina .titulo-icon-maquina{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  padding: 5px;
+}
+
+.titulo-dash-maquina .titulo-icon-maquina i{
+  display: flex;
+  align-self: center;  
+}
+
+.titulo-dash-maquina .titulo_text_maquina{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
   text-align: center;
-  align-items: center;
-}
-.titulo-dash-maquina h1{
-  align-self: center;
-  justify-self: end;
-}
-.titulo-dash-maquina img{
-  width: 25px;
-  height: 25px;
+  justify-content: center;
 }
 
-
-
-
-
-
-.icons-problem{
-  display: flex;
-  flex-direction: row;
-  justify-content: end;
-  
-  align-items: center;
-  width: 40%;
-}
-
-.ball{
-  background: #87B7FF;
-  border: #0b0c0f 1px solid;
-  border-radius: 35px;
-  width: 20px;
-  height: 20px;
-  margin: 2vh;
-}
-.ball2{
-  background: #ff0011;
-  border: #0b0c0f 1px solid;
-  border-radius: 35px;
-  width: 20px;
-  height: 20px;
-  margin: 2vh;
-}
-.ball3{
-  background: rgb(232, 232, 49);
-  border: #0b0c0f 1px solid;
-  border-radius: 35px;
-  width: 20px;
-  height: 20px;
-  margin: 2vh;
-}
-
-.dash-top canvas{
-  width: 100% !important;
-  height: 250px !important;
-}
-
-.dash-bottom{
-  display: flex;
-  flex-direction: row;
-}
-
-.dash-bottom canvas{
-  width: 180px !important;
-  height: 180px !important;
-  margin-left: 20px;
-}
-
-.legend-dash-bottom{
+.container-dash .dash-content{
+  width: 100%;
+  height: 100px;
   display: flex;
   flex-direction: column;
-  line-height: 60px;
-  padding-left: 30px;
+  justify-content: space-evenly;
+  background-color: #1C1D25;
 }
 
-.legend-dash-bottom #iconTop{
-  color: #ff0011;
-  padding-bottom: 8px;
-  font-size: 24px;
+.dash-content .dash-content-info{
+  width: 90%;
+  padding: 10px;
+  height: 100%;
 }
 
-.legend-dash-bottom #iconBottom{
+.dash-content-info .content-data{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between ;
 
-  color: #87B7FF;
-  padding-bottom: 8px;
-  font-size: 24px;
-}
-
-.legend-dash-bottom h3{
-  color: rgba(240, 248, 255, 0.536);
-  font-size: 30px;
 }
 
 
@@ -764,13 +682,13 @@ DOWNLOAD */
 
 
 .painel-dashboards{
+  align-self: center;
   justify-self: center;
-  margin-top: -80px;
+  margin-top: 10px;
   border: 1px solid #87B7FF;
 border-radius: 2px;
   background-color: #272932;
-  height: 84vh;
-  align-self: center;
+  height: 90vh;
   width: 81vw;
   z-index: 1000;
   overflow: auto;
@@ -778,8 +696,8 @@ border-radius: 2px;
 }
 
 .title-painel-dash{
-  width: 80.7%;
-  height: 72px;
+  width: 80.3%;
+  height: 60px;
   color: aliceblue;
   display: flex;
   border-radius: 12px 0px 0px 0px;
@@ -817,7 +735,6 @@ border-radius: 2px;
   justify-self: flex-end;
   height: 100%;
   pointer-events: visible;
-  padding-top: 24px;
 }
 
 .title-painel-dash .bx-x-circle:hover{
@@ -868,11 +785,11 @@ border-radius: 2px;
 }
 
 .hard-info-cpu{
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
-  /* justify-content: space-evenly; */
+  justify-content: space-evenly;
   align-items: flex-start;
-  
+  line-height: 44px;
 }
 
 .hard-info-cpu h3{
@@ -927,7 +844,6 @@ border-radius: 2px;
   background-color: #272932;
   border-bottom: 1px solid #ff001149;
   display: flex;
-  height: 480px;
   flex-direction: row;
   justify-content: space-between;
 
@@ -950,21 +866,23 @@ border-radius: 2px;
 }
 
 .cad-hard-info-memoria{
+  background-color:#272932;
+  border-radius: 0px 20px 20px 20px;
   padding: 10px;
-  width: 157%;
-  height: 88%;
+  width: 100%;
+  height: 80%;
   display: flex;
   flex-direction: row;
-  /* padding-top: 50px; */
-  /* justify-content: space-between; */
+  padding: 90px 104px 90px 82px;
+  justify-content: space-between;
 }
 
 .hard-info-memoria{
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
-  padding-left: 58px;
+  line-height: 44px;
 
 
 }
@@ -984,7 +902,7 @@ border-radius: 2px;
   color: #fff;
 }
 .destaque-info-memoria{
-  width: 57%;
+  width: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1040,13 +958,17 @@ border-radius: 2px;
 }
 
 
-
+.charts{
+  display: flex;
+  flex-direction: row;
+}
 
 .hard-info-disco{
-  
+  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
+  line-height: 44px;
 }
 
 .hard-info-disco h3{

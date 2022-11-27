@@ -4,6 +4,15 @@ var router = express.Router();
 var medidaController = require("../controllers/medidaController");
 
 
+router.get("/todas/:idEmpresa", function (req, res) {
+    medidaController.buscarTodasMedidas(req, res);
+});
+
+
+router.get("/tempo-realTodas/:idEmpresa", function (req, res) {
+    medidaController.buscarMedidasEmTempoReal(req, res);
+})
+
 router.get("/ultimas/:idEmpresa", function (req, res) {
     medidaController.buscarUltimasMedidas(req, res);
 });

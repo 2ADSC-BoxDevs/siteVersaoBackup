@@ -27,13 +27,13 @@
 
 </head>
 
-<body onload="buscarUltimasMedidas(), verifiyMachine(), verificarCargo()">
+<body onload="buscarUltimasMedidas(), verifiyMachine(), verificarCargo(), obterDadosGrafico()">
   <div class="grid-container">
 
     <!-- Header -->
     <header class="header">
 
-      <div class="user">
+      <div onclick="obterDadosGrafico()" class="user">
         <span id="user">Olá, usuário!</span>
       </div>
 
@@ -146,7 +146,7 @@
         <div class="chart-mensal">
           <h2>Alertas no mês</h2>
           <div>
-            <canvas id="myChart"></canvas>
+            <canvas id="myChartDinamicTotal"></canvas>
           </div>
 
           <div class="alerts">
@@ -156,18 +156,11 @@
         </div>
 
         <div>
-          <div class="nav">
-            <button onclick="OpcDeDash(0)" class="rd_tabs" id="tab1"> <b>Geral</b> </button>
-
-            <button onclick="OpcDeDash(1)" class="rd_tabs" id="tab2"> <b>Máquinas</b> </button>
+          <div class="title_lateral_card">
+            <h1 class="">Maquinas</h1>
           </div>
           <div class="chart-lateral">
 
-
-
-            <div id="dashs_lateral_geral" style="display: none">
-
-            </div>
 
             <div id="dashs_lateral_Maquina" style="display: none">
               <div id="cardMaquinas" class="maquina">
@@ -196,33 +189,7 @@
 </body>
 
 <script>
-  const ctx2 = document.getElementById('myChart');
-
-  new Chart(ctx2, {
-    type: 'bar',
-    data: {
-      labels: ['Memória', 'Disco', 'CPU'],
-      datasets: [{
-        label: 'Alertas mensais',
-        data: [12, 19, 3],
-        backgroundColor: [
-          '#87B7FF',
-          '#E3C93C',
-          '#DF2935',
-
-        ],
-        borderWidth: 0
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-
+  
 
   // chart da lateral
   // var barOptions_stacked = {
@@ -380,7 +347,7 @@
 
 
             if (json[i].isActivade == "sim") {
-              var processadorUso = json[i].processador_em_uso;
+              var Uso = json[i].processador_em_uso;
               var criaMaquina = `
               <h2 id="hostname_maquina">${json[i].codigo_patrimonio}</h2>
               <div class="dados-title">
@@ -500,4 +467,155 @@
   }
 
 
+</script>
+
+
+
+
+
+
+
+
+<script> 
+     function obterDadosGrafico() {
+      var proximaAtualizacao;
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+        var idEmpresa = sessionStorage.getItem('FK_EMPRESA');
+
+        fetch(`/medidas/todas/${idEmpresa}`, { cache: "no-store" })
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+
+                        plotarGrafico(resposta, idEmpresa);
+                    });
+                } else {
+                    console.error("Nenhum dado encontrado ou erro na API");
+                }
+            })
+            .catch(function (error) {
+                console.error(
+                    `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+                );
+            });
+    }
+
+
+
+
+
+    function plotarGrafico(resposta, idEmpresa) {
+        console.log("iniciando plotagem do gráfico...");
+
+        var dados = {
+            labels: ['Alertas Ram', 'Alertas CPU'],
+            datasets: [
+                {
+                    label: "Alertas RAM",
+                    borderColor: "#E0AA1E",
+                    backgroundColor: "#E0AA1E",
+                    fill: true,
+                    data: [],
+                },
+                {
+                    label: "Alertas CPU",
+                    borderColor: "#E0AA1E",
+                    backgroundColor: "#E0AA1E",
+                    fill: true,
+                    data: [],
+                }
+            ],
+        };
+
+        var AlertasRam;
+        var AlertasCPU;
+
+        for (i = 0; i < resposta.length; i++) {
+
+            
+            var registro = resposta[i];
+
+            var cpu = registro.processador_emUso ;
+            var ram = registro.memoriaRam_emUso;
+
+            if(cpu > 4){
+              AlertasCPU++
+            } 
+            if (ram > 6){
+              AlertasRam++
+            }
+
+
+        }
+
+        
+        dados.datasets[0].data.push(Number(AlertasRam).toFixed(0));
+
+        dados.datasets[1].data.push(Number(AlertasCPU).toFixed(0));
+
+        const config = {
+            type: 'bar',
+            data: dados,
+        };
+
+        let myChart = new Chart(
+            document.getElementById('myChartDinamicTotal'),
+            config
+        );
+
+        setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 2000);
+    }
+
+
+
+    function atualizarGrafico(idEmpresa, dados, myChart) {
+        fetch(`/medidas/tempo-realTodas/${idEmpresa}`, { cache: "no-store" })
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (novoRegistro) {
+                        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                        console.log(`Dados atuais do gráfico: ${dados}`);
+
+                        // tirando e colocando valores no gráfico
+                        // dados.labels.shift(); // apagar o primeiro
+                        // dados.labels.push(novoRegistro[0].data_hora_registro); // incluir um novo momento
+
+                        dados.datasets[0].data.shift(); // apagar o primeiro de temperatura
+                        dados.datasets[0].data.push(Number(novoRegistro[0].processador_emUso).toFixed(0)); // incluir uma nova medida de temperatura
+
+
+                        dados.datasets[1].data.shift(); // apagar o primeiro de temperatura
+                        dados.datasets[1].data.push(Number(novoRegistro[0].processador_emUso).toFixed(0));
+
+                        myChart.update();
+
+                        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                        proximaAtualizacao = setTimeout(
+                            () => atualizarGrafico(idEmpresa, dados, myChart),
+                            2000
+                        );
+                    });
+                } else {
+                    console.error("Nenhum dado encontrado ou erro na API");
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(
+                        () => atualizarGrafico(idEmpresa, dados, mychart),
+                        2000
+                    );
+                }
+            })
+            .catch(function (error) {
+                console.error(`
+          Erro na obtenção dos dados p/ gráfico: ${error.message}
+        `);
+            });
+    }
+
+    obterDadosGrafico();
+    verifyMachines();
+    obterDadosGrafico();
 </script>

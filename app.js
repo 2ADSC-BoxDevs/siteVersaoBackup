@@ -1,7 +1,7 @@
 // -------------------DEFINIÇÂO DE AMBIENTES--------------------------
 
-// process.env.AMBIENTE_PROCESSO = "desenvolvimento";
-   process.env.AMBIENTE_PROCESSO = "producao";
+ // process.env.AMBIENTE_PROCESSO = "desenvolvimento";
+  process.env.AMBIENTE_PROCESSO = "producao";
 
 
 
