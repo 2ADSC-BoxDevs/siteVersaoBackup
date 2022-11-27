@@ -144,13 +144,12 @@
       <div class="charts">
 
         <div class="chart-mensal">
-          <h2>Alertas no mês</h2>
+          <h2>Alertas no Dia</h2>
           <div>
             <canvas id="myChartDinamicTotal"></canvas>
           </div>
 
           <div class="alerts">
-            <!-- <div class="ball"></div> <div class="ball3"></div><div class="ball2"></div> -->
           </div>
 
         </div>
@@ -160,21 +159,9 @@
             <h1 class="">Maquinas</h1>
           </div>
           <div class="chart-lateral">
+            <div id ="list_maquinas_id" class="list_maquinas">
 
-
-            <div id="dashs_lateral_Maquina" style="display: none">
-              <div id="cardMaquinas" class="maquina">
-
-
-
-              </div>
             </div>
-
-
-
-
-
-          </div>
         </div>
 
 
@@ -565,6 +552,7 @@ function verifyMachines() {
         resposta.json()
             .then((json) => {
 
+
               var maquinas = 0;
 
                 for (i = 0; i < json.length; i++) {
@@ -575,7 +563,36 @@ function verifyMachines() {
 
                       maquinas++;
 
+                      var nome = json[i].nome_usuario_maquina;
+
+                      if(json[i].nome_usuario_maquina == null){
+
+                        nome = "Sem usuário";
+
+                      }
+
+                      var html = `<div id ="list_maquinas_id" class="list_maquinas">
+                                    <div class="card_lateral_maquina">
+                                      <div class="titulo_maquina">
+                                        <div class="icone_on_off">
+                                          <i style="color: green;" class='bx bxs-circle'></i>
+                                        </div>
+                                        <div class="titulo_patrimonio">
+                                          <h3>${json[i].codigo_patrimonio}</h3>
+                                        </div>
+                                      </div>
+                                      <div class="content_card">
+                                        <h3> Responsável: ${nome} </h3>
+                                      </div>
+                                    </div>
+                                  </div> `;
+
+                                  list_maquinas_id.innerHTML += html;
+
                     }
+
+
+
                 }
 
                 machinesIsAct.innerHTML = maquinas;

@@ -13,6 +13,8 @@ body {
   line-height: 1px;
 }
 
+
+
 .text-primary {
   color: #ffffff;
   font-size: 20px;
@@ -82,7 +84,7 @@ body {
   color: #d2d2d3;
 } */
 
-.search-box{
+.search-box {
   margin-top: 40px;
   margin-left: 1450px;
   position: absolute;
@@ -93,9 +95,9 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #1E1F25;
-} 
+}
 
-.search-txt{
+.search-txt {
   border: none;
   background: none;
   outline: none;
@@ -106,7 +108,7 @@ body {
   width: 0;
 }
 
-.search-btn{
+.search-btn {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -116,18 +118,18 @@ body {
   align-items: center;
 }
 
-.search-box:hover > .search-txt{
-width: 260px;
-padding: 0 6px;
-transition: .6s;
+.search-box:hover>.search-txt {
+  width: 260px;
+  padding: 0 6px;
+  transition: .6s;
 
 }
 
-.search-box:hover > .search-btn{
+.search-box:hover>.search-btn {
   transition: .6s;
 }
 
-::-webkit-input-placeholder{
+::-webkit-input-placeholder {
   color: #d2d2d3;
   padding: 20px;
 }
@@ -194,7 +196,8 @@ transition: .6s;
   margin-top: 15px;
   list-style-type: none;
 }
-.sidebar-list a{
+
+.sidebar-list a {
   text-decoration: none;
   color: #9799ab;
 
@@ -321,13 +324,13 @@ transition: .6s;
 #container_painel_id {
   height: 100vh;
   width: 100%;
-  border: 1px solid #ff00113b; 
+  border: 1px solid #ff00113b;
   display: flex;
-  flex-direction: row;    
-  flex-wrap: wrap;   
-  overflow: auto; 
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: auto;
   justify-content: space-evenly;
-   background-color: #1d212eb7;
+  background-color: #1d212eb7;
   align-content: flex-start;
   border-left: 3px solid #0b0c0f;
 }
@@ -347,7 +350,8 @@ transition: .6s;
 
 /* CHART LATERAL */
 .chart-lateral {
-  background-color: #272932; /* Tirar */
+  background-color: #272932;
+  /* Tirar */
   /* background-color: #272932; */
   border: 1px solid #87B7FF;
   border-radius: 11px;
@@ -358,8 +362,8 @@ transition: .6s;
   overflow-x: none;
 }
 
-.charts .nav{
-  
+.charts .nav {
+
   width: 20vw;
   height: 50px;
   display: flex;
@@ -369,7 +373,7 @@ transition: .6s;
 
 }
 
- .rd_tabs{
+.rd_tabs {
   width: 150px;
   height: 50px;
   font-size: 20px;
@@ -379,13 +383,13 @@ transition: .6s;
   cursor: pointer;
   background-color: #21232D;
   color: #8E91A1;
-  
+
 
 }
 
 
 
-#dashs_lateral_Maquina{
+#dashs_lateral_Maquina {
   width: 100%;
   height: 90%;
   max-height: 58vh;
@@ -396,23 +400,24 @@ transition: .6s;
 
 
 /* card de maquina */
-#dashs_lateral_Maquina .maquina{
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
-width: 100%;
-height: 50%;
-background-color: #272932;
-border-bottom: 2px solid #87B7FF;
+#dashs_lateral_Maquina .maquina {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 50%;
+  background-color: #272932;
+  border-bottom: 2px solid #87B7FF;
 }
 
-.maquina .dados-title{
-  display: flex; 
+.maquina .dados-title {
+  display: flex;
   justify-content: space-around;
   width: 93%;
   margin-top: 12px;
 }
-.maquina .dados-title .dado-name{
+
+.maquina .dados-title .dado-name {
   font-size: 20px;
   padding-left: 11px;
   color: #e3e2e2;
@@ -422,39 +427,42 @@ border-bottom: 2px solid #87B7FF;
 
 }
 
-.dado-name .storage{
+.dado-name .storage {
 
-  font-size:42px;
+  font-size: 42px;
   padding-left: 30px;
 }
-.dado-name .ram{
- color: #E3C93C;
+
+.dado-name .ram {
+  color: #E3C93C;
 }
-.maquina .dados-title .dado-name-cpu{
+
+.maquina .dados-title .dado-name-cpu {
   font-size: 20px;
   padding-left: 34px;
   color: #e3e2e2;
   display: flex;
   flex-direction: column;
   font-weight: 500;
-  
+
 }
 
-.maquina .dados-number{
-  display: flex; 
+.maquina .dados-number {
+  display: flex;
   justify-content: space-around;
   width: 89%;
   margin-top: 8px;
 }
 
-.maquina .dados-number .dado{
-font-size: 28px;
-font-weight: 600;
+.maquina .dados-number .dado {
+  font-size: 28px;
+  font-weight: 600;
 
 }
-.maquina .material-symbols-outlined{
-font-size: 42px;
-margin-bottom: 4px;
+
+.maquina .material-symbols-outlined {
+  font-size: 42px;
+  margin-bottom: 4px;
 }
 
 
@@ -467,15 +475,15 @@ margin-bottom: 4px;
 
 
 
-.chart-lateral .nav ul{
+.chart-lateral .nav ul {
   list-style: none;
 }
 
-.chart-lateral .nav ul li{
-    float: left;
+.chart-lateral .nav ul li {
+  float: left;
 }
 
-.chart-lateral .nav label{
+.chart-lateral .nav label {
   width: 100px;
   padding: 10px;
   background-color: #272932;
@@ -488,9 +496,9 @@ margin-bottom: 4px;
 
 
 
-.content{
+.content {
   display: none;
-  position:absolute;
+  position: absolute;
   height: 70px;
   width: 270px;
   color: #fff;
@@ -498,9 +506,9 @@ margin-bottom: 4px;
 }
 
 
-.content article{
+.content article {
   padding: 10px;
-  
+
 }
 
 
@@ -573,7 +581,7 @@ margin-bottom: 4px;
 /* 
 DOWNLOAD */
 
-.download{
+.download {
   color: #ffff;
   background-color: #DF2935;
   text-decoration: none;
@@ -588,27 +596,29 @@ DOWNLOAD */
   transition: 0.5s;
 }
 
-.download:hover{
+.download:hover {
   background-color: #cc3d47;
 
 
 }
-.download-icon{
+
+.download-icon {
   font-size: 34px;
-  color:#ffff;
+  color: #ffff;
 }
+
 /* FIM DOWNLOAD */
 
 
 /* Dashboards */
 
-.container-dash{
+.container-dash {
   height: 200px;
   width: 400px;
   margin: 20px;
 }
 
-.container-dash:hover{
+.container-dash:hover {
   height: 210px;
   width: 410px;
   margin: 20px;
@@ -616,7 +626,7 @@ DOWNLOAD */
   cursor: pointer;
 }
 
-.titulo-dash-maquina{
+.titulo-dash-maquina {
   background-color: #0b0c0f;
   display: flex;
   flex-direction: row;
@@ -626,7 +636,7 @@ DOWNLOAD */
   width: 100%;
 }
 
-.titulo-dash-maquina .titulo-icon-maquina{
+.titulo-dash-maquina .titulo-icon-maquina {
   height: 100%;
   display: flex;
   align-items: center;
@@ -634,12 +644,12 @@ DOWNLOAD */
   padding: 5px;
 }
 
-.titulo-dash-maquina .titulo-icon-maquina i{
+.titulo-dash-maquina .titulo-icon-maquina i {
   display: flex;
-  align-self: center;  
+  align-self: center;
 }
 
-.titulo-dash-maquina .titulo_text_maquina{
+.titulo-dash-maquina .titulo_text_maquina {
   width: 100%;
   display: flex;
   align-items: center;
@@ -648,7 +658,7 @@ DOWNLOAD */
   justify-content: center;
 }
 
-.container-dash .dash-content{
+.container-dash .dash-content {
   width: 100%;
   height: 100px;
   display: flex;
@@ -657,18 +667,18 @@ DOWNLOAD */
   background-color: #1C1D25;
 }
 
-.dash-content .dash-content-info{
+.dash-content .dash-content-info {
   width: 90%;
   padding: 10px;
   height: 100%;
 }
 
-.dash-content-info .content-data{
+.dash-content-info .content-data {
   display: flex;
   flex-direction: row;
   text-align: center;
   align-items: center;
-  justify-content: space-between ;
+  justify-content: space-between;
 
 }
 
@@ -681,12 +691,12 @@ DOWNLOAD */
 /* Tela de dashboard selecionada */
 
 
-.painel-dashboards{
+.painel-dashboards {
   align-self: center;
   justify-self: center;
   margin-top: 10px;
   border: 1px solid #87B7FF;
-border-radius: 2px;
+  border-radius: 2px;
   background-color: #272932;
   height: 90vh;
   width: 81vw;
@@ -695,7 +705,7 @@ border-radius: 2px;
 
 }
 
-.title-painel-dash{
+.title-painel-dash {
   width: 80.3%;
   height: 60px;
   color: aliceblue;
@@ -705,12 +715,12 @@ border-radius: 2px;
   justify-content: center;
   position: fixed;
   background-color: #1E1F25;
- 
+
 
 }
 
 
-.titletext{
+.titletext {
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
@@ -719,7 +729,7 @@ border-radius: 2px;
   display: flex;
 }
 
-.titleicon{
+.titleicon {
 
   width: 45%;
   justify-content: space-between;
@@ -728,7 +738,7 @@ border-radius: 2px;
   justify-content: flex-end;
 }
 
-.title-painel-dash .bx-x-circle{
+.title-painel-dash .bx-x-circle {
   font-size: 48px;
   transition: all 0.5s ease;
   align-self: center;
@@ -737,7 +747,7 @@ border-radius: 2px;
   pointer-events: visible;
 }
 
-.title-painel-dash .bx-x-circle:hover{
+.title-painel-dash .bx-x-circle:hover {
   font-size: 50px;
   cursor: pointer;
   color: #ff0011;
@@ -746,7 +756,7 @@ border-radius: 2px;
 /* cpu infos */
 
 /* container cpu */
-.container-cpu{
+.container-cpu {
   padding-top: 75px;
   background-color: #1C1D25;
   border-bottom: 1px solid #ff001149;
@@ -755,15 +765,15 @@ border-radius: 2px;
   justify-content: space-between;
 }
 
-.container-cpu-left{
+.container-cpu-left {
   padding: 15px;
   height: auto;
   width: 48%;
 
 }
 
-.cad-hard-info{
-  background-color:#1C1D25;
+.cad-hard-info {
+  background-color: #1C1D25;
   border-radius: 0px 20px 20px 20px;
   padding: 10px;
   width: 100%;
@@ -772,19 +782,21 @@ border-radius: 2px;
   flex-direction: row;
   justify-content: space-evenly;
 }
-.hard-info-cpu h2{
+
+.hard-info-cpu h2 {
   color: white;
 }
-.titulo-cpu h2{
+
+.titulo-cpu h2 {
   padding-left: 10px;
   background-color: #1C1D25;
   padding: 5px 15px 5px 15px;
-  width:fit-content;
+  width: fit-content;
   border-radius: 20px 20px 0px 0px;
   color: aliceblue;
 }
 
-.hard-info-cpu{
+.hard-info-cpu {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -792,18 +804,18 @@ border-radius: 2px;
   line-height: 44px;
 }
 
-.hard-info-cpu h3{
+.hard-info-cpu h3 {
   font-size: 24px;
   color: #e9e9e9;
 }
 
-.hard-info-cpu span{
+.hard-info-cpu span {
   font-size: 22px;
-  color:#ffff;
+  color: #ffff;
   font-weight: 900;
 }
 
-.destaque-info-cpu{
+.destaque-info-cpu {
   width: 30%;
   display: flex;
   justify-content: center;
@@ -811,8 +823,8 @@ border-radius: 2px;
   color: aliceblue;
 }
 
-.circle_destaque{
-  background-color:#1E1F25;
+.circle_destaque {
+  background-color: #1E1F25;
   border: 1px solid #87B7FF;
   justify-content: center;
   height: 150px;
@@ -822,17 +834,17 @@ border-radius: 2px;
   border-radius: 120px;
 }
 
-.circle_destaque h1{
+.circle_destaque h1 {
   font-size: 40px;
 }
 
-.dash-container-cpu{
+.dash-container-cpu {
   width: 50%;
   padding: 20px;
 
 }
 
-#myChartcpu{
+#myChartcpu {
   width: 100px;
 }
 
@@ -840,7 +852,7 @@ border-radius: 2px;
 
 /* container memoria */
 
-.container-memoria{
+.container-memoria {
   background-color: #272932;
   border-bottom: 1px solid #ff001149;
   display: flex;
@@ -849,24 +861,24 @@ border-radius: 2px;
 
 }
 
-.container-memoria-left{
+.container-memoria-left {
   padding: 15px;
   height: auto;
   width: 48%;
 
 }
 
-.titulo-memoria h2{
+.titulo-memoria h2 {
   padding-left: 10px;
   background-color: #272932;
   padding: 5px 15px 5px 15px;
-  width:fit-content;
+  width: fit-content;
   border-radius: 20px 20px 0px 0px;
   color: aliceblue;
 }
 
-.cad-hard-info-memoria{
-  background-color:#272932;
+.cad-hard-info-memoria {
+  background-color: #272932;
   border-radius: 0px 20px 20px 20px;
   padding: 10px;
   width: 100%;
@@ -877,7 +889,7 @@ border-radius: 2px;
   justify-content: space-between;
 }
 
-.hard-info-memoria{
+.hard-info-memoria {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -887,21 +899,22 @@ border-radius: 2px;
 
 }
 
-.hard-info-memoria h3{
+.hard-info-memoria h3 {
   font-size: 24px;
   color: #e9e9e9;
 }
 
-.hard-info-memoria span{
+.hard-info-memoria span {
   font-size: 22px;
-  color:#ffff;
+  color: #ffff;
   font-weight: 900;
 }
 
-.hard-info-memoria h2{
+.hard-info-memoria h2 {
   color: #fff;
 }
-.destaque-info-memoria{
+
+.destaque-info-memoria {
   width: 30%;
   display: flex;
   justify-content: center;
@@ -909,8 +922,8 @@ border-radius: 2px;
   color: aliceblue;
 }
 
-.circle_destaque-memoria{
-  background-color:#1E1F25;
+.circle_destaque-memoria {
+  background-color: #1E1F25;
   border: 1px solid #87B7FF;
   justify-content: center;
   height: 150px;
@@ -920,11 +933,11 @@ border-radius: 2px;
   border-radius: 120px;
 }
 
-.circle_destaque-memoria h1{
+.circle_destaque-memoria h1 {
   font-size: 40px;
 }
 
-.dash-container-memoria{
+.dash-container-memoria {
   width: 50%;
   padding: 20px;
 
@@ -933,21 +946,21 @@ border-radius: 2px;
 /* fim container memoria */
 /* container disco */
 
-.container-disco{
+.container-disco {
   background-color: #1C1D25;
   border-bottom: 1px solid #ff001149;
   display: flex;
   flex-direction: row;
 }
 
-.container-disco-left{
+.container-disco-left {
   padding: 15px;
   height: auto;
   width: 48%;
 
 }
 
-.cad-hard-info{
+.cad-hard-info {
   border-radius: 0px 20px 20px 20px;
   padding: 10px;
   width: 100%;
@@ -958,12 +971,12 @@ border-radius: 2px;
 }
 
 
-.charts{
+.charts {
   display: flex;
   flex-direction: row;
 }
 
-.hard-info-disco{
+.hard-info-disco {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -971,22 +984,23 @@ border-radius: 2px;
   line-height: 44px;
 }
 
-.hard-info-disco h3{
+.hard-info-disco h3 {
   font-size: 24px;
   color: #e9e9e9;
 }
 
-.hard-info-disco span{
+.hard-info-disco span {
   font-size: 22px;
-  color:#ffff;
+  color: #ffff;
   font-weight: 900;
 }
-.hard-info-disco h2{
+
+.hard-info-disco h2 {
   padding-top: 10px;
   color: #fff;
 }
 
-.destaque-info-disco{
+.destaque-info-disco {
   width: 30%;
   display: flex;
   justify-content: center;
@@ -994,8 +1008,8 @@ border-radius: 2px;
   color: aliceblue;
 }
 
-.circle_destaque-disco{
-  background-color:#1E1F25;
+.circle_destaque-disco {
+  background-color: #1E1F25;
   border: 1px solid #87B7FF;
   justify-content: center;
   height: 150px;
@@ -1005,11 +1019,11 @@ border-radius: 2px;
   border-radius: 120px;
 }
 
-.circle_destaque h1{
+.circle_destaque h1 {
   font-size: 40px;
 }
 
-.dash-container-disco{
+.dash-container-disco {
   width: 50%;
   padding: 20px;
 
@@ -1091,4 +1105,35 @@ border-radius: 2px;
   .header-left {
     display: none;
   }
+
+}
+
+.list_maquinas {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list_maquinas .card_lateral_maquina {
+  margin: 20px;
+  background-color: #28322a;
+  width: 350px;
+}
+
+.card_lateral_maquina .titulo_maquina {
+  background-color: #211c22;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.content_card {
+  background-color: #111015;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

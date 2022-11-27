@@ -44,7 +44,10 @@ function verifyMachines(idEmpresa){
 
 function OnMachines(idEmpresa){
 
-    instrucaoSql = ` SELECT * FROM maquina WHERE fk_empresa = ${idEmpresa};`;
+    instrucaoSql = `SELECT maquina.*, usuario_maquina.nome_usuario_maquina
+    FROM maquina
+    left join usuario_maquina
+    ON maquina.fk_usuario_maquina=usuario_maquina.id_usuario_maquina WHERE maquina.fk_empresa = ${idEmpresa};`;
 
     console.log("Executando esse select " + instrucaoSql)
 
