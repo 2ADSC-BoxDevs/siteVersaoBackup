@@ -21,19 +21,16 @@
   border: 3px solid #272932;
 }
 
-.btn-voltar{
-width: 60px;
-padding: 20px;
-position: absolute;
-transition: .6s;
-
-
+.btn-voltar {
+  width: 60px;
+  padding: 20px;
+  position: absolute;
+  transition: 0.6s;
 }
 
-.btn-voltar:hover{
+.btn-voltar:hover {
   transform: translatex(-13px);
   opacity: 0.9;
-
 }
 body {
   margin: 0;
@@ -68,7 +65,7 @@ body {
   padding: 27px;
 }
 
-.menu li .btn_login{
+.menu li .btn_login {
   color: #df2935 !important;
 }
 
@@ -126,7 +123,7 @@ body {
 
 .mainlogin {
   width: 100%;
-margin-top: 120px;
+  margin-top: 120px;
   display: flex;
   height: 100%;
   background-color: #272932;
@@ -138,9 +135,7 @@ margin-top: 120px;
 .son_card {
   flex-wrap: wrap;
   width: 87%;
-
   display: flex;
-
   justify-content: space-around;
 }
 
@@ -173,7 +168,7 @@ margin-top: 120px;
   border-radius: 10px;
   background-color: #514869;
   padding: 15px;
-  color: #f0ffffde;
+  color: #ffffff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 40.6);
   background: rgba(255, 255, 255, 0.114);
   box-shadow: 2px 2px 23px 12px rgba(0, 0, 0, 0.427);
@@ -183,19 +178,21 @@ margin-top: 120px;
   padding-left: 32px;
 }
 
-#msg_email_validation_register{
+#msg_email_validation_register {
   padding-top: 3vh;
 }
 
-#form_hidden_password{display:none;}
+#form_hidden_password {
+  display: none;
+}
 
 .icon-display-password {
-    position: absolute;
-    color: #63abb6;
-    top: 43px;
-    right: 10px;
-    background: transparent;
-    cursor: pointer;
+  position: absolute;
+  color: #63abb6;
+  top: 43px;
+  right: 10px;
+  background: transparent;
+  cursor: pointer;
 }
 
 label {
@@ -254,33 +251,31 @@ form span {
 
 .uil-padlock {
   color: #63abb6;
-width: 10px;
+  width: 10px;
   margin-top: -35px;
   margin-left: 8px;
 }
 
-.uil-cog{
+.uil-cog {
   color: #63abb6;
-width: 10px;
+  width: 10px;
   margin-top: -35px;
   margin-left: 8px;
 }
 
-.uil-user-check{
+.uil-user-check {
   color: #63abb6;
-width: 10px;
+  width: 10px;
   margin-top: -35px;
   margin-left: 8px;
 }
 
-.uil-store-alt{
+.uil-store-alt {
   color: #63abb6;
-width: 10px;
+  width: 10px;
   margin-top: -35px;
   margin-left: 8px;
 }
-
-
 
 /* footer */
 
@@ -298,7 +293,7 @@ width: 10px;
   padding-left: 100px;
 }
 
-.text_footer{
+.text_footer {
   font-size: 2vh;
   color: #87b7ff;
   font-weight: bold;
@@ -309,9 +304,8 @@ width: 10px;
   margin-bottom: 100px;
 }
 
-.text_footer span{
+.text_footer span {
   align-self: center;
-
 }
 
 .footer .voltar {
@@ -319,13 +313,9 @@ width: 10px;
   padding-right: 40px;
 }
 
-
-
-
 @media screen and (max-width: 1586px) {
   .img_right {
     width: 40%;
-    
   }
 }
 
@@ -333,13 +323,11 @@ width: 10px;
   .img_right {
     width: 45%;
   }
-  .logo img{
+  .logo img {
     height: 80px;
-}
-.menu {
-    
+  }
+  .menu {
     font-size: 20px;
-   
   }
   .block_text {
     width: 50%;
@@ -350,61 +338,51 @@ width: 10px;
   .block_text {
     width: 90%;
   }
-  .img_right{
+  .img_right {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .navbar {
     display: none;
   }
 
-
-}
-
-
-  @media screen and (max-width: 800px) {
-    .navbar {
-      display: none;
-    }
- 
-  .voltar{
+  .voltar {
     display: none;
   }
   .uil-user-circle {
     color: #63abb6;
     width: 100px;
   }
-  .text_left h1{
+  .text_left h1 {
     font-size: 1.5rem;
+  }
+  .footer {
+    justify-content: space-around;
+  }
+  .footer .img_footer {
+    padding-left: 0px;
+  }
+  .footer .img_footer img {
+    height: 80px;
+  }
+  .footer .ajuda {
+    padding-right: 100px;
+  }
+  .footer .ajuda a {
+    font-size: 20px;
+  }
+  .footer .ajuda h1 {
+    font-size: 30px;
+  }
+  .footer .social a {
+    font-size: 20px;
+  }
+  .footer .social h1 {
+    font-size: 30px;
+  }
 }
-.footer{
-  justify-content: space-around;
-}
-.footer .img_footer{
-  padding-left: 0px;
-}
-.footer .img_footer img{
-  height: 80px;
-}
-.footer .ajuda {
-  padding-right: 100px;
-}
-.footer .ajuda a {
- 
-  font-size: 20px;
-}
-.footer .ajuda h1 {
- 
-  font-size: 30px;
-}
-.footer .social a {
- 
-  font-size: 20px;
-}
-.footer .social h1 {
- 
-  font-size: 30px;
-}
-
-}
-
-
 
 /* @media screen and (max-height: 800px) {
   .img_right {

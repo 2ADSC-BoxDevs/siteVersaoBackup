@@ -1,3 +1,4 @@
+const { cp } = require("fs");
 var database = require("../database/config")
 
 function listar(req, res) {
@@ -19,7 +20,7 @@ function listarMaquinas(req, res) {
     var instrucao = `
     SELECT maquina.*, usuario_maquina.*, empresa.*
     FROM maquina
-    join usuario_maquina
+    left join usuario_maquina
     ON maquina.fk_usuario_maquina=usuario_maquina.id_usuario_maquina
     join empresa
     on maquina.Fk_empresa=empresa.id_empresa;
@@ -90,6 +91,22 @@ function cadastrarUser(fk_gestor, fk_empresa, cargo, nome, email, senha, sub) {
     return database.executar(instrucao);
 }
 
+function cadastrarMachine(fkEmpresa, codigoPatrimonio, cpu, ram, disco, so) {
+
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarMachine():", fkEmpresa, codigoPatrimonio);
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+
+    var instrucao = `
+    insert into maquina values (${fkEmpresa}, null, 'sim', '${codigoPatrimonio}','${cpu}', '${ram}', '${disco}', '${so}');
+    `;
+    console.log("Executando a instrução SQL: " + instrucao);
+    
+    return database.executar(instrucao);
+}
+
+
 function verifyEmail(email) {
 
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", email);
@@ -140,6 +157,21 @@ function deleteMaquinas(id_maquina) {
     return database.executar(instrucao);
 }
 
+
+
+function alterarMachine(idMachine, sistema, status) {
+
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editarEmpresa()");
+    var instrucao = `
+    UPDATE maquina SET sistema_operacional = '${sistema}', isActive = '${status}' WHERE id_maquina = ${idMachine};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+
+    return database.executar(instrucao);
+}
+
+
+
 module.exports = {
     listar,
     entrar,
@@ -151,5 +183,7 @@ module.exports = {
     listarMaquinas,
     listarSuporte,
     deleteMaquinas,
-    deleteHistoricoMaquinas
+    deleteHistoricoMaquinas,
+    cadastrarMachine,
+    alterarMachine
 };

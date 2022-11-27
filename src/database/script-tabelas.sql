@@ -62,6 +62,10 @@ insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario) values
 insert into usuario_maquina (nome_usuario_maquina, identificacao_usuario) values
 ('n1','n1');
 
+#INSERT AZURE
+insert into maquina values
+(1, null, 'sim', 'bd01','amd', 'tecpix', 'sucess', 'ubuntu');
+
 
 create table maquina (
 	id_maquina int primary key auto_increment,

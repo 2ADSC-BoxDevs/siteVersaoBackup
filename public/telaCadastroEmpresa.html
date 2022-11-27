@@ -61,7 +61,7 @@
         <div class="cad_top">
           <div class="textfield">
             <label for="usuario">CEP:</label>
-            <input  id="input_cadastro_cep"
+            <input id="input_cadastro_cep" onkeyup="validacao_cep_register()"
             placeholder="Insira o CEP" />
            <i class="uil uil-map-marker-question"></i>
            <span id="msg_cep_validation_register"></span>
@@ -93,9 +93,7 @@
           </div>
         </div>
 
-        <button  class="btnlogin" onclick="cadastrar()">Enviar</button>
-
-
+        <button class="btnlogin" onclick="valida_cadastro()">Enviar</button>
         
       </div>
       
@@ -135,7 +133,7 @@ jQuery(function($){
 
 <script>
 
-     // Expressões Regulares
+    // Expressões Regulares
     //Expressão Nome
     var nomeReg = /^[À-úA-z ]{3,35}$/;
     //Expressão Cnpj
@@ -159,9 +157,7 @@ jQuery(function($){
             input_cadastro_nomeempresa.style.color = "white";
         } else {
             msg_name_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
-            input_cadastro_nomeempresa.style.color = "red";
             input_cadastro_nomeempresa.style.border = '1px solid red';
-
         }
     }
 
@@ -174,10 +170,7 @@ jQuery(function($){
             input_cadastro_cnpj.style.color = "white";
         } else {
             msg_cnpj_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
-            input_cadastro_cnpj.style.color = "red";
             input_cadastro_cnpj.style.border = '1px solid red';
-
-
         }
     }
 
@@ -186,11 +179,11 @@ jQuery(function($){
         // Verifica Cep
         if (cep.match(cepReg)) {
             msg_cep_validation_register.innerHTML = '';
-            input_cadastro_cep.style.color = "white";
             input_cadastro_cep.style.border = '1px solid green';
+            input_cadastro_cep.style.color = "white";
+            
         } else {
             msg_cep_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
-            input_cadastro_cep.style.color = "red";
             input_cadastro_cep.style.border = '1px solid red';
 
         }
@@ -204,11 +197,9 @@ jQuery(function($){
             input_cadastro_endereco.style.color = "white";
         } else {
             msg_endereco_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
-            input_cadastro_endereco.style.color = "red";
             input_cadastro_endereco.style.border = '1px solid red';
         }
     }
-
 
     function validacao_cidade_register() {
         var cidade = input_cadastro_cidade.value;
@@ -219,7 +210,6 @@ jQuery(function($){
             input_cadastro_cidade.style.color = "white";
         } else {
             msg_cidade_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
-            input_cadastro_cidade.style.color = "red";
             input_cadastro_cidade.style.border = '1px solid red';
         }
     }
@@ -233,10 +223,27 @@ jQuery(function($){
             input_cadastro_bairro.style.color = "white";
         } else {
             msg_bairro_validation_register.innerHTML = '<b style="color: red;"> Verifique o campo preenchido </b>';
-            input_cadastro_bairro.style.color = "red";
-            input_cadastro_bairro.style.border = '1px solid red';
+            input_cadastro_bairro.style.border = '1px solid red';  
         }
     }
+
+    // Valida Cadastro
+  function valida_cadastro(){
+    // Valores dos inputs
+    var name = input_cadastro_nomeempresa.value;
+    var cnpj = input_cadastro_cnpj.value
+    var cep = input_cadastro_cep.value;
+    var endereco = input_cadastro_endereco.value;
+    var cidade = input_cadastro_cidade.value;
+    var bairro = input_cadastro_bairro.value;
+    // Valida Campos
+    if((name.match(nameReg) && cnpj.match(cnpjReg) && cep.match(cepReg) && endereco.match(enderecoReg) && cidade.match(cidadeReg) && bairro.match(bairroReg))){
+        cadastrar();
+    } else{
+        msg_register.style.display = 'block';
+        msg_register.innerHTML = 'Verifique os campos!';
+    }
+}
 
 // ---------------------------- CONEXÂO COM O BANCO --------------------------------
 
@@ -352,10 +359,5 @@ var cleave = new Cleave('#input_cadastro_cep', {
     blocks: [5, 3],
     numericOnly: true,
 });
-
-
-
-
-
 
 </script>

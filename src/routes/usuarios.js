@@ -89,8 +89,16 @@ router.get("/listarMaquinas", function (req, res) {
     usuarioController.listarMaquinas(req, res);
 });
 
+router.post("/cadastrarMachine", function (req, res) {
+    usuarioController.cadastrarMachine(req, res);
+})
+
 router.delete("/DeletarMaquina/:idMaquina", function (req, res) {
     usuarioController.deleteMaquinas(req, res);
+})
+
+router.put("/alterarMachine", function (req, res) {
+    usuarioController.alterarMachine(req, res);
 })
 
 
