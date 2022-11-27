@@ -33,7 +33,7 @@
         </div>
 
         <div>
-          <button class="btn-add-machine" onclick="AddMachine('add')">+ add</button>
+          <button class="btn-add-machine" onclick="ModalMachine('add')">+ add</button>
         </div>
       </div>
 
@@ -104,8 +104,7 @@
 
 <script>
 
-  function AddMachine(type) {
-
+  function ModalMachine(type) {
 
     if(type == "edit"){
 
@@ -154,44 +153,105 @@
       <div class="block_text">
         <div class="textfield">
           <label for="maquina"> Patrimonio da máquina:</label>
-          <input id="id_maquina" type="text" placeholder="Insira o Patrimonio" />
+          <input id="patrimonio_maquina" type="text" placeholder="Insira o Patrimonio" />
           <i class="uil uil-cog"></i>
         </div>
 
         <div class="textfield">
-          <label for="usuario"> Setor:</label>
+          <label for="usuario"> Modelo da CPU:</label>
             <input
-              id="setor_maquina"
-              type="password"
-              placeholder="Insira o setor:"
+              id="cpu_maquina"
+              type="text"
+              placeholder="Insira o modelo:"
             />
             <i class="uil uil-store-alt"></i>
         </div>
 
         <div class="textfield">
-          <label for="usuario"> Setor:</label>
+          <label for="usuario"> Modelo da RAM:</label>
             <input
-              id="setor_maquina"
-              type="password"
-              placeholder="Insira o setor:"
+              id="ram_maquina"
+              type="text"
+              placeholder="Insira o modelo:"
             />
             <i class="uil uil-store-alt"></i>
         </div>
 
         <div class="textfield">
-          <label for="usuario"> Setor:</label>
+          <label for="usuario"> Modelo do Disco:</label>
             <input
-              id="setor_maquina"
-              type="password"
-              placeholder="Insira o setor:"
+              id="disco_maquina"
+              type="text"
+              placeholder="Insira o modelo:"
             />
             <i class="uil uil-store-alt"></i>
         </div>
-        <button class="btnlogin" onclick="cadastrarMaquina()">Proximo</button>
+        <button class="btnlogin" onclick="cadastrarMachine()"> Adicionar </button>
       </div>
       `;
 
     }
+
+  }
+
+  function cadastrarMachine(){
+
+    var fkEmpresa = sessionStorage.getItem("FK_EMPRESA");
+    var codigoPatrimonio = patrimonio_maquina.value
+    var cpu = cpu_maquina.value
+    var ram = ram_maquina.value
+    var disco = disco_maquina.value
+
+
+    fetch("/usuarios/cadastrarMachine", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          fkEmpresaServer: fkEmpresa,
+          codigoPatrimonioServer: codigoPatrimonio,
+          cpuServer: cpu,
+          ramServer: ram,
+          discoServer: disco,
+        }),
+      })
+        .then(function (resposta) {
+          if (resposta.ok) {
+            Swal.fire({
+              title: "Parabéns!",
+              text: "Máquina cadastrada!!",
+              icon: "success",
+              showConfirmButton: false,
+              confirmButtonText: "Confirmar",
+              timer: 3000,
+              color: "white",
+              background: "#1e1f25",
+              confirmButtonColor: "#272990",
+            });
+
+            console.log(`Resposta ${resposta.status}`);
+
+          }
+        })
+        .catch(function (resposta) {
+          Swal.fire({
+            title: "Erro!",
+            text: "Não conseguimos efetuar o seu login...",
+            icon: "error",
+            showConfirmButton: true,
+            confirmButtonText: "Tentar Novamente",
+            color: "white",
+            background: "#1e1f25",
+            confirmButtonColor: "#272990",
+          });
+
+          console.log(`#ERRO: ${resposta}`);
+        });
+
+
 
   }
 
@@ -251,7 +311,7 @@
                     <td class="td-content"> ${json[i].nome_usuario_maquina} </td> 
                     <td class="td-content"> ${json[i].nome_empresa} </td> 
                     <td class="td-content"> 
-                      <span style="cursor:pointer;" onclick="AddMachine('edit')"> 
+                      <span style="cursor:pointer;" onclick="ModalMachine('edit')"> 
                         <img src="assets/svg/edit.svg"> 
                       </span> 
                     </td>
@@ -272,6 +332,9 @@
         console.log(resposta);
       });
   }
+
+
+
 
   function deleteMaquina(maquina) {
 

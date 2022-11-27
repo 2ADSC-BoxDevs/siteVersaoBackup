@@ -147,6 +147,7 @@ function entrar(req, res) {
 }
 
 
+
 function entrarGoogle(req, res) {
     
     var email = req.body.emailServer;
@@ -256,6 +257,34 @@ function cadastrarUser(req, res) {
     // }
 }
 
+function cadastrarMachine(req, res) {
+
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var fkEmpresa = req.body.fkEmpresaServer;
+    var codigoPatrimonio = req.body.codigoPatrimonioServer;
+    var cpu = req.body.cpuServer;
+    var ram = req.body.ramServer;
+    var disco = req.body.discoServer;
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarMachine(fkEmpresa, codigoPatrimonio, cpu, ram, disco)
+            .then(function (resultado) {
+
+                    res.json(resultado);
+                }
+
+            ).catch(function (erro) {
+
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar o cadastro! Erro: ",erro.sqlMessage);
+
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    // }
+}
+
+
 function verifyEmail(req, res) {
 
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -346,5 +375,6 @@ module.exports = {
     cadastrarEmpresa,
     listarMaquinas,
     listarSuporte,
-    deleteMaquinas
+    deleteMaquinas,
+    cadastrarMachine
 }
