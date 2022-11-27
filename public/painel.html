@@ -102,10 +102,9 @@
                         </div>
                     </div>
                 </div> -->
-            </div>
 
-            <div class="dashboards" id="dashboards_id" style="display: none">
-                <div class="painel-dashboards" >
+            <div class="dashboards" id="dashboards_id" >
+                <div class="painel-dashboards" style="display: none;">
                     <div class="title-painel-dash">
                         <div class="titletext">
                             <h1>BBD012274</h1><i class='bx bx-x-circle'></i>
@@ -189,6 +188,8 @@
                     </div>
                 </div>
             </div>
+            </div>
+
         </main>
 
     </div>
@@ -225,6 +226,67 @@
 
     }
 
+
+</script>
+<script>
+    
+    let allscreen = document.querySelector(".grid-container")
+    var tela_dashs = document.getElementById("dashboards_id");
+var painel_maquinas = document.getElementById("container_painel_id");
+    let dashboard_selected = document.querySelector(".maquinas");
+    let painel_dash = document.querySelector(".painel-dashboards")
+
+    function alterarDispoDaTela(selected){
+    if(selected == 0){
+        painel_maquinas.style.display = "flex";
+        titulo_pagina_id.innerHTML = "";
+        titulo_pagina_id.innerHTML = "Painel de máquinas";
+        icon1.style.color = "red"
+        icon2.style.color = "white"
+        tela_dashs.style.display = "none"
+        
+    }
+    if(selected == 1){
+        painel_maquinas.style.display = "none";
+        titulo_pagina_id.innerHTML = "";
+        titulo_pagina_id.innerHTML = "Dashboards";
+        icon1.style.color = "white"
+        icon2.style.color = "red"
+        tela_dashs.style.display = "flex"
+    }
+}
+
+
+    dashboard_selected.onclick = function(){
+
+        let container_dash_let = document.querySelector(".container-dash")
+        let header_let = document.querySelector(".header");
+        painel_dash.style.zIndex = "1000";
+        painel_dash.style.display = "block";
+        painel_dash.style.position = "fixed";      
+        allscreen.style.overflow = "hidden";
+        container_dash_let.style.filter = "blur(15px)";
+        header_let.style.filter = "blur(15px)";
+        container_dash_let.style.pointerEvents = "none";
+       
+
+    }
+
+    let btn_fechar_modal = document.querySelector(".bx-x-circle");
+
+    btn_fechar_modal.onclick = function(){
+        let container_dash_let = document.querySelector(".container-dash");
+        let header_let = document.querySelector(".header");
+
+        painel_dash.style.position = "none";
+        allscreen.style.overflow = "auto";
+        painel_dash.style.display = "none";
+        painel_dash.style.zIndex = "-1000";
+        header_let.style.filter = "blur(calc(15px - 15px))";
+        container_dash_let.style.filter = "blur(calc(15px - 15px))"
+        container_dash_let.style.pointerEvents = "all";
+
+    }
 
 </script>
 
@@ -425,3 +487,4 @@
     verifyMachines();
 
 </script>
+

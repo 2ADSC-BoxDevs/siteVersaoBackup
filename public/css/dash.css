@@ -770,6 +770,7 @@ DOWNLOAD */
 border-radius: 2px;
   background-color: #272932;
   height: 84vh;
+  align-self: center;
   width: 81vw;
   z-index: 1000;
   overflow: auto;
