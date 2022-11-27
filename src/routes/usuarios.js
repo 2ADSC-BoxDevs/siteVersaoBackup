@@ -68,6 +68,11 @@ router.get("/listarSuporte", function (req, res) {
 });
 
 
+router.delete("/deleteSuporte/:idSuporte", function (req, res) {
+    usuarioController.deleteSuporte(req, res);
+});
+
+
 router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 })

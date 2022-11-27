@@ -86,7 +86,7 @@ function verifyMachines (req, res){
 
     var idEmpresa = req.params.idEmpresa;
 
-    medidaModel.verifyMachines(idEmpresa)
+    medidaModel.OnMachines(idEmpresa)
     .then(function (resultado) {
 
         if(resultado.length > 0){

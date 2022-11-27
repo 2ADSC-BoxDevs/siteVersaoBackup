@@ -1,7 +1,7 @@
 var database = require("../database/config");
 
 function buscarTodasMedidas(idEmpresa) {
-    instrucaoSql = ` SELECT m.*, h.* FROM maquina as m
+    instrucaoSql = ` SELECT m.id_maquina, m.isActive, h.processador_emUso,  h.memoriaRam_emUso  FROM maquina as m
     LEFT JOIN historico_maquina as h
     ON h.fk_maquina = m.id_maquina WHERE m.fk_empresa = ${idEmpresa};`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -44,7 +44,7 @@ function verifyMachines(idEmpresa){
 
 function OnMachines(idEmpresa){
 
-    instrucaoSql = ` SELECT * FROM maquina WHERE fk_empresa = ${idEmpresa} and isActivade = "sim";`;
+    instrucaoSql = ` SELECT * FROM maquina WHERE fk_empresa = ${idEmpresa};`;
 
     console.log("Executando esse select " + instrucaoSql)
 

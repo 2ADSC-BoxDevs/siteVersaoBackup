@@ -101,7 +101,7 @@
                       </span> 
                     </td>
                     <td class="td-content"> 
-                      <span style="cursor:pointer;">
+                      <span style="cursor:pointer;" onclick="deleteSuporte(${json[i].id_usuario_suporte})">
                         <img src="assets/svg/delete.svg">   
                       </span> 
                     </td>
@@ -117,4 +117,57 @@
         console.log(resposta);
       });
   }
+
+
+  function deleteSuporte(idSuporte){
+    
+    fetch(`usuarios/deleteSuporte/${idSuporte}`, {
+      method: "DELETE",
+      headersa: {
+        "Content-Type": "application/json",
+      },
+    }).then(function (resposta){
+
+         if(resposta.ok){
+
+          Swal.fire({
+                      title: "OK!",
+                      text: "Usuário excluido com sucesso!!",
+                      icon: "success",
+                      showConfirmButton: false,
+                      confirmButtonText: "Confirmar",
+                      timer: 3000,
+                      color: "white",
+                      background: "#1e1f25",
+                      confirmButtonColor: "#272990",
+                    });
+
+
+              setInterval(() => {
+              window.location = "crudUsuarioSuporte.html";
+            }, 3000);
+
+
+         }
+
+    }).catch(function (resposta){
+
+       
+      Swal.fire({
+            title: "Erro!",
+            text: "Não foi possivel excluir...",
+            icon: "error",
+            showConfirmButton: true,
+            confirmButtonText: "Tentar Novamente",
+            color: "white",
+            background: "#1e1f25",
+            confirmButtonColor: "#272990",
+          });
+
+
+    })
+
+  }
+
+
 </script>

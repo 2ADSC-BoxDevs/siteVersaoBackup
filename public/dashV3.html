@@ -27,7 +27,7 @@
 
 </head>
 
-<body onload="buscarUltimasMedidas(), verifiyMachine(), verificarCargo(), obterDadosGrafico()">
+<body onload="verificarCargo(), obterDadosGrafico(), verifyMachines()"">
   <div class="grid-container">
 
     <!-- Header -->
@@ -319,91 +319,7 @@
 
   // Trazendo as maquinas cadastradas
 
-  function buscarUltimasMedidas() {
-
-    var idEmpresa = sessionStorage.getItem("FK_EMPRESA");
-
-    console.log(idEmpresa);
-
-    console.log("Entrei no buscarMedida")
-    fetch(`/medidas/ultimas/${idEmpresa}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(function (resposta) {
-
-      console.log("Entrei no buscarMedida then")
-
-      resposta.json()
-        .then((json) => {
-
-          var criaMaquina = 0;
-          //function aqui
-
-          for (i = 0; i < json.length; i++) {
-
-            console.log("Aqui " + JSON.stringify(json[i])) //Objeto inteiro vindo em STRING
-
-
-            if (json[i].isActivade == "sim") {
-              var Uso = json[i].processador_em_uso;
-              var criaMaquina = `
-              <h2 id="hostname_maquina">${json[i].codigo_patrimonio}</h2>
-              <div class="dados-title">
-                <div class="dado-name">
-                  <span class="material-symbols-outlined ram">
-                    donut_large
-                  </span>
-                    RAM
-                </div>
-                <div class="dado-name-cpu">
-                  <span class="material-symbols-outlined">
-                    memory
-                  </span>
-                  CPU
-                </div>
-                <div class="dado-name">
-                  <span class="material-symbols-outlined storage">
-                    storage
-                  </span>
-                  MEMORIA</div>
-
-              </div>
-
-
-              <div class="dados-number">
-                <div class="dado">
-                  <span id="dado_ram">${json[i].memoria_em_uso}</span>%
-                </div>
-                <div class="dado" id="dado_cpu">
-                  <span id="dado_cpu">${json[i].processador_em_uso}</span>%
-                </div>
-                <div class="dado" id="dado_memoria">
-                  <span id="dado_memoria"> SEM INFORMAÇÃO </span>%
-                </div>
-
-              </div>`;
-
-              cardMaquinas.innerHTML += criaMaquina;
-
-
-            }
-          }
-
-          machinesIsAct.innerHTML = criaMaquina;
-
-
-        })
-
-    }).catch(function (erro) {
-
-      console.log("Erro -> " + erro);
-
-    })
-  }
-
-
+  
 
 
 
@@ -504,38 +420,32 @@
             });
     }
 
-
+    var dados = {
+            labels: ['Alertas RAM', 'Alertas CPU'],
+            datasets:[
+                {
+                    label: ['Alertas'],
+                    borderColor: "#E0AA1E",
+                    backgroundColor: "#E0AA1E",
+                    fill: true,
+                    data: [],
+                },
+              ]
+        };
 
 
 
     function plotarGrafico(resposta, idEmpresa) {
         console.log("iniciando plotagem do gráfico...");
 
-        var dados = {
-            labels: ['Alertas Ram', 'Alertas CPU'],
-            datasets: [
-                {
-                    label: "Alertas RAM",
-                    borderColor: "#E0AA1E",
-                    backgroundColor: "#E0AA1E",
-                    fill: true,
-                    data: [],
-                },
-                {
-                    label: "Alertas CPU",
-                    borderColor: "#E0AA1E",
-                    backgroundColor: "#E0AA1E",
-                    fill: true,
-                    data: [],
-                }
-            ],
-        };
+        var AlertasRam = 0;
+        var AlertasCPU = 0;
 
-        var AlertasRam;
-        var AlertasCPU;
+        var ativas = 0;
+
+        console.log(resposta)
 
         for (i = 0; i < resposta.length; i++) {
-
             
             var registro = resposta[i];
 
@@ -543,77 +453,138 @@
             var ram = registro.memoriaRam_emUso;
 
             if(cpu > 4){
-              AlertasCPU++
+              AlertasCPU++;
             } 
-            if (ram > 6){
-              AlertasRam++
+
+            //memoria RAM vindo em %
+            if (ram > 70){
+              AlertasRam++;
             }
         }
         
-        dados.datasets[0].data.push(AlertasRam);
+        dados.datasets[0].data[0] = AlertasRam;
 
-        dados.datasets[1].data.push(AlertasCPU);
+        dados.datasets[0].data[1] = AlertasCPU;
 
         const config = {
             type: 'bar',
             data: dados,
         };
 
-        let myChart = new Chart(
+
+        if(window.myChart != null){
+        
+          myChart.destroy();
+
+        }
+
+        window.myChart = new Chart(
             document.getElementById('myChartDinamicTotal'),
             config
         );
 
-        console.log("plotei grafico")
-        setTimeout(() => myChart.update(), 2000);
+        setTimeout(() => {
+          
+          obterDadosGrafico();
+          window.myChart.update();
+
+        }, 10000);
     }
 
 
 
-    function atualizarGrafico(idEmpresa, dados, myChart) {
-        fetch(`/medidas/todas/${idEmpresa}`, { cache: "no-store" })
-            .then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (novoRegistro) {
-                        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                        console.log(`Dados atuais do gráfico: ${dados}`);
+    // function atualizarGrafico(idEmpresa, dados, myChart) {
+    //     fetch(`/medidas/todas/${idEmpresa}`, { cache: "no-store" })
+    //         .then(function (response) {
+    //             if (response.ok) {
+    //                 response.json().then(function (novoRegistro) {
+    //                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+    //                     console.log(`Dados atuais do gráfico: ${dados}`);
 
-                        // tirando e colocando valores no gráfico
-                        // dados.labels.shift(); // apagar o primeiro
-                        // dados.labels.push(novoRegistro[0].data_hora_registro); // incluir um novo momento
+    //                     // tirando e colocando valores no gráfico
+    //                     // dados.labels.shift(); // apagar o primeiro
+    //                     // dados.labels.push(novoRegistro[0].data_hora_registro); // incluir um novo momento
 
-                        dados.datasets[0].data.shift(); // apagar o primeiro de temperatura
-                        dados.datasets[0].data.push(Number(novoRegistro[0].processador_emUso).toFixed(0)); // incluir uma nova medida de temperatura
+    //                     dados.datasets[0].data.shift(); // apagar o primeiro de temperatura
+    //                     dados.datasets[0].data.push(Number(novoRegistro[0].processador_emUso).toFixed(0)); // incluir uma nova medida de temperatura
 
 
-                        dados.datasets[1].data.shift(); // apagar o primeiro de temperatura
-                        dados.datasets[1].data.push(Number(novoRegistro[0].processador_emUso).toFixed(0));
+    //                     dados.datasets[1].data.shift(); // apagar o primeiro de temperatura
+    //                     dados.datasets[1].data.push(Number(novoRegistro[0].processador_emUso).toFixed(0));
 
-                        myChart.update();
+    //                     myChart.update();
 
-                        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                        proximaAtualizacao = setTimeout(
-                            () => atualizarGrafico(idEmpresa, dados, myChart),
-                            2000
-                        );
-                    });
-                } else {
-                    console.error("Nenhum dado encontrado ou erro na API");
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(
-                        () => atualizarGrafico(idEmpresa, dados, mychart),
-                        2000
-                    );
-                }
-            })
-            .catch(function (error) {
-                console.error(`
-          Erro na obtenção dos dados p/ gráfico: ${error.message}
-        `);
-            });
-    }
+    //                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+    //                     proximaAtualizacao = setTimeout(
+    //                         () => atualizarGrafico(idEmpresa, dados, myChart),
+    //                         2000
+    //                     );
+    //                 });
+    //             } else {
+    //                 console.error("Nenhum dado encontrado ou erro na API");
+    //                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+    //                 proximaAtualizacao = setTimeout(
+    //                     () => atualizarGrafico(idEmpresa, dados, mychart),
+    //                     2000
+    //                 );
+    //             }
+    //         })
+    //         .catch(function (error) {
+    //             console.error(`
+    //       Erro na obtenção dos dados p/ gráfico: ${error.message}
+    //     `);
+    //         });
+    // }
 
     obterDadosGrafico();
     verifyMachines();
     obterDadosGrafico();
+</script>
+
+
+
+
+<script>
+
+function verifyMachines() {
+
+  var idEmpresa = sessionStorage.getItem('FK_EMPRESA');
+
+  var nome = sessionStorage.getItem('NOME');
+
+  user.innerHTML = `Seja Bem-vindo! ${nome}`;
+
+
+    fetch(`medidas/verify/${idEmpresa}`, {
+     method: "GET",
+     headers: {
+         "Content-Type": "application/json",
+     },
+     }).then(function (resposta) {
+
+        resposta.json()
+            .then((json) => {
+
+              var maquinas = 0;
+
+                for (i = 0; i < json.length; i++) {
+
+                  console.log("Entrei no verifyMachines")
+
+                    if (json[i].isActive == "sim") {
+
+                      maquinas++;
+
+                    }
+                }
+
+                machinesIsAct.innerHTML = maquinas;
+
+            })
+
+}).catch(function (erro) {
+    console.log("Erro -> " + erro);
+})
+}
+
 </script>

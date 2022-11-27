@@ -209,10 +209,11 @@ function cadastrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var fk_gestor = req.body.fk_gestorServer;
+    var fk_empresa = req.body.fk_empresaServer;
     var sub = req.body.subServer
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(fk_gestor, cargo, nome, email, senha, sub)
+        usuarioModel.cadastrar(fk_empresa, fk_gestor, cargo, nome, email, senha, sub)
             .then(function (resultado) {
 
                     res.json(resultado);
@@ -332,6 +333,29 @@ function deleteMaquinas(req, res) {
     // }
 }
 
+function deleteSuporte(req, res) {
+
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var id_suporte = req.params.idSuporte;
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.deleteSuporte(id_suporte)
+            .then(function (resultado) {
+
+                    res.json(resultado);
+                }
+
+            ).catch(function (erro) {
+
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar o cadastro! Erro: ",erro.sqlMessage);
+
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    // }
+}
+
 
 function cadastrarEmpresa(req, res) {
 
@@ -407,5 +431,6 @@ module.exports = {
     listarSuporte,
     deleteMaquinas,
     cadastrarMachine,
-    alterarMachine
+    alterarMachine,
+    deleteSuporte
 }
