@@ -344,7 +344,9 @@
 
   function buscarUltimasMedidas() {
 
-    var idEmpresa = sessionStorage.FK_EMPRESA;
+    var idEmpresa = sessionStorage.getItem("FK_EMPRESA");
+
+    console.log(idEmpresa);
 
     console.log("Entrei no buscarMedida")
     fetch(`/medidas/ultimas/${idEmpresa}`, {

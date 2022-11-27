@@ -2,20 +2,13 @@ var database = require("../database/config");
 
 
 function buscarUltimasMedidas(idEmpresa) {
-    instrucaoSql = `select m.*, h.*
-    from maquina as m
-     join historico_maquina as h
-    on h.fk_maquina=m.id_maquina where m.fk_empresa = ${idEmpresa} order by h.id_historico desc limit 5;`;
+    instrucaoSql = `SELECT TOP 5 maquina.*, historico_maquina.* FROM maquina JOIN historico_maquina ON historico_maquina.fk_maquina=maquina.id_maquina WHERE fk_empresa = ${idEmpresa} ORDER BY historico_maquina.id_historico DESC;`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 function buscarMedidasEmTempoReal(idEmpresa) {
-
-        instrucaoSql = `select m.*, h.*
-        from maquina as m
-         join historico_maquina as h
-        on h.fk_maquina=m.id_maquina where m.fk_empresa = ${idEmpresa} order by h.id_historico desc limit 1;`;
+    instrucaoSql = `SELECT TOP 1 maquina.*, historico_maquina.* FROM maquina JOIN historico_maquina ON historico_maquina.fk_maquina=maquina.id_maquina WHERE fk_empresa = ${idEmpresa} ORDER BY historico_maquina.id_historico DESC;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
