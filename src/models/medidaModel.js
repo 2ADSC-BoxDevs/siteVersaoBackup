@@ -2,41 +2,24 @@ var database = require("../database/config");
 
 
 function buscarUltimasMedidas(idEmpresa) {
-    instrucaoSql = `select historico_maquina.*
-    from maquina
-    join historico_maquina
-    on historico_maquina.fk_maquina=maquina.id_maquina where maquina.fk_empresa = ${idEmpresa};`;
+    instrucaoSql = `select m.*, h.*
+    from maquina as m
+    right join historico_maquina as h
+    on h.fk_maquina=m.id_maquina where m.fk_empresa = ${idEmpresa} order by h.id_historico desc limit 5;`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-var buscar = 1
+function buscarMedidasEmTempoReal(idEmpresa) {
 
-function buscarMedidasEmTempoReal(idAquario) {
-
-    if ( buscar <= 13) {
-    
-    instrucaoSql = `select jogadores.nomeJogador, COUNT(usuarios.fk_jogador) as 'Favorito'
-    from usuarios
-    inner join jogadores
-    on usuarios.fk_jogador = jogadores.idJogador where fk_jogador = ${buscar};`;
-
-    buscar +=1
-
+        instrucaoSql = `select m.*, h.*
+        from maquina as m
+        right join historico_maquina as h
+        on h.fk_maquina=m.id_maquina where m.fk_empresa = ${idEmpresa} order by h.id_historico desc limit 1;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
-
-   } else if (buscar >= 14) {
-
-    instrucaoSql = `select jogadores.nomeJogador, COUNT(usuarios.fk_jogador) as 'Favorito'
-    from usuarios
-    inner join jogadores
-    on usuarios.fk_jogador = jogadores.idJogador where fk_jogador = ${buscar};`;
-
-     buscar = 1
-
-   }
+   
 }
 
 function verifyMachines(){

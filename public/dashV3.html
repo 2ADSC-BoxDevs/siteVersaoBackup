@@ -57,30 +57,30 @@
 
       <ul class="sidebar-list">
         <a href="#">
-        <li class="sidebar-list-item">
-          <i class="uil uil-chart-line"></i> Dashboard
-        </li>
+          <li class="sidebar-list-item">
+            <i class="uil uil-chart-line"></i> Dashboard
+          </li>
         </a>
         <a href="painel.html">
-        <li class="sidebar-list-item">
-        <i class="uil uil-graph-bar"></i> Painel 
-        </li>
-      </a> 
-      <a href="crudMaquina.html">
-        <li class="sidebar-list-item">
-          <i class="uil uil-monitor"></i>Cadastrar máquina
-        </li>
-      </a>
+          <li class="sidebar-list-item">
+            <i class="uil uil-graph-bar"></i> Painel
+          </li>
+        </a>
+        <a href="crudMaquina.html">
+          <li class="sidebar-list-item">
+            <i class="uil uil-monitor"></i>Cadastrar máquina
+          </li>
+        </a>
         <a href="download.html">
-        <li class="sidebar-list-item">
-          <i class="uil uil-arrow-to-bottom"></i>Download
-        </li>
-      </a>
-      <a href="index.html">
-        <li class="sidebar-list-item">
-          <i class="uil uil-signout"></i>Sair
-        </li>
-      </a>
+          <li class="sidebar-list-item">
+            <i class="uil uil-arrow-to-bottom"></i>Download
+          </li>
+        </a>
+        <a href="index.html">
+          <li class="sidebar-list-item">
+            <i class="uil uil-signout"></i>Sair
+          </li>
+        </a>
       </ul>
     </aside>
     <!-- End Sidebar -->
@@ -161,7 +161,7 @@
 
             <div id="dashs_lateral_Maquina" style="display: none">
               <div id="cardMaquinas" class="maquina">
- 
+
 
 
               </div>
@@ -344,7 +344,7 @@
 
   function buscarUltimasMedidas() {
 
-   var idEmpresa = sessionStorage.FK_EMPRESA;
+    var idEmpresa = sessionStorage.FK_EMPRESA;
 
     console.log("Entrei no buscarMedida")
     fetch(`/medidas/ultimas/${idEmpresa}`, {
@@ -364,89 +364,57 @@
 
           for (i = 0; i < json.length; i++) {
 
-             console.log("Aqui " + JSON.stringify(json[i])) //Objeto inteiro vindo em STRING
+            console.log("Aqui " + JSON.stringify(json[i])) //Objeto inteiro vindo em STRING
 
-            if (json[i].isActivade == "ativo") {
-
-            console.log("DEU TUDO CERTO")
-
-            }
-          }
-
-
-        })
-
-    }).catch(function (erro) {
-
-      console.log("Erro -> " + erro);
-
-    })
-  }
-
-
-  function verifiyMachine() {
-    fetch("/medidas/verify", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(function (resposta) {
-
-      resposta.json()
-        .then((json) => {
-
-          //function aqui
-
-          for (i = 0; i < json.length; i++) {
-
-             console.log("Aqui " + JSON.stringify(json[i])) //Objeto inteiro vindo em STRING
-
-             if (json[i].isActive == "sim") {
+            if (json[i].isActive == "sim") {
               var criaMaquina = 0;
               criaMaquina++
-              machinesIsAct.innerHTML = criaMaquina ;
-             }
+              machinesIsAct.innerHTML = criaMaquina;
+            } else {
+              criaMaquina--
+              machinesIsAct.innerHTML = criaMaquina;
+            }
 
-            if (json[i].isActivade == "ativo") {
+            if (json[i].isActivade == "sim") {
+              var processadorUso = json[i].processador_em_uso;
+              var criaMaquina = `
+              <h2 id="hostname_maquina">${json[i].codigo_patrimonio}</h2>
+              <div class="dados-title">
+                <div class="dado-name">
+                  <span class="material-symbols-outlined ram">
+                    donut_large
+                  </span>
+                    RAM
+                </div>
+                <div class="dado-name-cpu">
+                  <span class="material-symbols-outlined">
+                    memory
+                  </span>
+                  CPU
+                </div>
+                <div class="dado-name">
+                  <span class="material-symbols-outlined storage">
+                    storage
+                  </span>
+                  MEMORIA</div>
 
-               var criaMaquina = `
-                <h2 id="hostname_maquina">${json[i].codigo_patrimonio}</h2>
-                <div class="dados-title">
-                  <div class="dado-name">
-                    <span class="material-symbols-outlined ram">
-                      donut_large
-                    </span>
-                      RAM
-                  </div>
-                  <div class="dado-name-cpu">
-                    <span class="material-symbols-outlined">
-                      memory
-                    </span>
-                    CPU
-                  </div>
-                  <div class="dado-name">
-                    <span class="material-symbols-outlined storage">
-                      storage
-                    </span>
-                    MEMORIA</div>
+              </div>
 
+
+              <div class="dados-number">
+                <div class="dado">
+                  <span id="dado_ram">${json[i].memoria_em_uso}</span>%
+                </div>
+                <div class="dado" id="dado_cpu">
+                  <span id="dado_cpu">${json[i].processador_em_uso}</span>%
+                </div>
+                <div class="dado" id="dado_memoria">
+                  <span id="dado_memoria"> SEM INFORMAÇÃO </span>%
                 </div>
 
+              </div>`;
 
-                <div class="dados-number">
-                  <div class="dado">
-                    <span id="dado_ram">${json[i].ram_detalhe}</span>%
-                  </div>
-                  <div class="dado" id="dado_cpu">
-                    <span id="dado_cpu">${json[i].cpu_detalhe}</span>%
-                  </div>
-                  <div class="dado" id="dado_memoria">
-                    <span id="dado_memoria">${json[i].disco_detalhe}</span>%
-                  </div>
-
-                </div>`;
-
-                cardMaquinas.innerHTML += criaMaquina ;
+              cardMaquinas.innerHTML += criaMaquina;
 
 
             }
@@ -461,6 +429,7 @@
 
     })
   }
+
 
 
 
@@ -507,22 +476,22 @@
 
 
 
-  function verificarCargo(){
+  function verificarCargo() {
 
-if(sessionStorage.getItem("CARGO_USUARIO") == "Admin"){
+    if (sessionStorage.getItem("CARGO_USUARIO") == "Admin") {
 
-    console.log("Is admin")
+      console.log("Is admin")
 
 
-} else {
+    } else {
 
-    icon4.style.display = "none"
-    linkIcon4.style.display = "none"
-    LIIncon4.style.display = "none"
+      icon4.style.display = "none"
+      linkIcon4.style.display = "none"
+      LIIncon4.style.display = "none"
 
-}
+    }
 
-}
+  }
 
 
 </script>

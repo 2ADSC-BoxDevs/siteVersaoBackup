@@ -1,42 +1,31 @@
-const { request } = require("http");
+// const { request } = require("http");
 var medidaModel = require("../models/medidaModel");
 
 function buscarUltimasMedidas(req, res) {
+    console.log("entrei ")
+    var idEmpresa = req.params.idEmpresa;
 
-    var idEmpresa = req.params.fkEmpresaServer
-
-    // var idEmpresa = req.body.fkEmpresaServer
-    console.log(idEmpresa)
-
-    medidaModel.buscarUltimasMedidas(idEmpresa)
-    .then(function (resultado) {
-
-        if(resultado.length > 0){
-
+    medidaModel.buscarUltimasMedidas(idEmpresa).then(function (resultado) {
+        if (resultado.length > 0) {
             res.status(200).json(resultado);
-
         } else {
-
-            res.status(204).send("Nenhum registro encontrado");
-
+            res.status(204).send("Nenhum resultado encontrado!")
         }
     }).catch(function (erro) {
-
-        console.log(erro)
-
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
-
-    })
+    });
 }
 
 
 function buscarMedidasEmTempoReal(req, res) {
 
-    var idAquario = req.params.idAquario;
+    var idEmpresa = req.params.idEmpresa;
 
     console.log(`Recuperando medidas em tempo real`);
 
-    medidaModel.buscarMedidasEmTempoReal(idAquario)
+    medidaModel.buscarMedidasEmTempoReal(idEmpresa)
     .then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);

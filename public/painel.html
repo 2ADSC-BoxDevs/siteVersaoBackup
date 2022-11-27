@@ -9,1096 +9,470 @@
     <link rel="shortcut icon" href="assets/logo/logo-footer.png" type="image/x-icon">
     <title>Specula | Painel</title>
 
-  <!-- Montserrat Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
-  rel="stylesheet">
+    <!-- Montserrat Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
-<!-- Material Icons -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-<link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-<!-- Custom CSS -->
-<link rel="stylesheet" href="css/dash.css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/dash.css">
 
-<!-- chart -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<!-- icons -->
-<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <!-- icons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
 </head>
-<body >
-     <div class="grid-container">
-      <!-- Header -->
-      <header class="header">
 
-        <div class="user">
-          <span id="user">Olá, usuário!</span>
-        </div>
-  
-        <div class="search-box">
-          <input type="text" class="search-txt" placeholder="Buscar Máquina">
-          <a href="#" class="search-btn">
-            <img src="assets/icons/icons8-pesquisar.svg" height="20" width="20">
-          </a>
-        </div>
-      </header>
-      <!-- End Header -->
-  
+<body>
+    <div class="grid-container">
+        <!-- Header -->
+        <header class="header">
 
-      <!-- Sidebar -->
-      <aside id="sidebar">
-        <div class="sidebar-title">
-          <div class="sidebar-brand">
-            <img src="assets/logo/logo.svg" alt="">
-          </div>
-          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
-        </div>
-  
-        <ul class="sidebar-list">
-            <a href="dashV3.html">
-          <li class="sidebar-list-item">
-            <i class="uil uil-chart-line"></i> Dashboard
-          </li>
-        </a>
-          <a href="#">
-          <li class="sidebar-list-item">
-          <i class="uil uil-graph-bar"></i> Painel 
-          </li>
-        </a> 
-        <a href="crudMaquina.html">
-          <li class="sidebar-list-item">
-            <i class="uil uil-monitor"></i>Cadastrar máquina
-          </li>
-        </a>
-          <a href="download.html">
-          <li class="sidebar-list-item">
-            <i class="uil uil-arrow-to-bottom"></i>Download
-          </li>
-        </a>
-        <a href="index.html">
-          <li class="sidebar-list-item">
-            <i class="uil uil-signout"></i>Sair
-          </li>
-        </a>
-        </ul>
-      </aside>
-      <!-- End Sidebar -->
+            <div class="user">
+                <span id="user">Olá, usuário!</span>
+            </div>
+
+            <div class="search-box">
+                <input type="text" class="search-txt" placeholder="Buscar Máquina">
+                <a href="#" class="search-btn">
+                    <img src="assets/icons/icons8-pesquisar.svg" height="20" width="20">
+                </a>
+            </div>
+        </header>
+        <!-- End Header -->
 
 
-    <main class="main-container">
-        
+        <!-- Sidebar -->
+        <aside id="sidebar">
+            <div class="sidebar-title">
+                <div class="sidebar-brand">
+                    <img src="assets/logo/logo.svg" alt="">
+                </div>
+                <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+            </div>
 
-<div class="charts" id="container_painel_id">
+            <ul class="sidebar-list">
+                <a href="dashV3.html">
+                    <li class="sidebar-list-item">
+                        <i class="uil uil-chart-line"></i> Dashboard
+                    </li>
+                </a>
+                <a href="#">
+                    <li class="sidebar-list-item">
+                        <i class="uil uil-graph-bar"></i> Painel
+                    </li>
+                </a>
+                <a href="crudMaquina.html">
+                    <li class="sidebar-list-item">
+                        <i class="uil uil-monitor"></i>Cadastrar máquina
+                    </li>
+                </a>
+                <a href="download.html">
+                    <li class="sidebar-list-item">
+                        <i class="uil uil-arrow-to-bottom"></i>Download
+                    </li>
+                </a>
+                <a href="index.html">
+                    <li class="sidebar-list-item">
+                        <i class="uil uil-signout"></i>Sair
+                    </li>
+                </a>
+            </ul>
+        </aside>
+        <!-- End Sidebar -->
 
-    <div class="dashboards" id="dashboards_id">
 
-               <div class="container-dash">
-                    <div id="maquina1" class="maquinas" onload="verifiyMachine()">
+        <main class="main-container">
+
+
+            <div class="charts" id="container_painel_id">
+                <div class="container-dash">
+                    <div id="maquina1" class="maquinas">
                         <div class="titulo-dash-maquina">
-                          <div class="desligar">
-                            <img src="assets/icons/Group 156.png">
-                        </div>
-                            <h2>BD012274</h2>
+                            <div class="desligar">
+                                <img src="assets/icons/Group 156.png">
+                            </div>
+                            <h2></h2>
                             <img src="assets/icons/Icon-color.png" alt="">
                         </div>
                         <div class="dashs-maquinas-cads">
-                            <div class="dash-top">
-                                 <canvas id="myChartDinamic" ></canvas>
-                            </div>
-                   
+                            <canvas id="myChartDinamic"></canvas>
+
+                        </div>
+                    </div>
                 </div>
+                <div class="dashboards" id="dashboards_id">
+
+                    <div class="painel-dashboards" style="display: none;">
+                        <div class="title-painel-dash">
+                            <div class="titletext">
+                                <h1>BBD012274</h1><i class='bx bx-x-circle'></i>
+                            </div>
+
+                        </div>
+                        <div class="container-painel-dashs">
+                            <div class="container-cpu">
+                                <div class="container-cpu-left">
+                                    <div class="titulo-cpu">
+
+                                    </div>
+                                    <div class="cad-hard-info">
+                                        <div class="hard-info-cpu">
+                                            <h2>CPU</h2>
+                                            <h3>Nome: <span>AMD Ryzen 5 5500U</span></h3>
+                                            <h3>Pacotes Físicos: <span>1</span></h3>
+                                            <h3>CPUs Físicas: <span>6</span></h3>
+                                            <h3>CPUs Lógicas: <span>12 </span></h3>
+                                            <h3>Frequência: <span>4056000 </span></h3>
+                                            <h3>Fabricante: <span>Authentic AMD </span></h3>
+                                        </div>
+                                        <div class="destaque-info-cpu">
+                                            <div class="circle_destaque">
+                                                <h1>56%</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dash-container-cpu">
+                                    <canvas id="myChartcpu"></canvas>
+                                </div>
+                            </div>
+
+                            <div class="container-memoria">
+                                <div class="container-memoria-left">
+                                    <div class="titulo-memoria">
+                                    </div>
+                                    <div class="cad-hard-info-memoria">
+                                        <div class="hard-info-memoria">
+                                            <h2>Memoria</h2>
+
+                                            <h3>Em uso: <span>4,3</span></h3>
+                                            <h3>Disponível: <span>1,3</span></h3>
+                                            <h3>Total <span>5,7</span></h3>
+                                        </div>
+                                        <div class="destaque-info-memoria">
+                                            <div class="circle_destaque-memoria">
+                                                <h1>78%</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dash-container-memoria">
+                                    <canvas id="myChartmemoria"></canvas>
+                                </div>
+                            </div>
+
+
+
+                            <div class="container-disco">
+                                <div class="container-disco-left">
+                                    <div class="titulo-disco">
+                                    </div>
+                                    <div class="cad-hard-info">
+                                        <div class="hard-info-disco">
+                                            <h2>Disco</h2>
+
+                                            <h3>Tamho: <span>256</span></h3>
+                                            <h3>Leitura: <span>11</span></h3>
+                                            <h3>Bytes de leitura: <span>22</span></h3>
+                                            <h3>Escritas: <span>29</span></h3>
+                                            <h3>Bytes de escrita: <span>62</span></h3>
+                                            <h3>Tamanho atual da fila: <span>0</span></h3>
+                                            <h3>Tempo de transferência: <span>10</span></h3>
+                                        </div>
+                                        <div class="destaque-info-disco">
+                                            <div class="circle_destaque-disco">
+
+                                                <h1>0</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dash-container-disco">
+                                    <canvas id="myChartdisco"></canvas>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
             </div>
 
-        </div>
-            
-            <div class="painel-dashboards" style="display: none;">
-                <div class="title-painel-dash">
-                    <div class="titletext"><h1>BBD012274</h1><i class='bx bx-x-circle'></i></div>
-                   
-                </div>
-                <div class="container-painel-dashs">
-                    <div class="container-cpu">
-                        <div class="container-cpu-left">
-                            <div class="titulo-cpu">
-                               
-                            </div>
-                            <div class="cad-hard-info">
-                                <div class="hard-info-cpu">
-                                    <h2>CPU</h2>
-                                    <h3>Nome: <span>AMD Ryzen 5 5500U</span></h3>
-                                    <h3>Pacotes Físicos: <span>1</span></h3>
-                                    <h3>CPUs Físicas: <span>6</span></h3>
-                                    <h3>CPUs Lógicas: <span>12  </span></h3>
-                                    <h3>Frequência: <span>4056000  </span></h3>
-                                    <h3>Fabricante: <span>Authentic AMD </span></h3>
-                                </div>
-                                <div class="destaque-info-cpu">
-                                    <div class="circle_destaque">
-                                        <h1>56%</h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dash-container-cpu">
-                            <canvas id="myChartcpu" ></canvas>
-                        </div>
-                    </div>
-
-                    <div class="container-memoria">
-                        <div class="container-memoria-left">
-                            <div class="titulo-memoria">
-                            </div>
-                            <div class="cad-hard-info-memoria">
-                                <div class="hard-info-memoria">
-                                <h2>Memoria</h2>
-
-                                    <h3>Em uso: <span>4,3</span></h3>
-                                    <h3>Disponível: <span>1,3</span></h3>
-                                    <h3>Total <span>5,7</span></h3>
-                                </div>
-                                <div class="destaque-info-memoria">
-                                    <div class="circle_destaque-memoria">
-                                        <h1>78%</h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dash-container-memoria">
-                            <canvas id="myChartmemoria" ></canvas>
-                        </div>
-                    </div>
-
-                    <div class="container-disco">
-                        <div class="container-disco-left">
-                            <div class="titulo-disco">
-                            </div>
-                            <div class="cad-hard-info">
-                                <div class="hard-info-disco">
-                                <h2>Disco</h2>
-
-                                    <h3>Tamho: <span>256</span></h3>
-                                    <h3>Leitura: <span>11</span></h3>
-                                    <h3>Bytes de leitura: <span>22</span></h3>
-                                    <h3>Escritas: <span>29</span></h3>
-                                    <h3>Bytes de escrita: <span>62</span></h3>
-                                    <h3>Tamanho atual da fila: <span>0</span></h3>
-                                    <h3>Tempo de transferência: <span>10</span></h3>
-                                </div>
-                                <div class="destaque-info-disco">
-                                    <div class="circle_destaque-disco">
-                                        
-                                        <h1>0</h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dash-container-disco">
-                            <canvas id="myChartdisco" ></canvas>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-           
-           
-        </div>
-        
-    
-
-</div>
-    
     </div>
-</main>
-     </div>
+    </main>
+    </div>
+
+    <div class="modalConfirm">
+        <h1>Deseja mesmo reiniciar a máquina, </h1>
+
+        <div class="opcoes">
+            <button onclick="reiniciarMaquina()">
+                Sim
+            </button>
+            <button>
+                Não
+            </button>
+        </div>
+
+    </div>
+
+
+
+
 </body>
+
+
+
 
 
 <script>
 
-    function sairPage(){
-    
+    function sairPage() {
+
         sessionStorage.clear()
-    
+
         window.location = "index.html"
-    
+
     }
-    
-    function verificarCargo(){
-    
-        if(sessionStorage.getItem("CARGO_USUARIO") == "Admin"){
-    
+
+    function verificarCargo() {
+
+        if (sessionStorage.getItem("CARGO_USUARIO") == "Admin") {
+
             console.log("Is admin")
-    
-    
+
+
         } else {
-    
+
             icon4.style.display = "none"
             linkIcon4.style.display = "none"
             LIIncon4.style.display = "none"
-    
-        }
-    
-    }
-    
-    
-    </script>
-    
-    
-    <!-- Script do menu lateral -->
-    <script>
-        let btn = document.querySelector("#btn");
-        let sidebar = document.querySelector(".sidebar");
-        let searchBtn = document.querySelector(".bx-search-alt-2");
-    
-        btn.onclick = function () {
-            sidebar.classList.toggle("active");
-    
-        }
-    
-        searchBtn.onclick = function () {
-            sidebar.classList.toggle("active")
-        }
-    </script>
-    <!-- Fim script menu lateral -->
-    
-    <!-- scripts dash donuts cads -->
-    <script>
-    
-        const labels = [
-    
-        ];
-    
-        var data = {
-            labels: [
-    
-            ],
-            datasets: [{
-                label: 'My First Dataset',
-                data: [10, 30],
-                backgroundColor: [
-                    '#DF2935',
-                    '#87B7FF'
-                ],
-                hoverOffset: 4
-            }]
-        };
-    
-        var config = {
-            type: 'doughnut',
-            data: data,
-        };
-    
-    </script>
-    
-    <script>
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
-    </script>
-    
-    <script>
-        const labels2 = [
-    
-        ];
-    
-        const data2 = {
-            labels: [
-    
-            ],
-            datasets: [{
-                label: 'My First Dataset',
-                data: [25, 15, 40],
-                backgroundColor: [
-                  'rgb(232, 232, 49)',
-                    '#DF2935',
-                    '#87B7FF'
-                ],
-                hoverOffset: 4
-            }]
-        };
-    
-        const config2 = {
-            type: 'doughnut',
-            data: data2,
-        };
-    </script>
-    
-    <script>
-        const myChart2 = new Chart(
-            document.getElementById('myChart2'),
-            config2
-        );
-    </script>
-    
-    <script>
-        const labels3 = [
-    
-        ];
-    
-        const data3 = {
-            labels: [
-    
-            ],
-            datasets: [{
-                label: 'My First Dataset',
-                data: [42, 10, 75],
-                backgroundColor: [
-                'rgb(232, 232, 49)',
-                    '#DF2935',
-                    '#87B7FF'
-                ],
-                hoverOffset: 4
-            }]
-        };
-    
-        const config3 = {
-            type: 'doughnut',
-            data: data3,
-        };
-    </script>
-    
-    <script>
-        const myChart3 = new Chart(
-            document.getElementById('myChart3'),
-            config3
-        );
-    </script>
-    
-    <script>
-        const labels4 = [
-    
-        ];
-    
-        const data4 = {
-            labels: [
-    
-            ],
-            datasets: [{
-                label: 'My First Dataset',
-                data: [20, 30, 50],
-                backgroundColor: [
-                    'rgb(232, 232, 49)',
-                    '#DF2935',
-                    '#87B7FF',
-                ],
-                hoverOffset: 4
-            }]
-        };
-    
-        const config4 = {
-            type: 'doughnut',
-            data: data4,
-        };
-    </script>
-    
-    <script>
-        const myChart4 = new Chart(
-            document.getElementById('myChart4'),
-            config4
-        );
-    </script>
-    
-    <!-- Mudar disposições da tela a partir da escolha no menu lateral -->
-    
-    <script>
-    
-        let allscreen = document.querySelector(".grid-container")
-        var tela_dashs = document.getElementById("dashboards_id");
-    var painel_maquinas = document.getElementById("container_painel_id");
 
-        let dashboard_selected = document.querySelector(".maquinas");
-        let painel_dash = document.querySelector(".painel-dashboards")
-    
-        function alterarDispoDaTela(selected){
-        if(selected == 0){
-            painel_maquinas.style.display = "flex";
-            titulo_pagina_id.innerHTML = "";
-            titulo_pagina_id.innerHTML = "Painel de máquinas";
-            icon1.style.color = "red"
-            icon2.style.color = "white"
-            tela_dashs.style.display = "none"
-            
         }
-        if(selected == 1){
-            painel_maquinas.style.display = "none";
-            titulo_pagina_id.innerHTML = "";
-            titulo_pagina_id.innerHTML = "Dashboards";
-            icon1.style.color = "white"
-            icon2.style.color = "red"
-            tela_dashs.style.display = "flex"
-        }
+
     }
-    
-    
-        dashboard_selected.onclick = function(){
-    
-            let container_dash_let = document.querySelector(".container-dash")
-            let header_let = document.querySelector(".header");
-            painel_dash.style.zIndex = "1000";
-            painel_dash.style.display = "block";
-            painel_dash.style.position = "fixed";      
-            allscreen.style.overflow = "hidden";
-            container_dash_let.style.filter = "blur(15px)";
-            header_let.style.filter = "blur(15px)";
-            container_dash_let.style.pointerEvents = "none";
-           
-    
-        }
-    
-        let btn_fechar_modal = document.querySelector(".bx-x-circle");
-    
-        btn_fechar_modal.onclick = function(){
-            let container_dash_let = document.querySelector(".container-dash");
-            let header_let = document.querySelector(".header");
-    
-            painel_dash.style.position = "none";
-            allscreen.style.overflow = "auto";
-            painel_dash.style.display = "none";
-            painel_dash.style.zIndex = "-1000";
-            header_let.style.filter = "blur(calc(15px - 15px))";
-            container_dash_let.style.filter = "blur(calc(15px - 15px))"
-            container_dash_let.style.pointerEvents = "all";
-    
-        }
-    
-    </script>
-    
-     <!-- Dashs dinamicos dos cads da tela 'Dashboards' -->
-    
-     <script>
-        const ctx = document.getElementById('myChartDinamic').getContext('2d');
-        const myChartDinamic = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['', '', '', '', '', ''],
-                datasets: [{
-                    label: 'Uso da CPU',
-                    data: [10, 56, 20, 78, 98, 41],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
+
+
+</script>
+
+<!-- Script para trazer maquinas -->
+<script>
+    function listarMaquinas() {
+
+
+        console.log("Entrei no buscarMedida")
+        fetch(`/medidas/ultimas/${idEmpresa}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
             },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+        }).then(function (resposta) {
+
+            console.log("Entrei no buscarMedida then")
+
+            resposta.json()
+                .then((json) => {
+                    for (i = 0; i < json.length; i++) {
+                        console.log("Aqui " + JSON.stringify(json[i])) //Objeto inteiro vindo em STRING
+                        if (json[i].isActivade == "sim") {
+                            var criaMaquina =
+                                ` <div class="container-dash" onclick="obterDadosGraficoProcessador()})">
+                            <div id="maquina1" class="maquinas">
+                                <div class="titulo-dash-maquina">
+                                    <div class="desligar">
+                                        <img src="assets/icons/Group 156.png">
+                                    </div>
+                                    <h2>${json[i].codigo_patrimonio}</h2>
+                                    <img src="assets/icons/Icon-color.png" alt="">
+                                </div>
+                                <div class="dashs-maquinas-cads">
+                                    nome da maquina : sadada <br>
+                                    usuario da máquina : Victor <br>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        `;
+
+
+                            container_painel_id.innerHTML += criaMaquina;
+
+                            var processadorEmUso = `${parseFloat(json[i].processador_em_uso).toFixed(0)}`
+
+                            const ctx = document.getElementById('myChartDinamic').getContext('2d');
+                            const myChartDinamic = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: ['', '', '', '', ''],
+                                    datasets: [{
+                                        label: 'cpu em uso',
+                                        data: [processadorEmUso, processadorEmUso, processadorEmUso, processadorEmUso, processadorEmUso],
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(54, 162, 235, 0.2)',
+                                            'rgba(255, 206, 86, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(153, 102, 255, 0.2)',
+                                            'rgba(255, 159, 64, 0.2)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(255, 99, 132, 1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)'
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                }
+                            });
+
+                        }
                     }
-                }
-            }
-        });
-    
-        const ctx2 = document.getElementById('myChartDinamic2').getContext('2d');
-        const myChartDinamic2 = new Chart(ctx2, {
-            type: 'bar',
-            data: {
-                labels: ['Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago'],
-                datasets: [{
-                    label: 'Media de uso da CPU',
-                    data: [60, 6, 70, 65, 98, 21],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    
-        const ctx3 = document.getElementById('myChartDinamic3').getContext('2d');
-        const myChartDinamic3 = new Chart(ctx3, {
-            type: 'line',
-            data: {
-                labels: ['', '', '', '', '', ''],
-                datasets: [{
-                    label: 'Uso da CPU',
-                    data: [2, 15, 20, 55, 74, 90],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    
-        const ctx4 = document.getElementById('myChartDinamic4').getContext('2d');
-        const myChartDinamic4 = new Chart(ctx4, {
-            type: 'bar',
-            data: {
-                labels: ['Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago'],
-                datasets: [{
-                    label: 'Media de uso da CPU',
-                    data: [80, 51, 99, 10, 66, 44],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    
-        const ctx5 = document.getElementById('myChartDinamic5').getContext('2d');
-        const myChartDinamic5 = new Chart(ctx5, {
-            type: 'line',
-            data: {
-                labels: ['', '', '', '', '', ''],
-                datasets: [{
-                    label: 'Uso da CPU',
-                    data: [5, 56, 20, 99, 2, 41],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    
-        const ctx6 = document.getElementById('myChartDinamic6').getContext('2d');
-        const myChartDinamic6 = new Chart(ctx6, {
-            type: 'line',
-            data: {
-                labels: ['', '', '', '', '', ''],
-                datasets: [{
-                    label: 'Uso da CPU',
-                    data: [20, 77, 40, 78, 8, 41],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    
-        const ctx7 = document.getElementById('myChartDinamic7').getContext('2d');
-        const myChartDinamic7 = new Chart(ctx7, {
-            type: 'bar',
-            data: {
-                labels: ['Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago'],
-                datasets: [{
-                    label: 'Media de uso da CPU',
-                    data: [10, 56, 20, 78, 98, 41],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    
-        const ctx8 = document.getElementById('myChartDinamic8').getContext('2d');
-        const myChartDinamic8 = new Chart(ctx8, {
-            type: 'line',
-            data: {
-                labels: ['', '', '', '', '', ''],
-                datasets: [{
-                    label: 'Uso da CPU',
-                    data: [22, 7, 88, 50, 25, 7],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    
-        const ctx9 = document.getElementById('myChartDinamic9').getContext('2d');
-        const myChartDinamic9 = new Chart(ctx9, {
-            type: 'line',
-            data: {
-                labels: ['', '', '', '', '', ''],
-                datasets: [{
-                    label: 'Uso da CPU',
-                    data: [77, 13, 22, 13, 22, 99],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    
-        const ctx10 = document.getElementById('myChartDinamic10').getContext('2d');
-        const myChartDinamic10 = new Chart(ctx10, {
-            type: 'line',
-            data: {
-                labels: ['', '', '', '', '', ''],
-                datasets: [{
-                    label: 'Uso da CPU',
-                    data: [10, 99, 10, 99, 10, 99],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    
-        const ctx11 = document.getElementById('myChartDinamic11').getContext('2d');
-        const myChartDinamic11 = new Chart(ctx11, {
-            type: 'line',
-            data: {
-                labels: ['', '', '', '', '', ''],
-                datasets: [{
-                    label: 'Uso da CPU',
-                    data: [10, 56, 20, 78, 98, 41],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    
-        const ctx12 = document.getElementById('myChartDinamic12').getContext('2d');
-        const myChartDinamic12 = new Chart(ctx12, {
-            type: 'line',
-            data: {
-                labels: ['', '', '', '', '', ''],
-                datasets: [{
-                    label: 'Uso da CPU',
-                    data: [77, 100, 20, 48, 1, 4],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    
-    
-    
-        const datad1 = {
-    
-    
-            datasets: [{
-                
-                label: '',
-                data: [50, 50],
-                backgroundColor: [
-                    '#DF2935',
-                    '#908FA2',
-                ],
-                hoverOffset: 4
-            }]
-        };
-    
-        const configd1 = {
-            type: 'doughnut',
-            data: datad1,
-        };
-    
-    
-    
-        const myChartd1 = new Chart(
-            document.getElementById('myChartdoughnut'),
-            configd1
-        );
-    
-        const myChartd2 = new Chart(
-            document.getElementById('myChartdoughnut2'),
-            configd1
-        );
-        
-        const myChartd3 = new Chart(
-            document.getElementById('myChartdoughnut3'),
-            configd1
-        );
-    
-        const myChartd4 = new Chart(
-            document.getElementById('myChartdoughnut4'),
-            configd1
-        );
-    
-        const myChartd5 = new Chart(
-            document.getElementById('myChartdoughnut5'),
-            configd1
-        );
-    
-        const myChartd6 = new Chart(
-            document.getElementById('myChartdoughnut6'),
-            configd1
-        );
-    
-        const myChartd7 = new Chart(
-            document.getElementById('myChartdoughnut7'),
-            configd1
-        );
-    
-        const myChartd8 = new Chart(
-            document.getElementById('myChartdoughnut8'),
-            configd1
-        );
-    
-        const myChartd9 = new Chart(
-            document.getElementById('myChartdoughnut9'),
-            configd1
-        );
-    
-        const myChartd10 = new Chart(
-            document.getElementById('myChartdoughnut10'),
-            configd1
-        );
-    
-        const myChartd11 = new Chart(
-            document.getElementById('myChartdoughnut11'),
-            configd1
-        );
-    
-        const myChartd12 = new Chart(
-            document.getElementById('myChartdoughnut12'),
-            configd1
-        );
-    
-     </script>
-    
-     <!-- Dashs da tela de dashs mesmo -->
-    
-     <script>
-        const ctxdashcpu = document.getElementById('myChartcpu').getContext('2d');
-        const myChartcpu = new Chart(ctxdashcpu, {
-            type: 'line',
-            data: {
-                labels: ['', '', '', '', '', ''],
-                datasets: [{
-                    label: 'Uso da CPU',
-                    data: [10, 56, 20, 78, 98, 56],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    
-    
-        const ctxdashmemoria = document.getElementById('myChartmemoria').getContext('2d');
-        const myChartmemoria = new Chart(ctxdashmemoria, {
-            type: 'bar',
-            data: {
-                labels: ['jan-fav', '-mar-abr', 'mai-jun', 'jul-ago', 'set-out', 'nov-dez'],
-                datasets: [{
-                    label: 'Uso da memória',
-                    data: [10, 16, 28, 59, 70, 78],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    
-        const ctxdashdisco = document.getElementById('myChartdisco').getContext('2d');
-        const myChartdisco = new Chart(ctxdashdisco, {
-            type: 'polarArea',
-            data: {
-                labels: ['Tamanho', 'Leitura', 'Bytes de leitura', 'Escritas', 'Tempo de transferência'],
-                datasets: [{
-                    label: 'Dados Disco',
-                    data: [25, 5, 22, 10, 62, 5],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    
-    
-     </script>
+                })
+
+        }).catch(function (erro) {
+            console.log("Erro -> " + erro);
+        })
+    }
+
+
+
+
+</script>
+
 </html>
 
+<!-- // Função de fechar modal tem que dar um clearTimeout  clearTimeout(proximaAtualizacao); -->
 
+<script>
+    var proximaAtualizacao;
+
+
+
+    function obterDadosGraficoProcessador() {
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+        var idEmpresa = sessionStorage.FK_EMPRESA;
+
+
+        fetch(`/medidas/ultimas/${idEmpresa}`, { cache: "no-store" })
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+
+                        plotarGraficoProcessador(resposta, idEmpresa);
+                    });
+                } else {
+                    console.error("Nenhum dado encontrado ou erro na API");
+                }
+            })
+            .catch(function (error) {
+                console.error(
+                    `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+                );
+            });
+    }
+
+    function plotarGraficoProcessador(resposta, idEmpresa) {
+        console.log("iniciando plotagem do gráfico...");
+
+        var dados = {
+            labels: [],
+            datasets: [
+                {
+                    label: "Processador em uso",
+                    borderColor: "#E0AA1E",
+                    backgroundColor: "#E0AA1E",
+                    fill: true,
+                    data: [],
+                }
+            ],
+        };
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            dados.labels.push(registro.data_hora_registro)
+            dados.datasets[0].data.push(Number(registro.processador_em_uso).toFixed(0));
+        }
+
+        const config = {
+            type: 'line',
+            data: dados,
+        };
+
+        let myChart = new Chart(
+            document.getElementById('myChartDinamic'),
+            config
+        );
+
+        setTimeout(() => atualizarGraficoProcessador(idEmpresa, dados, myChart), 2000);
+    }
+
+
+
+    function atualizarGraficoProcessador(idEmpresa, dados, myChart) {
+        fetch(`/medidas/tempo-realTemperatura/${idEmpresa}`, { cache: "no-store" })
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (novoRegistro) {
+                        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                        console.log(`Dados atuais do gráfico: ${dados}`);
+
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].data_hora_registro); // incluir um novo momento
+
+                        dados.datasets[0].data.shift(); // apagar o primeiro de temperatura
+                        dados.datasets[0].data.push(Number(novoRegistro[0].processador_em_uso).toFixed(0)); // incluir uma nova medida de temperatura
+
+                        myChart.update();
+
+                        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                        proximaAtualizacao = setTimeout(
+                            () => atualizarGraficoProcessador(idEmpresa, dados, myChart),
+                            2000
+                        );
+                    });
+                } else {
+                    console.error("Nenhum dado encontrado ou erro na API");
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(
+                        () => atualizarGraficoProcessador(idEmpresa, dados, mychart),
+                        2000
+                    );
+                }
+            })
+            .catch(function (error) {
+                console.error(`
+          Erro na obtenção dos dados p/ gráfico: ${error.message}
+        `);
+            });
+    }
+
+    obterDadosGraficoProcessador()
+
+
+</script>
