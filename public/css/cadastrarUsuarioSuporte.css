@@ -30,6 +30,27 @@ body {
 
 /* INICIO HEADER */
 
+.main-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.son_card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.link_home {
+  font-size: 2.5rem;
+  color: white;
+  text-decoration: none;
+  height: 3.5rem;
+  padding-right: 0 16px 10px 0;
+}
+
 .navbar {
   padding: 0;
   width: 100%;
@@ -49,10 +70,11 @@ body {
 }
 
 .header {
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4rem 10rem 2rem 10rem;
+  padding-top: 30px
 }
 
 .header h1 {
@@ -133,12 +155,11 @@ body {
 
 .uil-user-circle {
   color: #63abb6;
-  width: 150px;
+  width: 100px;
 }
 
 .mainlogin {
   width: 100%;
-
   display: flex;
   height: 100%;
   background-color: #272932;
@@ -146,37 +167,31 @@ body {
   align-items: center;
 }
 
-.son_card {
-  flex-wrap: wrap;
-  width: 87%;
-
-  display: flex;
-
-  justify-content: space-around;
-}
-
 .cad_top {
   display: flex;
-  width: 90%;
+  width: 64%;
   flex-direction: column;
+  padding: 0 0 0 4rem;
 }
+
 .cad_top .textfield {
   display: flex;
   margin: 0;
   width: 50%;
   justify-content: space-around;
 }
+
 .cad_top .textfield input {
   width: 85%;
 }
+
 .block_text {
   width: 100%;
-
   display: flex;
   align-items: center;
-
   padding: 70px 0px;
 }
+
 .input_cadastro {
   padding: 10px;
   width: 20%;
@@ -188,6 +203,7 @@ body {
   border-radius: 5px;
   font-size: 1rem;
 }
+
 #buttonDiv {
   margin-top: 100px;
 }
@@ -260,9 +276,11 @@ a {
   text-decoration: none;
   padding: 0px 8px;
 }
+
 form span {
   color: white;
 }
+
 .cadastre_references {
   color: #63abb6;
   transition: 0.7s;
