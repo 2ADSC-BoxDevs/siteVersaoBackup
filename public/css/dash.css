@@ -1108,9 +1108,13 @@ DOWNLOAD */
 
 }
 
+.chart-lateral{
+ overflow: auto;
+ max-height: 60vh;
+}
+
 .list_maquinas {
   height: 100%;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;

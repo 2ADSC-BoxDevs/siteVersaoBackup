@@ -111,22 +111,14 @@
           <span class="text-primary font-weight-bold" id="machinesIsAct">0</span>
         </div>
 
-        <div class="card">
-          <div class="card-inner">
-            <p class="text-primary">Totais de alertas de memórias</p>
-            <span class="material-symbols-outlined storage">
-              storage
-            </span>
-          </div>
-          <span class="text-primary font-weight-bold">83</span>
-        </div>
+
 
         <div class="card">
           <div class="card-inner">
             <p class="text-primary">Totais de alertas de RAM</p>
             <i class="uil uil-compact-disc"></i>
           </div>
-          <span class="text-primary font-weight-bold">79</span>
+          <span class="text-primary font-weight-bold" id="alertRamHtml">0</span>
         </div>
 
         <div class="card">
@@ -136,7 +128,18 @@
               memory
             </span>
           </div>
-          <span class="text-primary font-weight-bold">56</span>
+          <span class="text-primary font-weight-bold" id="alertCpuHtml">0</span>
+        </div>
+
+
+        <div class="card">
+          <div class="card-inner">
+            <p class="text-primary">Totais de alertas de memórias</p>
+            <span class="material-symbols-outlined storage">
+              storage
+            </span>
+          </div>
+          <span class="text-primary font-weight-bold" id="alertDiscoHtml">0</span>
         </div>
 
       </div>
@@ -412,11 +415,11 @@
             datasets:[
                 {
                     label: ['Alertas'],
-                    borderColor: "#E0AA1E",
-                    backgroundColor: "#E0AA1E",
+                    borderColor: ["#87B7FF", "#E0AA1E"],
+                    backgroundColor:["#87B7FF","#E0AA1E"],
                     fill: true,
                     data: [],
-                },
+                }
               ]
         };
 
@@ -427,31 +430,53 @@
 
         var AlertasRam = 0;
         var AlertasCPU = 0;
+        var AlertasDisco = 0;
 
         var ativas = 0;
 
+       
         console.log(resposta)
 
         for (i = 0; i < resposta.length; i++) {
             
             var registro = resposta[i];
 
+            console.log(registro)
+
             var cpu = registro.processador_emUso ;
             var ram = registro.memoriaRam_emUso;
+            var disco = registro.discoEmUso;
 
-            if(cpu > 4){
+            if(cpu > 30){
               AlertasCPU++;
             } 
 
             //memoria RAM vindo em %
-            if (ram > 70){
+            if (ram > 90){
               AlertasRam++;
             }
-        }
-        
-        dados.datasets[0].data[0] = AlertasRam;
 
-        dados.datasets[0].data[1] = AlertasCPU;
+            if(disco > 50){
+              AlertasDisco++;
+            }
+        }
+
+        alertRamHtml.innerHTML = AlertasRam;
+
+        alertCpuHtml.innerHTML = AlertasCPU;
+
+        alertDiscoHtml.innerHTML = AlertasDisco;
+
+
+        // dados.datasets[0].data.shift();
+
+        // dados.datasets[1].data.shift();
+        
+        // dados.datasets[0].data.push(AlertasRam);
+        // dados.datasets[1].data.push(AlertasCPU);
+
+      dados.datasets[0].data[0] = AlertasRam;
+      dados.datasets[0].data[1] = AlertasCPU;
 
         const config = {
             type: 'bar',
@@ -470,13 +495,16 @@
             config
         );
 
-        setTimeout(() => {
+        window.myChart.update();
+
+    }
+
+    setInterval(() => {
           
           obterDadosGrafico();
-          window.myChart.update();
+          
 
         }, 10000);
-    }
 
 
 
