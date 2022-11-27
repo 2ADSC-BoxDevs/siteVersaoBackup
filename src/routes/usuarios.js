@@ -97,6 +97,10 @@ router.delete("/DeletarMaquina/:idMaquina", function (req, res) {
     usuarioController.deleteMaquinas(req, res);
 })
 
+router.put("/alterarMachine", function (req, res) {
+    usuarioController.alterarMachine(req, res);
+})
+
 
 //------------------------------------------------------------------------------------------------
 

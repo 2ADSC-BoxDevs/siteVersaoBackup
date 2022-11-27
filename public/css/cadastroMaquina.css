@@ -366,6 +366,16 @@ form span {
   border-radius: 20px;
 }
 
+#isActive_select{
+  width: 70%;
+  height: 2rem;
+
+}
+
+option{
+  color: #000000;
+}
+
 .btn-close-modal {
   background-color: #000000;
   border: none;

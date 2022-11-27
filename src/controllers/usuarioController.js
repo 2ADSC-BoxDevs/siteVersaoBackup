@@ -265,9 +265,10 @@ function cadastrarMachine(req, res) {
     var cpu = req.body.cpuServer;
     var ram = req.body.ramServer;
     var disco = req.body.discoServer;
+    var so = req.body.soServer;
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarMachine(fkEmpresa, codigoPatrimonio, cpu, ram, disco)
+        usuarioModel.cadastrarMachine(fkEmpresa, codigoPatrimonio, cpu, ram, disco, so)
             .then(function (resultado) {
 
                     res.json(resultado);
@@ -364,6 +365,35 @@ function cadastrarEmpresa(req, res) {
         );
 }
 
+function alterarMachine(req, res) {
+
+    var idMachine = req.body.idMachineServer;
+    var sistema = req.body.sistemaNewServer;
+    var status = req.body.statusServer;
+
+    usuarioModel.alterarMachine(idMachine, sistema, status)
+
+        .then(function (resultado) {
+
+            // if (resultado.length > 0) {
+
+                res.status(200).json(resultado);
+
+            // } else {
+
+            //     res.status(204).send("Nenhum resultado encontrado!")
+            // }
+        }).catch(function (erro) {
+
+                console.log(erro);
+
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     entrar,
     entrarGoogle,
@@ -376,5 +406,6 @@ module.exports = {
     listarMaquinas,
     listarSuporte,
     deleteMaquinas,
-    cadastrarMachine
+    cadastrarMachine,
+    alterarMachine
 }

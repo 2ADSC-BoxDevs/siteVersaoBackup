@@ -33,7 +33,7 @@
         </div>
 
         <div>
-          <button class="btn-add-machine" onclick="ModalMachine('add')">+ add</button>
+          <button class="btn-add-machine" onclick="ModalMachine('add', 'semId')">+ add</button>
         </div>
       </div>
 
@@ -58,6 +58,7 @@
         </div>
       </div> -->
 
+
       <div id="modal" class="modal-add-machine"></div>
 
       <div class="div-list-machines">
@@ -65,7 +66,8 @@
           <tr>
             <td class="td-title">ID:</td>
             <td class="td-title">Código de Patrimonio:</td>
-            <td class="td-title">Usuário da Máquina:</td>
+            <td class="td-title">Usuário da Máquina:</td>7
+            <td class="td-title">Sistema Operacional:</td>
             <td class="td-title">Empresa:</td>
           </tr>
         </table>
@@ -104,7 +106,7 @@
 
 <script>
 
-  function ModalMachine(type) {
+  function ModalMachine(type, id) {
 
     if(type == "edit"){
 
@@ -117,23 +119,24 @@
             <img src="assets/svg/cancel.svg">
           </button>
         </div>
+
         <div class="block_text">
           <div class="textfield">
-            <label for="maquina">ID da máquina:</label>
-            <input id="id_maquina" type="text" placeholder="Insira o id" />
+            <label for="maquina">Sistema Operacional:</label>
+            <input id="So_maquina" type="text" placeholder="Insira um Novo Sistema" />
             <i class="uil uil-cog"></i>
           </div>
 
-          <div class="textfield">
-            <label for="usuario">Setor:</label>
-              <input
-                id="setor_maquina"
-                type="password"
-                placeholder="Insira o setor:"
-              />
-              <i class="uil uil-store-alt"></i>
+          <div class="block_text">
+           <div class="textfield">
+            <span style="color: white;">Modificar estatus:</span>
+            <select name="isActive" id="isActive_select">
+             <option value="sim">Ligar</option>
+              <option value="não">Desligar</option>
+            </select>
           </div>
-          <button class="btnlogin" onclick="cadastrarMaquina()">Proximo</button>
+
+          <button class="btnlogin" onclick="editMachine(${id})"> Editar </button>
         </div>
         `;
 
@@ -186,6 +189,17 @@
             />
             <i class="uil uil-store-alt"></i>
         </div>
+
+        <div class="textfield">
+          <label for="usuario"> Sistema Operacional:</label>
+            <input
+              id="so_maquina"
+              type="text"
+              placeholder="Insira o modelo:"
+            />
+            <i class="uil uil-store-alt"></i>
+        </div>
+
         <button class="btnlogin" onclick="cadastrarMachine()"> Adicionar </button>
       </div>
       `;
@@ -201,6 +215,7 @@
     var cpu = cpu_maquina.value
     var ram = ram_maquina.value
     var disco = disco_maquina.value
+    var sistema = so_maquina.value
 
 
     fetch("/usuarios/cadastrarMachine", {
@@ -216,6 +231,7 @@
           cpuServer: cpu,
           ramServer: ram,
           discoServer: disco,
+          soServer: sistema,
         }),
       })
         .then(function (resposta) {
@@ -232,14 +248,16 @@
               confirmButtonColor: "#272990",
             });
 
-            console.log(`Resposta ${resposta.status}`);
+            setInterval(() => {
+              window.location = "crudMaquina.html";
+            }, 3000);
 
           }
         })
         .catch(function (resposta) {
           Swal.fire({
             title: "Erro!",
-            text: "Não conseguimos efetuar o seu login...",
+            text: "Não conseguimos cadastrar...",
             icon: "error",
             showConfirmButton: true,
             confirmButtonText: "Tentar Novamente",
@@ -251,6 +269,66 @@
           console.log(`#ERRO: ${resposta}`);
         });
 
+
+
+  }
+
+  function editMachine(id){
+
+    var idMachine = id;
+    var sistemaNew = So_maquina.value;
+    var statusNew = isActive_select.value;
+
+    console.log(idMachine, sistemaNew, statusNew)
+    
+
+    fetch("/usuarios/alterarMachine", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          idMachineServer: idMachine,
+          sistemaNewServer: sistemaNew,
+          statusServer: statusNew,
+        }),
+      })
+        .then(function (resposta) {
+          if (resposta.ok) {
+            Swal.fire({
+              title: "Parabéns!",
+              text: "Máquina alterada!!",
+              icon: "success",
+              showConfirmButton: false,
+              confirmButtonText: "Confirmar",
+              timer: 3000,
+              color: "white",
+              background: "#1e1f25",
+              confirmButtonColor: "#272990",
+            });
+
+            setInterval(() => {
+              window.location = "crudMaquina.html";
+            }, 3000);
+
+          }
+        })
+        .catch(function (resposta) {
+          Swal.fire({
+            title: "Erro!",
+            text: "Não conseguimos alterar...",
+            icon: "error",
+            showConfirmButton: true,
+            confirmButtonText: "Tentar Novamente",
+            color: "white",
+            background: "#1e1f25",
+            confirmButtonColor: "#272990",
+          });
+
+          console.log(`#ERRO: ${resposta}`);
+        });
 
 
   }
@@ -305,13 +383,25 @@
           console.log(json);
 
           for (i = 0; i < json.length; i++) {
+
+            if(json[i].nome_usuario_maquina == null){
+
+              var user = "Máquina Sem Usuário"
+
+            } else {
+
+              user = json[i].nome_usuario_maquina
+
+            }
+
             div = `<tr id="users-data" class="machines-data"> 
                     <td class="td-content"> ${json[i].id_maquina} </td> 
                     <td class="td-content"> ${json[i].codigo_patrimonio} </td> 
-                    <td class="td-content"> ${json[i].nome_usuario_maquina} </td> 
+                    <td class="td-content"> ${user} </td>
+                    <td class="td-content"> ${json[i].sistema_operacional} </td> 
                     <td class="td-content"> ${json[i].nome_empresa} </td> 
                     <td class="td-content"> 
-                      <span style="cursor:pointer;" onclick="ModalMachine('edit')"> 
+                      <span style="cursor:pointer;" onclick="ModalMachine('edit', ${json[i].id_maquina})"> 
                         <img src="assets/svg/edit.svg"> 
                       </span> 
                     </td>
@@ -323,6 +413,7 @@
                   </tr>`;
 
             tabelaMaquina.innerHTML += div;
+
           }
         });
       })
