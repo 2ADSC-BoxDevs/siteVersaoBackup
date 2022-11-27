@@ -24,10 +24,9 @@
 <body onload="AllMachines()">
   <div class="mainlogin">
     <div class="son_card">
-      <a href="dashV3.html">
-        <img class="btn-voltar" src="./assets/icons/setaVoltar.png"></a>
       <div class="header">
         <div class="header-title">
+          <a class="link_home" href="dashV3.html"><p>&#x276E;</p></a>
           <img class="uil-user-circle" src="assets/imgs/icon-maquina.png" alt="" />
           <h1>MÁQUINAS</h1>
         </div>
@@ -37,36 +36,13 @@
         </div>
       </div>
 
-      <!--    <div class="block_text">
-          <div class="textfield">
-            <label for="maquina">ID da máquina:</label>
-            <input id="id_maquina" type="text" placeholder="Insira o id" />
-            <i class="uil uil-cog"></i>
-          </div>
-
-          <div class="textfield">
-            <label for="usuario">Setor:</label>
-            <input
-              id="setor_maquina"
-              type="password"
-              placeholder="Insira o setor:"
-            />
-            <i class="uil uil-store-alt"></i>
-          </div>
-
-          <button class="btnlogin" onclick="cadastrarMaquina()">Proximo</button>
-        </div>
-      </div> -->
-
-
       <div id="modal" class="modal-add-machine"></div>
 
       <div class="div-list-machines">
         <table id="tabelaMaquina" class="table-machines">
           <tr>
-            <td class="td-title">ID:</td>
             <td class="td-title">Código de Patrimonio:</td>
-            <td class="td-title">Usuário da Máquina:</td>7
+            <td class="td-title">Usuário da Máquina:</td>
             <td class="td-title">Sistema Operacional:</td>
             <td class="td-title">Empresa:</td>
           </tr>
@@ -395,7 +371,6 @@
             }
 
             div = `<tr id="users-data" class="machines-data"> 
-                    <td class="td-content"> ${json[i].id_maquina} </td> 
                     <td class="td-content"> ${json[i].codigo_patrimonio} </td> 
                     <td class="td-content"> ${user} </td>
                     <td class="td-content"> ${json[i].sistema_operacional} </td> 
@@ -434,6 +409,7 @@
     console.log(idMaquina)
 
     Swal.fire({
+      position: 'top-end',
       title: `Tem certeza que deseja excluir está máquina?`,
       text: "",
       icon: 'warning',

@@ -28,21 +28,17 @@ body {
 
 /* INICIO HEADER */
 
-.btn-voltar{
+.btn-voltar {
   width: 60px;
   padding: 20px;
   position: absolute;
-  transition: .6s;
-  
-  
-  }
+  transition: 0.6s;
+}
 
-  
-  .btn-voltar:hover{
-    transform: translatex(-13px);
-    opacity: 0.9;
-  
-  }
+.btn-voltar:hover {
+  transform: translatex(-13px);
+  opacity: 0.9;
+}
 
 .navbar {
   padding: 0;
@@ -118,7 +114,7 @@ body {
   align-self: flex-start;
   justify-content: space-between;
   padding-top: 30px;
-  width: 84%;
+  width: 88%;
 }
 
 .header h1 {
@@ -127,7 +123,7 @@ body {
   padding-left: 15px;
 }
 
-.header .header-title{
+.header .header-title {
   display: flex;
   align-items: center;
 }
@@ -135,6 +131,7 @@ body {
 .uil-user-circle {
   color: #63abb6;
   width: 100px;
+  padding-left: 18px;
 }
 
 .mainlogin {
@@ -227,11 +224,6 @@ input::placeholder {
   border: #df2935 2px solid;
 }
 
-a {
-  color: white;
-  text-decoration: none;
-  padding: 0px 8px;
-}
 form span {
   color: white;
 }
@@ -312,6 +304,14 @@ form span {
 
 /* List of machines */
 
+.link_home {
+  font-size: 2.5rem;
+  color: white;
+  text-decoration: none;
+  height: 3.5rem;
+  padding-right: 0 16px 10px 0;
+}
+
 .div-list-machines {
   color: #ffffff;
   background-color: #00000052;
@@ -334,16 +334,16 @@ form span {
 }
 
 .table-machines .machines-data .td-content span {
-  padding: 0 16px 0 0;
+  padding: 16px;
 }
 
 .btn-add-machine {
   font-size: 0.9em;
   font-weight: 600;
   text-decoration: none;
-  background: #DF2935;
-  color: #FAF0CA;
-  border: 1px solid #DF2935;
+  background: #df2935;
+  color: #faf0ca;
+  border: 1px solid #df2935;
   border-radius: 30px;
   cursor: pointer;
   outline: none;
@@ -366,13 +366,12 @@ form span {
   border-radius: 20px;
 }
 
-#isActive_select{
+#isActive_select {
   width: 70%;
   height: 2rem;
-
 }
 
-option{
+option {
   color: #000000;
 }
 
@@ -382,7 +381,7 @@ option{
   margin: 0 0 0 2rem;
   height: 34px;
   cursor: pointer;
-} 
+}
 
 .modal-header {
   color: white;
