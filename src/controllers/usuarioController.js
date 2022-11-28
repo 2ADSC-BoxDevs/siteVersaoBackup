@@ -418,11 +418,13 @@ function alterarMachine(req, res) {
         );
 }
 function alterarStatus(req, res) {
-    var isActive = req.body.isActive;
+    var isActive = req.body.isActiveServer;
     var id_maquina = req.params.id_maquina;
 
-    console.log("aqui")
-    usuarioModel.alterarStatus(id_maquina, isActive)
+    console.log("AAAAAAAAAAAAAAAAAA")
+    console.log(isActive, id_maquina)
+
+    usuarioModel.alterarStatus(isActive, id_maquina)
         .then(
             function (resultado) {
                 res.json(resultado);
