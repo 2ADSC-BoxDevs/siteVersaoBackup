@@ -278,6 +278,12 @@ jQuery(function($){
 
             if (resposta.ok) {
 
+            resposta.json((json) => {
+
+              console.log(json)
+
+
+            })
 
             Swal.fire({
             title: 'Parabéns!',
@@ -294,11 +300,11 @@ jQuery(function($){
 
              console.log(`Resposta ${resposta.status}`)
 
-              setInterval(() => {
+              // setInterval(() => {
           
-                window.location = 'cadastroUsuarioSuporte.html';
+              //   window.location = 'cadastroUsuarioSuporte.html';
 
-              }, 3000);
+              // }, 3000);
 
                  
 
