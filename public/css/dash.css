@@ -21,7 +21,7 @@ body {
   font-weight: 600;
 }
 
-.text-blue {
+/* .text-blue {
   color: #246dec;
 }
 
@@ -35,7 +35,7 @@ body {
 
 .text-orange {
   color: #f5b74f;
-}
+} */
 
 .font-weight-bold {
   font-weight: 600;
@@ -60,7 +60,7 @@ body {
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: end;
   padding: 10px 30px 0 30px;
 }
 
@@ -234,7 +234,7 @@ body {
 .main-container {
   grid-area: main;
   overflow-y: auto;
-  padding: 20px 20px;
+  padding: 0 20px;
   color: #ffffff;
 }
 
@@ -251,7 +251,7 @@ body {
 .main-cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 20px;
+  gap: 15px;
   margin: 20px 0;
 }
 
@@ -259,10 +259,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 25px;
+  padding: 20px;
   background-color: #21232D;
   box-sizing: border-box;
-  border: 1px solid #87B7FF;
+  border: 1px solid #d2d2d3;
   border-radius: 5px;
   box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
   color: #ffffff;
@@ -270,24 +270,24 @@ body {
 
 .uil-desktop {
   font-size: 30px;
-  color: #367952;
+  color:rgba(167, 110, 167, 0.912) ;
 }
 
 .uil-compact-disc {
   font-size: 30px;
-  color: #E3C93C;
-}
-
-.material-symbols-outlined {
-  color: #DF2935;
-}
-
-.storage {
   color: #87B7FF;
 }
 
+.material-symbols-outlined {
+  color: orange;
+}
+
+.storage {
+  color: palevioletred;
+}
+
 .card:first-child {
-  border-left: 7px solid #367952;
+  border-left: 7px solid rgba(167, 110, 167, 0.912);
 }
 
 .card:nth-child(2) {
@@ -295,11 +295,11 @@ body {
 }
 
 .card:nth-child(3) {
-  border-left: 7px solid #FFE664;
+  border-left: 7px solid orange;
 }
 
 .card:nth-child(4) {
-  border-left: 7px solid #DF2935;
+  border-left: 7px solid palevioletred;
 }
 
 .card>span {
@@ -337,14 +337,14 @@ body {
 
 .chart-mensal {
   background-color: #272932;
-  border: 1px solid #87B7FF;
+  border: 1px solid #d2d2d3;
   border-radius: 11px;
-  height: 75%;
+  height: 70%;
   width: 900px;
   padding: 30px 30px 30px 30px;
-  margin-top: 7vh;
+  margin-top: 2vh;
   margin-right: 5vh;
-  margin-left: 1vh;
+  margin-left: 55px;
 }
 
 
@@ -353,12 +353,12 @@ body {
   background-color: #272932;
   /* Tirar */
   /* background-color: #272932; */
-  border: 1px solid #87B7FF;
+  border: 1px solid #d2d2d3;
   border-radius: 11px;
-  height: 75%;
+  height: 87%;
   width: 400px;
   padding: 30px 30px 30px 30px;
-  margin-top: 14px;
+  margin-top: 18px;
   overflow-x: none;
 }
 
@@ -367,9 +367,8 @@ body {
   width: 20vw;
   height: 50px;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 
 }
 
@@ -396,6 +395,11 @@ body {
   display: none;
   overflow-x: auto;
   flex-wrap: wrap;
+}
+
+.title_lateral_card h1{
+  font-size: 1.5em;
+  margin-top: 1px;
 }
 
 
@@ -1118,7 +1122,7 @@ DOWNLOAD */
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} 
 
 .list_maquinas .card_lateral_maquina {
   margin: 20px;
@@ -1127,15 +1131,18 @@ DOWNLOAD */
 }
 
 .card_lateral_maquina .titulo_maquina {
-  background-color: #211c22;
+  background-color: #87B7FF ;
+  color: #000000;
   height: 50px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  border-bottom: #000000 2px solid;
 }
 
 .content_card {
-  background-color: #111015;
+  background-color: #87b7ffa7;
+  color: #000000;
   height: 50px;
   display: flex;
   flex-direction: row;
