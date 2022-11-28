@@ -22,8 +22,15 @@ function buscarUltimasMedidas(idEmpresa) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idEmpresa) {
-    instrucaoSql = `SELECT TOP 1 maquina.*, historico_maquina.* FROM maquina JOIN historico_maquina ON historico_maquina.fk_maquina=maquina.id_maquina WHERE fk_empresa = ${idEmpresa} ORDER BY historico_maquina.id_historico DESC;`;
+
+function buscarUnicaMedidas(idMaquina) {
+    instrucaoSql = `SELECT TOP 5 maquina.id_maquina, historico_maquina.* FROM maquina JOIN historico_maquina ON historico_maquina.fk_maquina=maquina.id_maquina WHERE id_maquina = ${idMaquina} ORDER BY historico_maquina.id_historico DESC;`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMedidasEmTempoReal(idMaquina) {
+    instrucaoSql = `SELECT TOP 1 maquina.*, historico_maquina.* FROM maquina JOIN historico_maquina ON historico_maquina.fk_maquina=maquina.id_maquina WHERE id_maquina = ${idMaquina} ORDER BY historico_maquina.id_historico DESC;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -60,5 +67,6 @@ module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
     verifyMachines,
-    OnMachines
+    OnMachines,
+    buscarUnicaMedidas
 }

@@ -602,7 +602,7 @@ function verifyMachines() {
 
                       var html = `<div id ="list_maquinas_id" class="list_maquinas" onclick="abrirModal(${json[i].id_maquina})">
                                     <div class="card_lateral_maquina">
-                                      <div class="titulo_maquina">
+                                      <div class="titulo_maquina" onclick="carregarDash(${json[i].id_maquina})">
                                         <div class="icone_on_off">
                                           <i style="color: green;" class='bx bxs-circle'></i>
                                         </div>
@@ -642,48 +642,49 @@ function verifyMachines() {
 
 function abrirModal(idMaquina) {
 
-
-
   document.getElementById("modal").style.display = "flex";
-  document.getElementById("modal").innerHTML = `
-                      <div id="nav-modal" class="navbar-modal">
-                          <div id="title-patrimonio">BD0002323</div>
-                          <div>
-                        <button onclick="CloseModal()" class="btn-close-modal">
-                            <img src="assets/svg/cancel.svg">
-                          </button>
+      document.getElementById("modal").innerHTML = `
+                          <div id="nav-modal" class="navbar-modal">
+                              <div id="title_patrimonio">BD0002323</div>
+                              <div>
+                            <button onclick="CloseModal()" class="btn-close-modal">
+                                <img src="assets/svg/cancel.svg">
+                              </button>
+                                </div>
+                          </div>
+                          <div class="container">
+                          <div class="line-cpu">
+                                   <span id="sem_dados">Máquina Sem Dados...</span>
+                                  <canvas id="myChartcpu"></canvas>
+                          </div>
+                          <div class="porc-volume">
+                          <p class="title-porc">Volume de Disco em uso</p>
+                          <div class="porc-number">
+                          <p id="porc_volume_number">0%</p>
+                          </div>
+                          </div>
+                          <div class="porc-maquina">
+                            <p class="title-porc">Memoria RAM em uso</p>
+                          <div class="porc-number">
+                            <p id="porc_ram_number">0%</p>
                             </div>
-                      </div>
-                      <div class="container">
-                      <div class="line-cpu">
-                              <canvas id="myChartcpu"></canvas>
-                      </div>
-                      <div class="porc-volume">
-                      <p class="title-porc">Volume em uso</p>
-                      <div class="porc-number">
-                      <p id="porc-volume-number">55%</p>
-                      </div>
-                      </div>
-                      <div class="porc-maquina">
-                        <p class="title-porc">Memoria RAM em uso</p>
-                      <div class="porc-number">
-                        <p id="porc-ram-number">25%</p>
-                        </div>
-                        </div>
-                      </div>
-                      </div>
-                      <div class="reload">
-                        <span id="reload-maquina">
-                      <img src="assets/imgs/reload.svg" onclick="alterarStatus(${idMaquina})">
-                        <p>Reiniciar máquina</p>
-                        </div>
-                      <span>
-                      `;
-}
+                            </div>
+                          </div>
+                          </div>
+                          <div class="reload">
+                            <span id="reload-maquina">
+                          <img src="assets/imgs/reload.svg" onclick="alterarStatus(${idMaquina})">
+                            <p>Reiniciar máquina</p>
+                            </div>
+                          <span>
+                          `;
+    }
           
 
 function CloseModal() {
+
   document.getElementById("modal").style.display = "none";
+
 }
 
 function alterarStatus(maquina) {
@@ -701,7 +702,7 @@ function alterarStatus(maquina) {
             })
           }).then(function (resposta) {
 
-            console.log("DEU CERTOOOOOOOO")
+            alert("Maquina sendo desligada")
 
                 setInterval(() => {
                   window.location = "dashV3.html";
@@ -726,5 +727,252 @@ function alterarStatus(maquina) {
 
   }
 
+
+
+var proximaAtualizacao;
+
+
+
+function carregarDash(idMaquina) {
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
+    var idEmpresa = sessionStorage.FK_EMPRESA;
+
+
+    fetch(`/medidas/unica/${idMaquina}`, { cache: "no-store" })
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGraficoProcessador(resposta, idMaquina);
+                });
+            } else {
+                console.error("Nenhum dado encontrado ou erro na API");
+            }
+        })
+        .catch(function (error) {
+            console.error(
+                `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+            );
+        });
+}
+
+function plotarGraficoProcessador(resposta, idMaquina) {
+    console.log("iniciando plotagem do gráfico...");
+
+    var dados = {
+        labels: [],
+        datasets: [
+            {
+                label: "Processador em uso",
+                borderColor: "#E0AA1E",
+                backgroundColor: "#E0AA1E",
+                fill: true,
+                data: [],
+            }
+        ],
+    };
+
+    for (i = 0; i < resposta.length; i++) {
+
+        var registro = resposta[i];
+
+        sem_dados.innerHTML = ""
+
+        title_patrimonio.innerHTML = `${registro.codigo_patrimonio}`
+        porc_volume_number.innerHTML = `${registro.discoEmUso}%`
+        porc_ram_number.innerHTML = `${registro.memoriaRam_emUso}%`
+
+        dados.labels.push(registro.data_hora_registro)
+        dados.datasets[0].data.push(Number(registro.processador_emUso).toFixed(0));
+    }
+
+    const config = {
+        type: 'line',
+        data: dados,
+    };
+
+    let myChart = new Chart(
+        document.getElementById('myChartcpu'),
+        config
+    );
+
+    setTimeout(() => atualizarGraficoProcessador(idMaquina, dados, myChart), 2000);
+}
+
+
+
+function atualizarGraficoProcessador(idMaquina, dados, myChart) {
+    fetch(`/medidas/tempo-realTemperatura/${idMaquina}`, { cache: "no-store" })
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico: ${dados}`);
+
+                    // tirando e colocando valores no gráfico
+                    dados.labels.shift(); // apagar o primeiro
+                    dados.labels.push(novoRegistro[0].data_hora_registro); // incluir um novo momento
+
+                    dados.datasets[0].data.shift(); // apagar o primeiro de temperatura
+                    dados.datasets[0].data.push(Number(novoRegistro[0].processador_emUso).toFixed(0)); // incluir uma nova medida de temperatura
+
+                    myChart.update();
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(
+                        () => atualizarGraficoProcessador(idMaquina, dados, myChart),
+                        2000
+                    );
+                });
+            } else {
+                console.error("Nenhum dado encontrado ou erro na API");
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(
+                    () => atualizarGraficoProcessador(idMaquina, dados, myChart),
+                    2000
+                );
+            }
+        })
+        .catch(function (error) {
+            console.error(`
+      Erro na obtenção dos dados p/ gráfico: ${error.message}
+    `);
+        });
+}
+
+obterDadosGraficoProcessador();
+verifyMachines();
+
+
+
+  // function carregarDash(idMaquina){
+
+  //       var proximaAtualizacao;
+
+  //       if (proximaAtualizacao != undefined) {
+  //           clearTimeout(proximaAtualizacao);
+  //       }
+
+  //       fetch(`/medidas/unica/${idMaquina}`, {
+  //             method: "GET",
+  //             headers: {
+  //               "Conten-Type": "application/json"
+  //             }
+  //         }).then(function (response) {
+
+  //                   response.json().then(function (resposta) {
+
+  //                     if(resposta == '' || resposta == ' ' || resposta == null ){
+
+  //                      alert("Maquina não tem dados ainda...")
+
+  //                     }
+  //                       console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+  //                       resposta.reverse();
+  //                       plotarGraficoUnico(resposta, idMaquina);
+
+
+ 
+  //           })
+  //           .catch(function (error) {
+
+  //               console.error(
+  //                   `Erro na obtenção dos dados p/ gráfico: ${error.message}`
+  //               );
+
+  //           });
+  //   }
+
+  // )}
+
+  //   function plotarGraficoUnico(resposta, idEmpresa) {
+
+  //       console.log("iniciando plotagem do gráfico...");
+
+  //       console.log(resposta, idEmpresa)
+
+  //       var dados = {
+  //           labels: [],
+  //           datasets: [
+  //               {
+  //                   label: "CPU em uso",
+  //                   borderColor: "#E0AA1E",
+  //                   backgroundColor: "#E0AA1E",
+  //                   fill: true,
+  //                   data: [],
+  //               }
+  //           ],
+  //       };
+
+  //       for (i = 0; i < resposta.length; i++) {
+
+  //           var registro = resposta[i];
+
+  //           dados.labels.push(registro.data_hora_registro)
+  //           dados.datasets[0].data.push(Number(registro.processador_em_uso).toFixed(0));
+  //       }
+
+  //       const config = {
+  //           type: 'line',
+  //           data: dados,
+  //       };
+
+  //       let myChart = new Chart(
+  //           document.getElementById('myChartcpu'),
+  //           config
+  //       );
+
+  //       //setTimeout(() => atualizarGraficoUnico(idMaquina, dados, myChart), 2000);
+  //   }
+
+
+
+  //   function atualizarGraficoUnico(idMaquina, dados, myChart) {
+  //       fetch(`/medidas/tempo-realTemperatura/${idEmpresa}`, { cache: "no-store" })
+  //           .then(function (response) {
+  //               if (response.ok) {
+  //                   response.json().then(function (novoRegistro) {
+  //                       console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+  //                       console.log(`Dados atuais do gráfico: ${dados}`);
+
+  //                       // tirando e colocando valores no gráfico
+  //                       dados.labels.shift(); // apagar o primeiro
+  //                       dados.labels.push(novoRegistro[0].data_hora_registro); // incluir um novo momento
+
+  //                       dados.datasets[0].data.shift(); // apagar o primeiro de temperatura
+  //                       dados.datasets[0].data.push(Number(novoRegistro[0].processador_em_uso).toFixed(0)); // incluir uma nova medida de temperatura
+
+  //                       myChart.update();
+
+  //                       // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+  //                       proximaAtualizacao = setTimeout(
+  //                           () => atualizarGraficoUnico(idEmpresa, dados, myChart),
+  //                           2000
+  //                       );
+  //                   });
+  //               } else {
+  //                   console.error("Nenhum dado encontrado ou erro na API");
+  //                   // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+  //                   proximaAtualizacao = setTimeout(
+  //                       () => atualizarGraficoUnico(idEmpresa, dados, mychart),
+  //                       2000
+  //                   );
+  //               }
+  //           })
+  //           .catch(function (error) {
+  //               console.error(`
+  //         Erro na obtenção dos dados p/ gráfico: ${error.message}
+  //       `);
+  //           });
+  //   }
+
+
+
+  //   carregarDash();
+  //   verifyMachines();
 
 </script>

@@ -17,8 +17,12 @@ router.get("/ultimas/:idEmpresa", function (req, res) {
     medidaController.buscarUltimasMedidas(req, res);
 });
 
+router.get("/unica/:idMaquina", function (req, res) {
+    medidaController.buscarUnicaMedidas(req, res);
+});
 
-router.get("/tempo-realTemperatura/:idEmpresa", function (req, res) {
+
+router.get("/tempo-realTemperatura/:idMaquina", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 

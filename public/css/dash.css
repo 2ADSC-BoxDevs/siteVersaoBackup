@@ -1200,7 +1200,7 @@ height: 40px;
   width: 500px;
   align-self: center;
   padding-left: 80px;
-  background-color: red;
+  background-color: rgba(179, 52, 52, 0.733);
 }
 .modal-add-user .container .porc-volume{
   height: 300px;
