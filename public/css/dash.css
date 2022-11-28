@@ -1141,3 +1141,139 @@ DOWNLOAD */
   flex-direction: row;
   justify-content: center;
 }
+
+.modal-add-user {
+  display: none;
+  align-self: center;
+  flex-direction: column;
+  height: 68vh;
+  width: 82vw;
+  position: fixed;
+  z-index: 10000;
+  top: 20%;
+  background-color: #000000;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid #87B7FF;
+}
+.title-patrimonio{
+  font-weight: 700;
+}
+.btn-close-modal {
+  background-color: #000000;
+  border: none;
+  margin: 0 0 0 2rem;
+  height: 34px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.btn-close-modal img{
+height: 40px;
+}
+.modal-header {
+  color: white;
+  width: 68%;
+  display: flex;
+  justify-content: space-between;
+}
+.navbar-modal{
+  width: 98%;
+  display: flex;
+  height:  50px ;
+  font-size: 28px;
+  justify-content: space-between;
+  padding: 20px;
+}
+.modal-add-user .container{
+  display: flex;
+  justify-content: space-around;
+}
+.modal-add-user .container .line-cpu{
+  height: 400px;
+  width: 500px;
+  align-self: center;
+  padding-left: 80px;
+  background-color: red;
+}
+.modal-add-user .container .porc-volume{
+  height: 300px;
+  width: 152px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 16px;
+  background-color: rgba(47, 0, 255, 0);
+}
+.modal-add-user .container .porc-volume .title-porc{
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  justify-content: center;
+}
+.modal-add-user .container .porc-volume .porc-number{
+  background-color:#1E1F25;
+  border: 1px solid #87B7FF;
+  justify-content: center;
+  height: 150px;
+  width: 150px;
+  display: flex;
+  font-size: 50px;
+  align-items: center;
+  border-radius: 120px;
+}
+.modal-add-user .container .porc-maquina{
+  height: 300px;
+  width: 212px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 16px;
+  background-color: rgba(47, 0, 255, 0);
+}
+.modal-add-user .container .porc-maquina .title-porc{
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  justify-content: center;
+}
+.modal-add-user .container .porc-maquina .porc-number{
+  background-color:#1E1F25;
+  border: 1px solid #87B7FF;
+  justify-content: center;
+  height: 150px;
+  width: 150px;
+  display: flex;
+  font-size: 50px;
+  align-items: center;
+  border-radius: 120px;
+}
+.reload{
+  width: 100%;
+  height: 120px;
+  padding-top: 40px;
+  display: flex;
+  align-items: center;
+}
+.reload img{
+  width: 42px;
+  padding-left: 9px;
+  cursor: pointer;
+}
+.reload p{
+  padding-left: 14px;
+  font-weight: 500;
+}
+.reload span{
+  cursor: pointer;
+  display: flex;
+}

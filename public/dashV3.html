@@ -101,6 +101,8 @@
         <p class="font-weight-bold">DASHBOARD</p>
       </div>
 
+       <div id="modal" class="modal-add-user"></div>
+
       <div class="main-cards">
 
         <div class="card">
@@ -599,7 +601,7 @@ function verifyMachines() {
 
                       }
 
-                      var html = `<div id ="list_maquinas_id" class="list_maquinas">
+                      var html = `<div id ="list_maquinas_id" class="list_maquinas" onclick="abrirModal(1)">
                                     <div class="card_lateral_maquina">
                                       <div class="titulo_maquina">
                                         <div class="icone_on_off">
@@ -632,4 +634,53 @@ function verifyMachines() {
 })
 }
 
+
+</script>
+
+<script>
+
+function abrirModal(idMaquina) {
+
+  console.log(idMaquina)
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("modal").innerHTML = `
+                      <div id="nav-modal" class="navbar-modal">
+                          <div id="title-patrimonio">BD0002323</div>
+                          <div>
+                        <button onclick="CloseModal()" class="btn-close-modal">
+                            <img src="assets/svg/cancel.svg">
+                          </button>
+                            </div>
+                      </div>
+                      <div class="container">
+                      <div class="line-cpu">
+                              <canvas id="myChartcpu"></canvas>
+                      </div>
+                      <div class="porc-volume">
+                      <p class="title-porc">Volume em uso</p>
+                      <div class="porc-number">
+                      <p id="porc-volume-number">55%</p>
+                      </div>
+                      </div>
+                      <div class="porc-maquina">
+                        <p class="title-porc">Memoria RAM em uso</p>
+                      <div class="porc-number">
+                        <p id="porc-ram-number">25%</p>
+                        </div>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="reload">
+                        <span id="reload-maquina">
+                      <img src="assets/imgs/reload.svg" >
+                        <p>Reniciar máquina</p>
+                        </div>
+                      <span>
+                      `;
+}
+
+
+function CloseModal() {
+  document.getElementById("modal").style.display = "none";
+}
 </script>
