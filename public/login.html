@@ -172,18 +172,18 @@
 
   var emailReg = /^([À-úA-z0-9._-]+@[a-z0-9._-]+\.[A-z0-9_-]+)$/;
 
-  function validacao_email_register() {
-    var email = email_usuario.value;
-    // Verifica email
-    if (email.match(emailReg)) {
-      msg_email_validation_register.innerHTML = "";
-      email_usuario.style.border = "1px solid green ";
-    } else {
-      msg_email_validation_register.innerHTML =
-        '<b style="color: red;"> Verifique o campo preenchido </b>';
-      email_usuario.style.border = "1px solid red";
-    }
-  }
+  // function validacao_email_register() {
+  //   var email = email_usuario.value;
+  //   // Verifica email
+  //   if (email.match(emailReg)) {
+  //     msg_email_validation_register.innerHTML = "";
+  //     email_usuario.style.border = "1px solid green ";
+  //   } else {
+  //     msg_email_validation_register.innerHTML =
+  //       '<b style="color: red;"> Verifique o campo preenchido </b>';
+  //     email_usuario.style.border = "1px solid red";
+  //   }
+  // }
 
   function display_show_password() {
     form_show_password.style.display = "none";
