@@ -106,6 +106,9 @@ router.put("/alterarMachine", function (req, res) {
     usuarioController.alterarMachine(req, res);
 })
 
+router.put("/alterarStatus/:id_maquina", function (req, res) {
+    usuarioController.alterarStatus(req, res);
+});
 
 //------------------------------------------------------------------------------------------------
 

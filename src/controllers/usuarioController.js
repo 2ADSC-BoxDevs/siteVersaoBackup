@@ -417,7 +417,26 @@ function alterarMachine(req, res) {
             }
         );
 }
+function alterarStatus(req, res) {
+    var isActive = req.body.isActive;
+    var id_maquina = req.params.id_maquina;
 
+    console.log("aqui")
+    usuarioModel.alterarStatus(id_maquina, isActive)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
 module.exports = {
     entrar,
     entrarGoogle,
@@ -432,5 +451,6 @@ module.exports = {
     deleteMaquinas,
     cadastrarMachine,
     alterarMachine,
-    deleteSuporte
+    deleteSuporte,
+    alterarStatus
 }
