@@ -65,17 +65,17 @@
         </a>
         <a href="crudMaquina.html">
           <li class="sidebar-list-item">
-            <i class="uil uil-monitor"></i>Cadastrar máquina
+            <i class="uil uil-monitor"></i>Central máquina
           </li>
         </a>
         <a href="crudUsuarioSuporte.html">
           <li class="sidebar-list-item">
-              <i class="uil uil-user"></i>Usuario Suporte
+              <i class="uil uil-user"></i>Central Suporte
           </li>
       </a>
       <a href="crudUsuario.html">
           <li class="sidebar-list-item">
-              <i class="uil uil-icons"></i>Usuario
+            <i class="uil uil-airplay"></i>Central Usuario
           </li>
       </a>
         <a href="download.html">
@@ -95,12 +95,12 @@
     <!-- Main -->
     <main class="main-container">
       <div class="main-title">
-        <p class="font-weight-bold">DASHBOARD</p>
+        <p class="font-weight-bold" id="font_blue" >DASHBOARD</p>
       </div>
 
        <div id="modal" class="modal-add-user"></div>
 
-      <div class="main-cards">
+      <div class="main-cards" id="main_container">
 
         <div class="card">
           <div class="card-inner">
@@ -143,9 +143,9 @@
 
       </div>
 
-      <div class="charts">
+      <div class="charts" id="charts_blue">
 
-        <div class="chart-mensal">
+        <div class="chart-mensal" id="mensal">
           <h2>Alertas no Dia</h2>
           <div>
             <canvas id="myChartDinamicTotal"></canvas>
@@ -158,7 +158,7 @@
 
         <div>
           
-          <div class="chart-lateral">
+          <div class="chart-lateral" id="lateral">
             <div class="title_lateral_card">
               <h1 class="">Máquinas</h1>
             </div>
@@ -415,8 +415,8 @@
             datasets:[
                 {
                     label: ['Alertas'],
-                    borderColor: ["#87B7FF", "#E0AA1E"],
-                    backgroundColor:["#87B7FF","#E0AA1E"],
+                    borderColor: ["#87B7FF", "rgba(167, 110, 167, 0.912)"],
+                    backgroundColor:["#87B7FF","rgba(167, 110, 167, 0.912)"],
                     fill: true,
                     data: [],
                 }
@@ -642,7 +642,7 @@ function verifyMachines() {
 
 function abrirModal(idMaquina) {
 
-
+  
 
   document.getElementById("modal").style.display = "flex";
   document.getElementById("modal").innerHTML = `
@@ -679,11 +679,24 @@ function abrirModal(idMaquina) {
                         </div>
                       <span>
                       `;
+                      main_container.style.filter = "blur(15px)";
+                      font_blue.style.filter = "blur(15px)";
+                      id.style.filter = "blur(15px)";
+                      charts_blue.style.filter = "blur(15px)";
+                      lateral.style.filter = "blur(15px)";
+                      mensal.style.filter = "blur(15px)";
+                      charts_blue.style.filter = "blur(15px)";
 }
           
 
 function CloseModal() {
   document.getElementById("modal").style.display = "none";
+                     main_container.style.filter =  "blur(calc(15px - 15px))";
+                      font_blue.style.filter =  "blur(calc(15px - 15px))";
+                      id.style.filter =  "blur(calc(15px - 15px))";
+                      lateral.style.filter = "blur(calc(15px - 15px))";
+                      mensal.style.filter = "blur(calc(15px - 15px))";
+                      charts_blue.style.filter = "blur(calc(15px - 15px))";
 }
 
 function alterarStatus(maquina) {
